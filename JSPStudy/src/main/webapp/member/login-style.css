@@ -1,0 +1,81 @@
+@charset "UTF-8";
+body {
+  margin: 10% auto;
+  padding: 0;
+  height: 600px;
+  background-image: url(../main/source/computer3.jpg);
+}
+div {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: black;
+}
+/* top */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#back {
+  background-color: white;
+  opacity: 0.96;
+  width: 550px;
+  height: 420px;
+  margin: 0 auto;
+  padding: 50px 0;
+  border-radius: 50px;
+}
+div.top, div.middle-top, div.middle-bottom, div.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  width: 400px;
+}
+div.top {
+  font-size: 18px;
+  justify-content: space-between;
+}
+/* middle-top */
+div.middle-top input {
+  margin: 3px 0;
+  height: 45px;
+  width: 290px;
+  border-radius: 5px;
+  border: 1px solid  rgb(218, 217, 217);
+  outline: 0;
+}
+/* middle-bottom */
+div.middle-bottom {
+justify-content: space-between;
+}
+div.bottom {
+  justify-content: space-between;
+}
+/* button */
+button {
+  background-color: #f4f4f4;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 3px 10px;
+  width: 100px;
+  height: 25px;
+}
+#question-button {
+  background-color: #f4f4f4;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+}
+/* 로그인 버튼 */
+div.middle-top > button {
+  background-color:  #114fd3;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  width: 100px;
+  height: 90px;
+}

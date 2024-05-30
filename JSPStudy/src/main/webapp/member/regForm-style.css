@@ -1,0 +1,97 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 0;
+}
+form {
+  width: 80%;
+  padding: 10px;
+  margin: 0 auto;
+}
+h4 {
+  font-size: small;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-right: 0;
+}
+td.title {
+  width: 20%;
+  padding-left: 5px;
+  background-color: rgb(192, 219, 248);
+  text-align: center;
+  font-size: 12px;
+  font-weight: bolder;
+}
+td.content {
+  width: 80%;
+  padding: 3px 3px 5px 3px;
+}
+td.path {
+  font-size: 9px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+td > span {
+  font-size: 8px;
+  color: red;
+}
+input {
+  border: 1px solid lightgray;
+  margin: 3px;
+  height: 20px;
+  border-radius: 2px;
+  background-color: #f4f4f4;
+  outline: 0;
+}
+input.request {
+  background-image: url(https://cdn.discordapp.com/attachments/1212631551226150939/1230716388092678164/wrest.gif?ex=663454f4&is=6621dff4&hm=8079b04eedd0d9308fc503f5306f2bede34054958c7fa62cf223312bb979a06e&);
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.redtext {
+  color: red;
+  font-size: 8px;
+  position: relative;
+  left: 3px;
+  top: 5px;
+}
+.allow {
+  font-size: 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#subButton {
+  background-color: rgb(89, 159, 234);
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  color: white;
+}
+#autoRegiCode {
+  margin-left: 5px;
+  font-size: 15px;
+  border: 1px solid rgb(170, 170, 170);
+  background-color: rgb(216, 213, 213);
+  padding: 5px 3px;
+}
+#address {
+  font-size: 13px;
+}
