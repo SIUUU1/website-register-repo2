@@ -145,6 +145,48 @@ public class MemberDAO {
 		return vo;
 	}
 
+	// 전체회원정보 가져오기
+	public Vector<MemberVO> getMemberList() {
+		Vector<MemberVO> mevList = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		String sql = "select * from members where userId!='admin'";
+		try {
+			conn = DBPoolUtil.makeConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				mevList = new Vector<MemberVO>();
+				vo = new MemberVO();
+				vo.setUserId(rs.getString("userId"));
+				vo.setUserPw(rs.getString("userPw"));
+				vo.setUserName(rs.getString("userName"));
+				vo.setUserNickName(rs.getString("userNickName"));
+				vo.setUserEmail(rs.getString("userEmail"));
+				vo.setSubscriptionPath(rs.getString("subscriptionPath"));
+				vo.setUserTel(rs.getString("userTel"));
+				vo.setUserPhoneNum(rs.getString("userPhoneNum"));
+				vo.setUserBirthday(String.valueOf(rs.getDate("userBirthday")));
+				vo.setPostCode(rs.getString("postCode"));
+				vo.setDefaultAddress(rs.getString("defaultAddress"));
+				vo.setDetailedAddress(rs.getString("detailedAddress"));
+				vo.setExtraAddress(rs.getString("extraAddress"));
+				vo.setKakaoService(String.valueOf(rs.getInt("kakaoService")));
+				vo.setEmailService(String.valueOf(rs.getInt("emailService")));
+				vo.setSnsService(String.valueOf(rs.getInt("snsService")));
+				vo.setDisclosureInfo(String.valueOf(rs.getInt("disclosureInfo")));
+				mevList.addElement(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs, pstmt, conn);
+		}
+		return mevList;
+	}
+
 	// 회원정보 수정
 	public int updateMember(MemberVO vo) {
 		Connection conn = null;

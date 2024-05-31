@@ -7,11 +7,16 @@ String loginID = (String) session.getAttribute("loginID");
 <head>
 <title>로그인</title>
 <script src="./js-login.js" defer></script>
-<link rel="stylesheet" href="./login-style.css">
+<link rel="stylesheet" href="./login-style.css?ver=4">
 </head>
-<body onload="init()">
+<body>
 	<%
 	if (loginID != null) {
+		if (loginID.equals("admin")) {
+ 				%>
+ 				<jsp:forward page="memberListForm.jsp"></jsp:forward>
+ 				<%
+		} else {
 	%>
 	<table border="1" width="300">
 		<tr>
@@ -24,12 +29,14 @@ String loginID = (String) session.getAttribute("loginID");
 		</tr>
 	</table>
 	<%
+	}
 	} else {
 	%>
+	<div class="login-box">
 	<div id="back">
 		<!-- top -->
 		<h1>로그인</h1>
-		<form action="loginProc.jsp" method="post">
+		<form action="loginProc.jsp" method="post" name="loginForm">
 			<div class="top">
 				<div>
 					<input type="radio" name="member" id="member1" value="1" checked>
@@ -63,13 +70,14 @@ String loginID = (String) session.getAttribute("loginID");
 			</div>
 			<!-- bottom -->
 			<div class="bottom">
-				<a href="./regForm.jsp" target="_blank"><button type="button">회원가입</button></a>
+				<a href="main.jsp?file=regForm"><button type="button">회원가입</button></a>
 				<a href="https://kh-academy.co.kr/login/find.kh"><button
 						type="button">아이디 찾기</button></a> <a
 					href="https://www.kh-academy.co.kr/login/password.kh"><button
 						type="button">비밀번호 찾기</button></a>
 			</div>
 		</form>
+	</div>
 	</div>
 	<%
 	}

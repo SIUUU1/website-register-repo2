@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <title>회원가입</title>
-  <link rel="stylesheet" href="regForm-style.css">
+  <link rel="stylesheet" href="regForm-style.css?ver=3">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="./js-regForm.js" defer></script>
 </head>
@@ -150,10 +150,10 @@
         </td>
       </tr>
     </table>
-    <footer>
+    <div class="regButton">
       <button type="submit" id="subButton" onclick="inputCheck()">회원가입</button>
       <button type="reset">취소</button>
-    </footer>
+    </div>
   </form>
 </body>
 </html>

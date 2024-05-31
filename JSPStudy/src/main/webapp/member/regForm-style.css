@@ -1,12 +1,7 @@
-@charset "UTF-8";
-body {
-  margin: 0;
-  padding: 0;
-}
 h1 {
   text-align: center;
   font-size: 25px;
-  margin-bottom: 0;
+  margin: 30px auto 0 auto;
 }
 form {
   width: 80%;
@@ -73,10 +68,10 @@ input.request {
   justify-content: flex-start;
   align-items: center;
 }
-footer {
+div.regButton {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 #subButton {
   background-color: rgb(89, 159, 234);

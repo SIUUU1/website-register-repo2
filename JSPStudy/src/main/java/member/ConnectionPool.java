@@ -40,7 +40,7 @@ public final class ConnectionPool {
 	}
 
 	private ConnectionPool() {
-		String filePath = "/Users/ansiu/myProject/myjsp/JSPStudy/src/main/java/member/db.properties";
+		String filePath = "/Users/ansiu/website-register-repo2/JSPStudy/src/main/java/member/db.properties";
 		try {
 			Properties properties = new Properties();
 			properties.load(new FileReader(filePath));
