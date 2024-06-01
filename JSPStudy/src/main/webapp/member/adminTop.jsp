@@ -22,9 +22,8 @@
 		<!-- right-top -->
 		<nav class="right-top">
 			<a href="./main.jsp"><span>Home</span></a> <a
-				href="#"><span>Board</span></a> <a
-				href="main.jsp?middleFile=login"><span>로그인</span></a> <a
-				href="main.jsp?middleFile=regForm"><span>회원가입</span></a>
+				href="main.jsp?middleFile=memberListForm"><span>회원관리</span></a> <a
+				href="logout.jsp"><span>로그아웃</span></a>
 		</nav>
 		<div class="head">
 			<!-- left-top -->
@@ -51,7 +50,7 @@
 				<li>프로젝트</li>
 				<li>커뮤니티</li>
 				<li>산학연계</li>
-				<li>마이페이지</li>
+				<li>관리자페이지</li>
 				<li>상담센터</li>
 			</ul>
 		</nav>
@@ -124,11 +123,8 @@
 				<a href="https://kh-academy.co.kr/company/itSpecialLecture.kh"><li>IT특강</li></a>
 			</ul>
 			<ul>
-				<a href="main.jsp?middleFile=login"><li>로그인</li></a>
-				<a href="main.jsp?middleFile=regForm"><li>회원가입</li></a>
-				<a href="https://kh-academy.co.kr/login/find.kh"><li>아이디/비밀번호
-						찾기</li></a>
-				<a href="https://kh-academy.co.kr/login/survey.kh"><li>학생설문조사</li></a>
+				<a href="main.jsp?middleFile=memberListForm"><li>회원관리하기</li></a>
+				<a href="logout.jsp"><li>로그아웃</li></a>
 			</ul>
 			<ul>
 				<a href="https://kh-academy.co.kr/question/online.kh?location=h"><li>온라인

@@ -13,11 +13,11 @@ int check = dao.deleteMember(userId, userPw);
 if (check != -1) {
 	session.invalidate();
 %>
-<meta http-equiv="Refresh" content="3;url=login.jsp">
+<meta http-equiv="Refresh" content="3;url=main.jsp">
 <body>
 	<center>
 		<font size="5" face="바탕체">회원정보가 삭제되었습니다.<br> <br>
-			3초후에 로그인 페이지로 이동합니다.
+			3초 후 메인페이지로 이동합니다.
 		</font>
 	</center>
 	<%

@@ -96,6 +96,9 @@ public class MemberDAO {
 			if (rs.next()) {
 				String dbPass = rs.getString("userPw");
 				check = (userPw.equals(dbPass)) ? 1 : 0;
+				if(check == 1 && userId.equals("admin")) {
+					check = 2; //admin
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -147,19 +150,17 @@ public class MemberDAO {
 
 	// 전체회원정보 가져오기
 	public Vector<MemberVO> getMemberList() {
-		Vector<MemberVO> mevList = null;
+		Vector<MemberVO> mevList = new Vector<MemberVO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		MemberVO vo = null;
-		String sql = "select * from members where userId!='admin'";
+		String sql = "select * from members";
 		try {
 			conn = DBPoolUtil.makeConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				mevList = new Vector<MemberVO>();
-				vo = new MemberVO();
+				MemberVO vo = new MemberVO();
 				vo.setUserId(rs.getString("userId"));
 				vo.setUserPw(rs.getString("userPw"));
 				vo.setUserName(rs.getString("userName"));
@@ -211,9 +212,10 @@ public class MemberDAO {
 			pstmt.setString(11, vo.getDetailedAddress());
 			pstmt.setString(12, vo.getExtraAddress());
 			pstmt.setInt(13, Integer.parseInt(vo.getKakaoService()));
-			pstmt.setInt(13, Integer.parseInt(vo.getEmailService()));
-			pstmt.setInt(13, Integer.parseInt(vo.getSnsService()));
-			pstmt.setInt(13, Integer.parseInt(vo.getDisclosureInfo()));
+			pstmt.setInt(14, Integer.parseInt(vo.getEmailService()));
+			pstmt.setInt(15, Integer.parseInt(vo.getSnsService()));
+			pstmt.setInt(16, Integer.parseInt(vo.getDisclosureInfo()));
+			pstmt.setString(17, vo.getUserId());
 			count = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

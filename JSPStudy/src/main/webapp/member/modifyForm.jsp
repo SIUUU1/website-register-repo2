@@ -5,39 +5,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Form</title>
- <link rel="stylesheet" href="regForm-style.css">
+<link rel="stylesheet" href="regForm-style.css">
 <script src="./js-regForm.js" defer></script>
 </head>
 <%
 MemberDAO dao = MemberDAO.getInstance();
 String loginID = (String) session.getAttribute("loginID");
 MemberVO vo = dao.getMember(loginID);
+String sPath = vo.getSubscriptionPath();
 %>
 <body>
-	<h1>회원 수정 정보 입력</h1>
+	<h1 id="title">회원 수정 정보 입력</h1>
 	<form action="modifyProc.jsp" method="post" name="regForm">
 		<h4>사이트 이용정보 입력</h4>
 		<table>
 			<tr>
 				<td class="title"><label for="userId">아이디</label></td>
 				<td class="content"><input class="request" type="text"
-					name="userId" id="userId" size="25" maxlength="20" value=<%=vo.getUserId()%>
-					>
-					<span id="userIdInfo"></span><br></td>
+					name="userId" id="userId" size="25" maxlength="20"
+					value=<%=vo.getUserId()%>> <span id="userIdInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPw">비밀번호</label></td>
 				<td class="content"><input class="request" type="password"
 					name="userPw" id="userPw" size="25" maxlength="20"
-					onkeyup="userPwCheck('keyup')" value=<%=vo.getUserPw()%>> <span id="userPwInfo"></span><br>
-				</td>
+					onkeyup="userPwCheck('keyup')" value=<%=vo.getUserPw()%>> <span
+					id="userPwInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPwConfirm">비밀번호 확인</label></td>
 				<td class="content"><input type="password" name="userPwConfirm"
 					id="userPwConfirm" size="25" maxlength="20"
-					onblur="userPwCheck('blur')" value=<%=vo.getUserPw()%>> <span id="userPwConfirmInfo"></span><br>
-				</td>
+					onblur="userPwCheck('blur')" value=<%=vo.getUserPw()%>> <span
+					id="userPwConfirmInfo"></span><br></td>
 			</tr>
 		</table>
 		<h4>개인정보 입력</h4>
@@ -45,21 +45,21 @@ MemberVO vo = dao.getMember(loginID);
 			<tr>
 				<td class="title"><label for="userName">이름</label></td>
 				<td><input class="request" type="text" name="userName"
-					id="userName" size="25" maxlength="6" onkeyup="userNameCheck()" value=<%=vo.getUserName()%>>
-					<span id="userNameInfo"></span><br></td>
+					id="userName" size="25" maxlength="6" onkeyup="userNameCheck()"
+					value=<%=vo.getUserName()%>> <span id="userNameInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userNickName">닉네임</label></td>
 				<td><input class="request" type="text" name="userNickName"
 					id="userNickName" size="25" maxlength="20"
-					onkeyup="userNickNameCheck()" value=<%=vo.getUserNickName()%>> <span id="userNickNameInfo"></span><br>
-				</td>
+					onkeyup="userNickNameCheck()" value=<%=vo.getUserNickName()%>>
+					<span id="userNickNameInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userEmail">E-mail</label></td>
 				<td><input class="request" type="email" name="userEmail"
-					id="userEmail" size="25" maxlength="40" onkeyup="userEmailCheck()" value=<%=vo.getUserEmail()%>>
-					<span id="userEmailInfo"></span><br></td>
+					id="userEmail" size="25" maxlength="40" onkeyup="userEmailCheck()"
+					value=<%=vo.getUserEmail()%>> <span id="userEmailInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="searchInternet">가입경로</label></td>
@@ -80,19 +80,20 @@ MemberVO vo = dao.getMember(loginID);
 			<tr>
 				<td class="title"><label for="userTel">전화번호</label></td>
 				<td><input class="request" type="tel" name="userTel"
-					id="userTel" size="25" maxlength="12" onkeyup="userTelCheck()">
-					<span id="userTelInfo" value=<%=vo.getUserTel()%>></span><br></td>
+					id="userTel" size="25" maxlength="12" onkeyup="userTelCheck()"
+					value=<%=vo.getUserTel()%>> <span id="userTelInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPhoneNum">휴대폰번호</label></td>
 				<td><input class="request" type="tel" name="userPhoneNum"
 					id="userPhoneNum" size="25" maxlength="13"
-					onkeyup="userPhoneNumCheck()" value=<%=vo.getUserPhoneNum()%>> <span id="userPhoneNumInfo"></span><br>
-				</td>
+					onkeyup="userPhoneNumCheck()" value=<%=vo.getUserPhoneNum()%>>
+					<span id="userPhoneNumInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userBirthday">생년월일</label></td>
-				<td><input type="date" name="userBirthday" id="userBirthday" value=<%=vo.getUserBirthday()%>></td>
+				<td><input type="date" name="userBirthday" id="userBirthday"
+					value=<%=vo.getUserBirthday()%>></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="">주소</label></td>
@@ -102,12 +103,14 @@ MemberVO vo = dao.getMember(loginID);
 					<button type="button" id="buttonAddress" onclick="searchPostCode()">우편번호검색</button>
 					<br> <input class="request" type="text" name="defaultAddress"
 					id="defaultAddress" size="53" maxlength="50" placeholder="주소"
-					readonly onclick="searchPostCode()" value=<%=vo.getDefaultAddress()%>> <span
+					readonly onclick="searchPostCode()"
+					value=<%=vo.getDefaultAddress()%>> <span
 					id="userAddressInfo"></span><br> <input type="text"
 					name="detailedAddress" id="detailedAddress" size="25"
-					maxlength="25" placeholder="상세주소" value=<%=vo.getDetailedAddress()%>> <input type="text"
-					name="extraAddress" id="extraAddress" size="25" maxlength="25" value=<%=vo.getDetailedAddress()%>>
-				</td>
+					maxlength="25" placeholder="상세주소"
+					value=<%=vo.getDetailedAddress()%>> <input type="text"
+					name="extraAddress" id="extraAddress" size="25" maxlength="25"
+					value=<%=vo.getDetailedAddress()%>></td>
 			</tr>
 		</table>
 		<h4>기타 개인설정</h4>
@@ -128,7 +131,7 @@ MemberVO vo = dao.getMember(loginID);
 			<tr>
 				<td class="title">SNS 수신여부</td>
 				<td class="allow"><input type="checkbox" name="snsService"
-					id="snsService" value="1" checked> <label for="snsService">휴대몬
+					id="snsService" value="1" checked> <label for="snsService">휴대폰
 						문자메세지를 받겠습니다.</label></td>
 			</tr>
 			<tr>
@@ -142,11 +145,11 @@ MemberVO vo = dao.getMember(loginID);
 				</td>
 			</tr>
 		</table>
-		<footer>
+		<div class="regButton">
 			<button type="button" id="subButton" onclick="updateCheck()">정보수정</button>
 			<button type="button"
 				onclick="javascript:window.location='login.jsp'">취소</button>
-		</footer>
+		</div>
 	</form>
 </body>
 </html>

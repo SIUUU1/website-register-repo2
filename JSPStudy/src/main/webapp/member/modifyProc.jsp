@@ -17,11 +17,11 @@ if (count != -1) {
 <head>
 <title>Update Process</title>
 </head>
-<meta http-equiv="Refresh" content="3;url=login.jsp">
+<meta http-equiv="Refresh" content="3;url=main.jsp">
 <body>
 	<center>
 		<font size="5" face="바탕체">입력하신 내용대로 <b>회원정보가 수정되었습니다.</b><br>
-		<br> 3초후에 Logon Page로 이동합니다.
+		<br> 3초 후 메인페이지로 이동합니다.
 		</font>
 	</center>
 </body>

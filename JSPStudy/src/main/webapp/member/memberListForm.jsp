@@ -9,10 +9,12 @@ Vector<MemberVO> mevList = dao.getMemberList();
 <html>
 <head>
 <title>회원리스트</title>
+<link rel="stylesheet" href="./memberListForm-style.css">
 </head>
 <body>
+ <h1 id="title">전체 회원 정보</h1>
 	<form action="memberListProc.jsp" method="post">
-		<table align="center" width="1000" border="1">
+		<table>
 			<tr>
 				<th>아이디</th>
 				<th>비밀번호</th>
@@ -31,6 +33,7 @@ Vector<MemberVO> mevList = dao.getMemberList();
 				<th>메일링서비스</th>
 				<th>SNS수신여부</th>
 				<th>정보공개</th>
+				<th>선택</th>
 			</tr>
 			<%
 			for (MemberVO vo : mevList) {
@@ -41,7 +44,7 @@ Vector<MemberVO> mevList = dao.getMemberList();
 				<td><%=vo.getUserName()%></td>
 				<td><%=vo.getUserNickName()%></td>
 				<td><%=vo.getUserEmail()%></td>
-				<td><%=vo.getSubscriptionPath()%></td>
+				<td><%=(vo.getSubscriptionPath()!=null)?vo.getSubscriptionPath():"-"%></td>
 				<td><%=vo.getUserTel()%></td>
 				<td><%=vo.getUserPhoneNum()%></td>
 				<td><%=vo.getUserBirthday()%></td>
@@ -60,7 +63,7 @@ Vector<MemberVO> mevList = dao.getMemberList();
 			}
 			%>
 		</table>
-		<div style="text-align: center; margin-top: 20px;">
+		<div div id="deleteButton">
 			<input type="submit" value="삭제">
 		</div>
 	</form>

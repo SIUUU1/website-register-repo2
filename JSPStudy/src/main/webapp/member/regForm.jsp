@@ -2,12 +2,12 @@
 <html lang="ko">
 <head>
   <title>회원가입</title>
-  <link rel="stylesheet" href="regForm-style.css?ver=3">
+  <link rel="stylesheet" href="regForm-style.css?ver=4">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="./js-regForm.js" defer></script>
 </head>
 <body onload="init()">
-  <h1>회원가입</h1>
+  <h1 id="title">회원가입</h1>
   <form action="regProc.jsp" method="post" name="regForm">
     <h4>사이트 이용정보 입력</h4>
     <table>
@@ -125,7 +125,7 @@
         <td class="title">SNS 수신여부</td>
         <td class="allow">
           <input type="checkbox" name="snsService" id="snsService" value="1" checked>
-          <label for="snsService">휴대몬 문자메세지를 받겠습니다.</label>
+          <label for="snsService">휴대폰 문자메세지를 받겠습니다.</label>
         </td>
       </tr>
       <tr>
@@ -151,7 +151,7 @@
       </tr>
     </table>
     <div class="regButton">
-      <button type="submit" id="subButton" onclick="inputCheck()">회원가입</button>
+      <button type="button" id="subButton" onclick="inputCheck()">회원가입</button>
       <button type="reset">취소</button>
     </div>
   </form>
