@@ -47,10 +47,12 @@
     select.style.height = `30px`;
     select.style.fontSize = `15px`;
     select.style.textAlign = `center`;
+    
     let selectDiv = document.querySelector("div");
     selectDiv.style.width = `80%`;
     selectDiv.style.margin = `0 auto`;
     selectDiv.style.textAlign = `right`;
+    
     // create table1
     createTable(1);
     let table1 = document.querySelector("#table1");
@@ -97,6 +99,9 @@
       buttonArr[i].style.height = `35px`;
       buttonArr[i].setAttribute("id",`button${i}`);
     }
+    
+    
+    
     // 바뀐 select 값으로 필터한 카테고리의 항목 보여주기 
     select.addEventListener("change",()=>{
       // 선택한 category 값 가져오기
@@ -125,6 +130,8 @@
         }
       }
     });
+    
+    
     //항목의 컨텐츠 생성하기
     //section 생성 추가
     let newSection = document.createElement("section");
@@ -280,6 +287,9 @@
       tdArr[1].style.width = `20%`;
       tdArr[2].style.width = `50%`;
       tdArr[3].style.width = `20%`;
+      
+      
+      
     }//end of createTable() func
     // show content clicking page-button func
     function buttonClick(num){

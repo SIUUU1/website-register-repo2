@@ -6,7 +6,8 @@
 <meta charset="UTF-8">
 <title>Update Form</title>
 <link rel="stylesheet" href="regForm-style.css">
-<script src="./js-regForm.js" defer></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="./js-regForm.js?ver=4" defer></script>
 </head>
 <%
 MemberDAO dao = MemberDAO.getInstance();
@@ -23,7 +24,7 @@ String sPath = vo.getSubscriptionPath();
 				<td class="title"><label for="userId">아이디</label></td>
 				<td class="content"><input class="request" type="text"
 					name="userId" id="userId" size="25" maxlength="20"
-					value=<%=vo.getUserId()%>> <span id="userIdInfo"></span><br></td>
+					value=<%=vo.getUserId()%> readonly> <span id="userIdInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPw">비밀번호</label></td>

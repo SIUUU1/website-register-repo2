@@ -96,8 +96,8 @@ public class MemberDAO {
 			if (rs.next()) {
 				String dbPass = rs.getString("userPw");
 				check = (userPw.equals(dbPass)) ? 1 : 0;
-				if(check == 1 && userId.equals("admin")) {
-					check = 2; //admin
+				if (check == 1 && userId.equals("admin")) {
+					check = 2; // admin
 				}
 			}
 		} catch (SQLException e) {
@@ -154,7 +154,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from members";
+		String sql = "select * from members where userId!='admin'";
 		try {
 			conn = DBPoolUtil.makeConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -192,7 +192,7 @@ public class MemberDAO {
 	public int updateMember(MemberVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int count = -1;
+		int result = -1;
 		String sql = "update members set userPw=?, userName=?, userNickName=?, userEmail=?, subscriptionPath=? , "
 				+ "userTel=?, userPhoneNum=?, userBirthday=?, postCode=?, defaultAddress=?, detailedAddress=?, extraAddress=?, "
 				+ "kakaoService=?, emailService=?, snsService=?, disclosureInfo=? where userId=?";
@@ -216,13 +216,13 @@ public class MemberDAO {
 			pstmt.setInt(15, Integer.parseInt(vo.getSnsService()));
 			pstmt.setInt(16, Integer.parseInt(vo.getDisclosureInfo()));
 			pstmt.setString(17, vo.getUserId());
-			count = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(pstmt, conn);
 		}
-		return count;
+		return result;
 	}
 
 	// 회원정보 삭제
@@ -250,6 +250,25 @@ public class MemberDAO {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(rs, pstmt, conn);
+		}
+		return result;
+	}
+
+	// 회원정보 삭제
+	public int deleteMember(String userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = 0; // 결과지
+		String sql = "delete from members where userid=?";
+		try {
+			conn = DBPoolUtil.makeConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(pstmt, conn);
 		}
 		return result;
 	}

@@ -24,8 +24,8 @@ String loginID = (String) session.getAttribute("loginID");
 	<header>
 		<!-- right-top -->
 		<nav class="right-top">
-			<a href="./main.jsp"><span>Home</span></a> <a
-				href="#"><span>Board</span></a> <a
+			<a href="main.jsp"><span>Home</span></a> <a
+				href="main.jsp?middleFile=board"><span>Board</span></a> <a
 				href="main.jsp?middleFile=modifyForm"><span><%=loginID%> 님 환영합니다.</span></a> <a
 				href="logout.jsp"><span>로그아웃</span></a>
 		</nav>
@@ -128,7 +128,7 @@ String loginID = (String) session.getAttribute("loginID");
 			</ul>
 			<ul>
 				<a href="main.jsp?middleFile=modifyForm"><li>내정보수정하기</li></a>
-				<a href="#"><li>내장바구니</li></a>
+				<a href="main.jsp?middleFile=board"><li>우리반게시판</li></a>
 				<a href="main.jsp?middleFile=deleteForm"><li>회원탈퇴</li></a>
 				<a href="logout.jsp"><li>로그아웃</li></a>
 			</ul>

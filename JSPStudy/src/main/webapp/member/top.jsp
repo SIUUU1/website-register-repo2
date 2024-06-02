@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="./submain-style.css?ver=4">
 <script src="https://kit.fontawesome.com/8d66cd774b.js"
 	crossorigin="anonymous"></script>
-<script src="./js-main.js" defer></script>
+<script src="./js-main.js?ver=4" defer></script>
 <script src="./slideshow/js-slideshow.js"></script>
 <script src="https://kit.fontawesome.com/8d66cd774b.js"
 	crossorigin="anonymous"></script>

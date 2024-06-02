@@ -1,27 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+String loginID = (String) session.getAttribute("loginID");
+%>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
-<script src="./js-regForm.js" defer></script>
+<script src="./js-delete.js?ver=5" defer></script>
+<link rel="stylesheet" href="./delete-style.css?ver=5">
 </head>
 <body onload="begin()">
-	<form name="myForm" method="post" action="deleteProc.jsp"
-		onsubmit="return checkIt()">
-		<table width="260" border="1" align="center">
-			<tr>
-				<td colspan="2" align="center"><b>회원 탈퇴</b></td>
-			</tr>
-			<tr>
-				<td width="150"><b>비밀번호입력</b></td>
-				<td width="110"><input type="password" name="userPw" size="20"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit"
-					value="회원탈퇴"> <input type="button" value="취  소"
-					onclick="javascript:window.location='login.jsp'"></td>
-			</tr>
-		</table>
-	</form>
+	<div class="delete-box">
+		<div id="back">
+			<!-- top -->
+			<h1 id="title">회원 탈퇴</h1>
+			<form action="deleteProc.jsp" method="post" name="deleteForm">
+				<!-- middle-top -->
+				<div class="middle-top">
+					<input type="text" name="userId" id="userId" size="20"
+						maxlength="20" value=<%=loginID%> readonly> <br> <input
+						type="password" name="userPw" id="userPw" size="20" maxlength="16"
+						placeholder="비밀번호 입력">
+				</div>
+				<!-- bottom -->
+				<div class="bottom">
+					<button type="button" onclick="checkIt()">회원탈퇴</button>
+					<a href="main.jsp"><button type="button" id="subButton">취소</button></a>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

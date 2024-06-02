@@ -5,11 +5,10 @@ MemberDAO dao = MemberDAO.getInstance();
 String userId = request.getParameter("userId");
 String userPw = request.getParameter("userPw");
 int check = dao.loginCheck(userId, userPw);
-String message = "";
+String message = "로그인 성공";
 
 if (check == 1) {
 	//로그인 성공 세션 등록
-	message = "로그인 성공";
 	session.setAttribute("loginID", userId);
 	response.sendRedirect("main.jsp");
 } else if (check == 2) {
@@ -32,7 +31,6 @@ history.go(-1);
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Login</title>
 </head>
 <body>

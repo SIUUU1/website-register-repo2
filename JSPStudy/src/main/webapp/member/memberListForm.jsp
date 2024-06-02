@@ -56,7 +56,7 @@ Vector<MemberVO> mevList = dao.getMemberList();
 				<td><%=(vo.getEmailService().equals("1")) ? "o" : "x"%></td>
 				<td><%=(vo.getSnsService().equals("1")) ? "o" : "x"%></td>
 				<td><%=(vo.getDisclosureInfo().equals("1")) ? "o" : "x"%></td>
-				<td><input type="checkbox" name="delete"
+				<td><input type="checkbox" name="deleteId"
 					value="<%=vo.getUserId()%>"></td>
 			</tr>
 			<%

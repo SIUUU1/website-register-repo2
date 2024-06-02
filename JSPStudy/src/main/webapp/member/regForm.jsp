@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <title>회원가입</title>
-  <link rel="stylesheet" href="regForm-style.css?ver=4">
+  <link rel="stylesheet" href="regForm-style.css?ver=5">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="./js-regForm.js" defer></script>
 </head>

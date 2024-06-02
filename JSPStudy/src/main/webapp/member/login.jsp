@@ -6,10 +6,10 @@ String loginID = (String) session.getAttribute("loginID");
 <html lang="ko">
 <head>
 <title>로그인</title>
-<script src="./js-login.js?ver=4" defer></script>
-<link rel="stylesheet" href="./login-style.css?ver=4">
+<script src="./js-login.js?ver=5" defer></script>
+<link rel="stylesheet" href="./login-style.css?ver=5">
 </head>
-<body>
+<body onload="begin()">
 	<%
 	if (loginID == null) {
 	%>
