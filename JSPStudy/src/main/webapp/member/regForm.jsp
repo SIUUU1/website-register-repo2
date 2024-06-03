@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <title>회원가입</title>
-  <link rel="stylesheet" href="regForm-style.css?ver=5">
+  <link rel="stylesheet" href="regForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="./js-regForm.js" defer></script>
+  <script src="./js-regForm.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
 </head>
 <body onload="init()">
   <h1 id="title">회원가입</h1>

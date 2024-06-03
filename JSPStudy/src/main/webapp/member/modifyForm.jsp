@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Form</title>
-<link rel="stylesheet" href="regForm-style.css">
+<link rel="stylesheet" href="regForm-style.css?ver=<%=(int)(Math.random()*1000)%>"/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="./js-regForm.js?ver=4" defer></script>
+<script src="./js-regForm.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
 </head>
 <%
 MemberDAO dao = MemberDAO.getInstance();
@@ -24,20 +24,20 @@ String sPath = vo.getSubscriptionPath();
 				<td class="title"><label for="userId">아이디</label></td>
 				<td class="content"><input class="request" type="text"
 					name="userId" id="userId" size="25" maxlength="20"
-					value=<%=vo.getUserId()%> readonly> <span id="userIdInfo"></span><br></td>
+					value="<%=vo.getUserId()%>" readonly> <span id="userIdInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPw">비밀번호</label></td>
 				<td class="content"><input class="request" type="password"
 					name="userPw" id="userPw" size="25" maxlength="20"
-					onkeyup="userPwCheck('keyup')" value=<%=vo.getUserPw()%>> <span
+					onkeyup="userPwCheck('keyup')" value="<%=vo.getUserPw()%>"> <span
 					id="userPwInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPwConfirm">비밀번호 확인</label></td>
 				<td class="content"><input type="password" name="userPwConfirm"
 					id="userPwConfirm" size="25" maxlength="20"
-					onblur="userPwCheck('blur')" value=<%=vo.getUserPw()%>> <span
+					onblur="userPwCheck('blur')" value="<%=vo.getUserPw()%>"> <span
 					id="userPwConfirmInfo"></span><br></td>
 			</tr>
 		</table>
@@ -47,20 +47,20 @@ String sPath = vo.getSubscriptionPath();
 				<td class="title"><label for="userName">이름</label></td>
 				<td><input class="request" type="text" name="userName"
 					id="userName" size="25" maxlength="6" onkeyup="userNameCheck()"
-					value=<%=vo.getUserName()%>> <span id="userNameInfo"></span><br></td>
+					value="<%=vo.getUserName()%>"> <span id="userNameInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userNickName">닉네임</label></td>
 				<td><input class="request" type="text" name="userNickName"
 					id="userNickName" size="25" maxlength="20"
-					onkeyup="userNickNameCheck()" value=<%=vo.getUserNickName()%>>
+					onkeyup="userNickNameCheck()" value="<%=vo.getUserNickName()%>">
 					<span id="userNickNameInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userEmail">E-mail</label></td>
 				<td><input class="request" type="email" name="userEmail"
 					id="userEmail" size="25" maxlength="40" onkeyup="userEmailCheck()"
-					value=<%=vo.getUserEmail()%>> <span id="userEmailInfo"></span><br></td>
+					value="<%=vo.getUserEmail()%>"> <span id="userEmailInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="searchInternet">가입경로</label></td>
@@ -82,36 +82,36 @@ String sPath = vo.getSubscriptionPath();
 				<td class="title"><label for="userTel">전화번호</label></td>
 				<td><input class="request" type="tel" name="userTel"
 					id="userTel" size="25" maxlength="12" onkeyup="userTelCheck()"
-					value=<%=vo.getUserTel()%>> <span id="userTelInfo"></span><br></td>
+					value="<%=vo.getUserTel()%>"> <span id="userTelInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPhoneNum">휴대폰번호</label></td>
 				<td><input class="request" type="tel" name="userPhoneNum"
 					id="userPhoneNum" size="25" maxlength="13"
-					onkeyup="userPhoneNumCheck()" value=<%=vo.getUserPhoneNum()%>>
+					onkeyup="userPhoneNumCheck()" value="<%=vo.getUserPhoneNum()%>">
 					<span id="userPhoneNumInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userBirthday">생년월일</label></td>
 				<td><input type="date" name="userBirthday" id="userBirthday"
-					value=<%=vo.getUserBirthday()%>></td>
+					value="<%=vo.getUserBirthday()%>"></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="">주소</label></td>
 				<td id="address"><input class="request" type="text"
 					name="postCode" id="postCode" placeholder="우편번호" readonly
-					onclick="searchPostCode()" required value=<%=vo.getPostCode()%>>
+					onclick="searchPostCode()" required value="<%=vo.getPostCode()%>">
 					<button type="button" id="buttonAddress" onclick="searchPostCode()">우편번호검색</button>
 					<br> <input class="request" type="text" name="defaultAddress"
 					id="defaultAddress" size="53" maxlength="50" placeholder="주소"
 					readonly onclick="searchPostCode()"
-					value=<%=vo.getDefaultAddress()%>> <span
+					value="<%=vo.getDefaultAddress()%>"> <span
 					id="userAddressInfo"></span><br> <input type="text"
 					name="detailedAddress" id="detailedAddress" size="25"
 					maxlength="25" placeholder="상세주소"
-					value=<%=vo.getDetailedAddress()%>> <input type="text"
+					value="<%=vo.getDetailedAddress()%>"> <input type="text"
 					name="extraAddress" id="extraAddress" size="25" maxlength="25"
-					value=<%=vo.getDetailedAddress()%>></td>
+					value="<%=vo.getExtraAddress()%>"></td>
 			</tr>
 		</table>
 		<h4>기타 개인설정</h4>
@@ -149,7 +149,7 @@ String sPath = vo.getSubscriptionPath();
 		<div class="regButton">
 			<button type="button" id="subButton" onclick="updateCheck()">정보수정</button>
 			<button type="button"
-				onclick="javascript:window.location='login.jsp'">취소</button>
+				onclick="javascript:window.location='main.jsp'">취소</button>
 		</div>
 	</form>
 </body>

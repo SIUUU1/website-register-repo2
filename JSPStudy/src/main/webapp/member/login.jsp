@@ -6,8 +6,8 @@ String loginID = (String) session.getAttribute("loginID");
 <html lang="ko">
 <head>
 <title>로그인</title>
-<script src="./js-login.js?ver=5" defer></script>
-<link rel="stylesheet" href="./login-style.css?ver=5">
+<script src="./js-login.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<link rel="stylesheet" href="./login-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body onload="begin()">
 	<%
@@ -51,7 +51,7 @@ String loginID = (String) session.getAttribute("loginID");
 				</div>
 				<!-- bottom -->
 				<div class="bottom">
-					<a href="main.jsp?file=regForm"><button type="button">회원가입</button></a>
+					<a href="main.jsp?middleFile=regForm"><button type="button">회원가입</button></a>
 					<a href="https://kh-academy.co.kr/login/find.kh"><button
 							type="button">아이디 찾기</button></a> <a
 						href="https://www.kh-academy.co.kr/login/password.kh"><button

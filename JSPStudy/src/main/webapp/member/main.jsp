@@ -23,4 +23,3 @@ if (middleFile == null) {
 
 <jsp:include page='<%=middleFile + ".jsp"%>' />
 
-<%@ include file="bottom.jsp"%>

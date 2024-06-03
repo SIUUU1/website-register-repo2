@@ -1,4 +1,8 @@
 @charset "UTF-8";
+section {
+	height: 700px;
+}
+
 /* top */
 h1 {
 	text-align: center;
@@ -6,7 +10,7 @@ h1 {
 }
 
 div.login-box {
-	height: 669px;
+	height: 650px;
 	background-image: url(./source/computer3.jpg);
 	padding: 110px 0;
 }

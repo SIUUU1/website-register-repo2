@@ -8,13 +8,8 @@ String loginID = (String) session.getAttribute("loginID");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KH정보교육원</title>
-<link rel="stylesheet" href="./main-style.css?ver=4">
-<link rel="stylesheet" href="./slideshow/slideshow-style.css">
-<link rel="stylesheet" href="./submain-style.css?ver=4">
-<script src="https://kit.fontawesome.com/8d66cd774b.js"
-	crossorigin="anonymous"></script>
-<script src="./js-main.js" defer></script>
-<script src="./slideshow/js-slideshow.js"></script>
+<link rel="stylesheet" href="./main-style.css?ver=<%=(int)(Math.random()*1000)%>">
+<script src="./js-main.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
 <script src="https://kit.fontawesome.com/8d66cd774b.js"
 	crossorigin="anonymous"></script>
 </head>
@@ -147,53 +142,4 @@ String loginID = (String) session.getAttribute("loginID");
 	</header>
 	<!-- middle -->
 	<section>
-		<!-- sildshow -->
-		<article>
-			<div class="sildshow">
-				<div class="slidshow_imgs">
-					<a href="#"><img src="./source/computer1.jpg" alt="slide1"></a>
-					<a href="#"><img src="./source/computer2.jpg" alt="slide2"></a>
-					<a href="#"><img src="./source/computer3.jpg" alt="slide3"></a>
-					<a href="#"><img src="./source/computer4.jpg" alt="slide4"></a>
-				</div>
-				<div class="slidshow_nav">
-					<a href="#" id="prev"><i class="fa-solid fa-angles-left"></i></a> <a
-						href="#" id="next"><i class="fa-solid fa-angles-right"></i></a>
-				</div>
-				<div class="indicator">
-					<a href="#" class="active"><i class="fa-solid fa-circle"></i></a> <a
-						href="#"><i class="fa-solid fa-circle"></i></a> <a href="#"><i
-						class="fa-solid fa-circle"></i></a> <a href="#"><i
-						class="fa-solid fa-circle"></i></a>
-				</div>
-			</div>
-		</article>
-		<!-- slideshow-bottom -->
-		<article class="slideshow-bottom">
-			<div>
-				<a href=""><img src="./source/icon1.PNG"><br> <span>온라인
-						상담</span></a>
-			</div>
-			<div>
-				<a href=""><img src="./source/icon2.PNG"><br> <span>국비대상자조회</span></a>
-			</div>
-			<div>
-				<a href=""><img src="./source/icon3.PNG"><br> <span>방문상담
-						예약</span></a>
-			</div>
-			<div>
-				<a href=""><img src="./source/icon4.PNG"><br> <span>카카오
-						상담</span></a>
-			</div>
-			<div class="call">
-				<div id="call-icon">
-					<a href="https://kh-academy.co.kr/question/online.kh?location=h"><img
-						src="./source/rightquick07.png"></a>
-				</div>
-				<div class="representativeTel">
-					<a href="https://kh-academy.co.kr/question/online.kh?location=h"><span>1544-9970</span></a><br>
-					<a href="https://kh-academy.co.kr/question/online.kh?location=h"><span>전국대표문의전화(연중무휴)</span></a>
-				</div>
-			</div>
-		</article>
 		<article class="middle">

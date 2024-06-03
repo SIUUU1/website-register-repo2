@@ -6,8 +6,8 @@ String loginID = (String) session.getAttribute("loginID");
 <head>
 <meta charset="UTF-8">
 <title>회원탈퇴</title>
-<script src="./js-delete.js?ver=5" defer></script>
-<link rel="stylesheet" href="./delete-style.css?ver=5">
+<script src="./js-delete.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<link rel="stylesheet" href="./delete-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body onload="begin()">
 	<div class="delete-box">

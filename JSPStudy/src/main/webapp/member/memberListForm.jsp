@@ -9,7 +9,7 @@ Vector<MemberVO> mevList = dao.getMemberList();
 <html>
 <head>
 <title>회원리스트</title>
-<link rel="stylesheet" href="./memberListForm-style.css">
+<link rel="stylesheet" href="./memberListForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
  <h1 id="title">전체 회원 정보</h1>
