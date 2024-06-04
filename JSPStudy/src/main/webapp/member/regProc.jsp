@@ -8,7 +8,7 @@ request.setCharacterEncoding("utf-8");
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원가입 확인</title>
+<title>Register Process</title>
 </head>
 <script>
 <%
@@ -16,7 +16,8 @@ MemberDAO dao = MemberDAO.getInstance();
 boolean flag = dao.memberInsert(vo);
 String message = "회원가입을 축하드립니다.";
 
-if (flag) {%>
+if (flag) {
+%>
 alert("<%=message%>");
 location.href="main.jsp?middleFile=login";
 <% 

@@ -6,7 +6,7 @@ body {
 }
 
 form {
-	width: 1100px;
+	width: 1200px;
 	margin: 0 auto;
 }
 
@@ -18,7 +18,7 @@ table {
 
 th, td {
 	border: 1px solid black;
-	font-size: 9px;
+	font-size: 11px;
 	padding-top: 4px;
 }
 
@@ -34,6 +34,6 @@ th {
 }
 
 #deleteButton {
-	margin: 20px auto;
+	margin: 30px auto;
 	text-align: center;
 }

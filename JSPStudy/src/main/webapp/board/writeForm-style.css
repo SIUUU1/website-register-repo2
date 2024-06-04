@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#title {
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 0;
+}
+
+form {
+	width: 80%;
+	padding: 10px;
+	margin: 0 auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
+	border-right: 0;
+}
+
+th {
+	width: 20%;
+	padding-left: 5px;
+	background-color: #F2F5F9;
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	height: 30px;
+}
+
+td.below {
+	width: 80%;
+	padding: 3px;
+}
+
+input, select {
+	border: 1px solid lightgray;
+	margin: 3px;
+	height: 30px;
+	border-radius: 2px;
+	outline: 0;
+	width: 40%;
+}
+
+select {
+	width: 100px;
+	font-size: 15px;
+	text-align: center;
+}
+
+textarea {
+	width: 98%;
+	border: 1px solid lightgray;
+	margin: 3px;
+	border-radius: 2px;
+	outline: 0;
+}
+
+#password {
+	text-align: right;
+	font-weight: 400;
+	font-size: 15px;
+}
+
+#userPw {
+	width: 100px;
+	margin-right: 8px
+}
+
+.redtext {
+	color: red;
+	font-size: 8px;
+	/* position: relative;
+  left: 3px;
+  top: 5px; */
+}
+
+div.wriButton {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+button {
+	background-color: #2A2A4E;
+	width: 60px;
+	height: 30px;
+	border-radius: 20px;
+	margin-right: 20px;
+	border: none;
+	color: white;
+}
+
+#subButton {
+	background-color: #00A0FF;
+}

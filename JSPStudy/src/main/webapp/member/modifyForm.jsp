@@ -5,9 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Update Form</title>
-<link rel="stylesheet" href="regForm-style.css?ver=<%=(int)(Math.random()*1000)%>"/>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="./js-regForm.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<link rel="stylesheet"
+	href="regForm-style.css?ver=<%=(int) (Math.random() * 1000)%>" />
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="./js-regForm.js?ver=<%=(int) (Math.random() * 1000)%>" defer></script>
 </head>
 <%
 MemberDAO dao = MemberDAO.getInstance();
@@ -30,8 +32,8 @@ String sPath = vo.getSubscriptionPath();
 				<td class="title"><label for="userPw">비밀번호</label></td>
 				<td class="content"><input class="request" type="password"
 					name="userPw" id="userPw" size="25" maxlength="20"
-					onkeyup="userPwCheck('keyup')" value="<%=vo.getUserPw()%>"> <span
-					id="userPwInfo"></span><br></td>
+					onkeyup="userPwCheck('keyup')" value="<%=vo.getUserPw()%>">
+					<span id="userPwInfo"></span><br></td>
 			</tr>
 			<tr>
 				<td class="title"><label for="userPwConfirm">비밀번호 확인</label></td>
@@ -148,8 +150,7 @@ String sPath = vo.getSubscriptionPath();
 		</table>
 		<div class="regButton">
 			<button type="button" id="subButton" onclick="updateCheck()">정보수정</button>
-			<button type="button"
-				onclick="javascript:window.location='main.jsp'">취소</button>
+			<button type="button" onclick="javascript:window.location='main.jsp'">취소</button>
 		</div>
 	</form>
 </body>

@@ -5,7 +5,7 @@ String loginID = (String) session.getAttribute("loginID");
 %>
 <html lang="ko">
 <head>
-<title>로그인</title>
+<title>Login Process</title>
 <script src="./js-login.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
 <link rel="stylesheet" href="./login-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
