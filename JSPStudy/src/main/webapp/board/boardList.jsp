@@ -36,8 +36,7 @@ number = count - (currentPage - 1) * pageSize;
 	href="boardlist-style.css?ver=<%=(int) (Math.random() * 1000)%>" />
 <script src="./js-boardlist.js?ver=<%=(int) (Math.random() * 1000)%>"
 	defer></script>
-<script src="https://kit.fontawesome.com/8d66cd774b.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 </head>
 <body>
 	<h1>우리반게시판</h1>
@@ -50,19 +49,9 @@ number = count - (currentPage - 1) * pageSize;
 			<option value="개강OT">개강OT</option>
 			<option value="기타">취업특강</option>
 		</select>
+		<a href="writeForm.jsp"><button type="button" >글쓰기</button></a>
 	</div>
 	<!-- table -->
-	<%
-	if(count==0){
-		%>
-	<table>
-		<tr>
-			<td align="center">게시판에 저장된 글이 없습니다.</td>
-		</tr>
-	</table>
-	<% 
-	}else {
-	%>
 	<table>
 		<thead>
 			<tr>
@@ -75,80 +64,84 @@ number = count - (currentPage - 1) * pageSize;
 			</tr>
 		</thead>
 		<%
-		for(int i=0;i<vecArticles.size();i++){
-			BoardVO article = vecArticles.elementAt(i);
+		if(count == 0){
+			%>
+				<tr>
+					<td align="center" colspan="6">게시판에 저장된 글이 없습니다.</td>
+				</tr>
+			<%
+		}else{
+			for (int i = 0; i < vecArticles.size(); i++) {
+				BoardVO article = vecArticles.elementAt(i);
 		%>
 		<tr>
 			<td><%=number--%></td>
 			<td><%=article.getCategory()%></td>
 			<td>
-			<%
-			int wid =0;
-			if(article.getDepth()>0){
-				wid=5*(article.getDepth());
-			%>
-			<img src="images/level.gif" width="<%=wid%>" height="16">
-			<img src="images/re.gif">
-			<% 
-			}else{
-			%>
-			<img src="images/level.gif" width="<%=wid%>" height="16">
-			<%
-			}
-			%>
-			<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
-			<%
-			if(article.getReadcount()>=20){
-			%>
-			<img src="images/hot.gif" border="0" height="16">
-			<%
-			}
-			%>
+				<%
+				int wid = 0;
+				if (article.getDepth() > 0) {
+					wid = 5 * (article.getDepth());
+				%> <img src="images/level.gif" width="<%=wid%>" height="16"> <img
+				src="images/re.gif"> <%
+ } else {
+ %> <img src="images/level.gif" width="<%=wid%>" height="16"> <%
+ }
+ %> <a
+				href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
+				<%
+				if (article.getReadcount() >= 20) {
+				%> <img src="images/hot.gif" border="0" height="16"> <%
+ }
+ %>
 			</td>
 			<td><a href="mailto:<%=article.getEmail()%>"> <%=article.getWriter()%></a></td>
 			<td><%=sdf.format(article.getRegdate())%></td>
 			<td><%=article.getReadcount()%></td>
 		</tr>
 		<%
-		}
+		}//end of for
+		}//end of else
 		%>
 	</table>
 	<footer class="newfooter">
-	<%
-	}
-	%>
-	<%
-	if(count>0){
-		//하단 페이지 버튼 : [1][2][3][4][5]
-		int pageBlock = 5;
-		//전체 페이지 수 계산 (75->8페이지)
-		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
-		int startPage = (int) ((currentPage - 1) / pageBlock) * pageBlock + 1;
-		int endPage = startPage + pageBlock - 1;
-		//50(endPage) > 48(pageCount) 이럴때는 endPage = pageCount
-		if (endPage > pageCount) endPage = pageCount;
-		//페이지 출력 [이전] [번호][번호][번호][번호][번호] [다음]
-		if (startPage > pageBlock) {
-			%>
-			<a href="list.jsp?pageNum=<%=startPage - pageBlock%>"><button type="button">
-				<i class="fa-solid fa-chevron-left"></i></button></a>
-			<%
-			}
-				//페이지 출력 [번호][번호][번호][번호][번호]
-			for (int i = startPage; i <= endPage; i++) {
-			%>
-			<a href="list.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
-			</a>
-			<%
-			}
-			if (endPage < pageCount) {
-			%>
-			<a href="list.jsp?pageNum=<%=startPage + pageBlock%>"><button type="button">
-				<i class="fa-solid fa-chevron-right"></i></button></a>
-			<%
-			}
-			}
-			%>
+		<%
+		if (count > 0) {
+			//하단 페이지 버튼 : [1][2][3][4][5]
+			int pageBlock = 5;
+			//전체 페이지 수 계산 (75->8페이지)
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int startPage = (int) ((currentPage - 1) / pageBlock) * pageBlock + 1;
+			int endPage = startPage + pageBlock - 1;
+			//50(endPage) > 48(pageCount) 이럴때는 endPage = pageCount
+			if (endPage > pageCount)
+				endPage = pageCount;
+			//페이지 출력 [이전] [번호][번호][번호][번호][번호] [다음]
+			if (startPage > pageBlock) {
+		%>
+		<a href="boardlist.jsp?pageNum=<%=startPage - pageBlock%>"><button
+				type="button">
+				<i class="fa-solid fa-chevron-left"></i>
+			</button></a>
+		<%
+		}
+		//페이지 출력 [번호][번호][번호][번호][번호]
+		for (int i = startPage; i <= endPage; i++) {
+		%>
+		<a href="boardlist.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
+		</a>
+		<%
+		}
+		if (endPage < pageCount) {
+		%>
+		<a href="boardlist.jsp?pageNum=<%=startPage + pageBlock%>"><button
+				type="button">
+				<i class="fa-solid fa-chevron-right"></i>
+			</button></a>
+		<%
+		}
+		}
+		%>
 	</footer>
 </body>
 </html>

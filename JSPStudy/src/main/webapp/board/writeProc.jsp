@@ -9,15 +9,13 @@ article.setRegdate(new Timestamp(System.currentTimeMillis()));
 article.setIp(request.getRemoteAddr());
 BoardDAO dao = BoardDAO.getInstance();
 dao.insertArticle(article);
-response.sendRedirect("list.jsp");
+response.sendRedirect("boardlist.jsp");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-
 </body>
 </html>

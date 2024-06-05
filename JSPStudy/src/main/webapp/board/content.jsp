@@ -3,8 +3,8 @@
 <%@ page import="board.BoardVO"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%
-int num = Integer.parseInt("num");
-int pageNum = Integer.parseInt("pageNum");
+int num = Integer.parseInt(request.getParameter("num"));
+int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 try {
 	BoardDAO dbPro = BoardDAO.getInstance();

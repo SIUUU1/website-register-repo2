@@ -64,7 +64,7 @@ try {
 			</tr>
 			<tr>
 				<td class="below" colspan="2"><textarea name="content"
-						rows="13" cols="50" id="content" placeholder="내용을 입력하세요"></textarea>
+						rows="20" cols="50" id="content" placeholder="내용을 입력하세요"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -74,8 +74,8 @@ try {
 			</tr>
 		</table>
 		<div class="wriButton">
-			<button type="submit" id="subButton" onclick="writeCheck()">완료</button>
-			<button type="reset">취소</button>
+			<button type="button" id="subButton" onclick="writeCheck()">완료</button>
+			<a href="boardlist.jsp"><button type="button">취소</button></a>
 		</div>
 	</form>
 	<%

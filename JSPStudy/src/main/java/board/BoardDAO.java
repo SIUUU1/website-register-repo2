@@ -93,6 +93,7 @@ public class BoardDAO {
 		try {
 			conn = DBPoolUtil.makeConnection();
 			pstmt = conn.prepareStatement("select count(*) from board");
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
@@ -115,22 +116,22 @@ public class BoardDAO {
 			// 이런 순으로 rownum이 임의로 만들어, 페이지정렬할 수 있다.
 			// 7페이지 == 61 ~ 70 == (page-1)*10+1 ~ page*10
 			conn = DBPoolUtil.makeConnection();
-			String sql = " select * from (select rownum rnum, num, writer, email, subject, userPw,"
+			String sql = " select * from (select rownum rnum, num, writer, email, subject, userPw, category,"
 					+ " regdate, readcount, ref, step, depth, content, ip from (select * from board"
 					+ " order by ref desc, step asc)) where rnum>=? and rnum<=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
-			pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			vecArticles = new Vector<BoardVO>();
 			while (rs.next()) {
 				BoardVO article = new BoardVO();
 				article.setNum(rs.getInt("num"));
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
+				article.setSubject(rs.getString("subject"));
 				article.setUserPw(rs.getString("userpw"));
 				article.setCategory(rs.getString("category"));
-				article.setSubject(rs.getString("subject"));
 				article.setRegdate(rs.getTimestamp("regdate"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setRef(rs.getInt("ref"));

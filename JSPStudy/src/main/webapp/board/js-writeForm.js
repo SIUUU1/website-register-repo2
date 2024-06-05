@@ -11,25 +11,25 @@ function emailCheck() {
 	}
 }
 function writeCheck() {
-	if (document.writeForm.writer.value == "") {
+	if (document.writeForm.writer.value === "") {
 		alert("작성자를 입력해주세요.");
 		document.writeForm.writer.focus();
 		return;
-	} if (document.writeForm.email.value == "") {
+	} if (document.writeForm.email.value === "") {
 		alert("이메일을 입력해주세요.");
 		document.writeForm.email.focus();
 		return;
-	} if (document.writeForm.subject.value == "") {
+	} if (document.writeForm.subject.value === "") {
 		alert("제목을 입력해주세요.");
 		document.writeForm.subject.focus();
 		return;
 	}
-	if (document.writeForm.content.value == "") {
+	if (document.writeForm.content.value === "") {
 		alert("내용을 입력해주세요.");
 		document.writeForm.content.focus();
 		return;
 	}
-	if (document.writeForm.userPw.value == "") {
+	if (document.writeForm.userPw.value === "") {
 		alert("패스워드를 입력해주세요.");
 		document.writeForm.userPw.focus();
 		return;
