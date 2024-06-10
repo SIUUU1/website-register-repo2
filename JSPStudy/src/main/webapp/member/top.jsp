@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KH정보교육원</title>
+<title>Ticket World</title>
 <link rel="stylesheet" href="./main-style.css?ver=<%=(int)(Math.random()*1000)%>">
 <script src="https://kit.fontawesome.com/8d66cd774b.js"
 	crossorigin="anonymous"></script>
@@ -14,9 +17,10 @@
 	<header>
 		<!-- right-top -->
 		<nav class="right-top">
-			<a href="./main.jsp"><span>Home</span></a> <a href="#"><span>Board</span></a>
-			<a href="main.jsp?middleFile=login"><span>로그인</span></a> <a
-				href="main.jsp?middleFile=regForm"><span>회원가입</span></a>
+			<a href="./main.jsp"><span>Home</span></a> 
+			<a href="main.jsp?middleFile=../board/boardlist.jsp"><span>Board</span></a>
+			<a href="main.jsp?middleFile=login.jsp"><span>로그인</span></a> <a
+				href="main.jsp?middleFile=regForm.jsp"><span>회원가입</span></a>
 		</nav>
 		<div class="head">
 			<!-- left-top -->
@@ -29,7 +33,7 @@
 				</div>
 			</div>
 			<h1>
-				<a href="./main.jsp"><span>KH </span>정보교육원</a>
+				<a href="./main.jsp"><span>Ticket World</span></a>
 			</h1>
 			<div>&nbsp;</div>
 		</div>
@@ -42,9 +46,9 @@
 				<li>취업지원센터</li>
 				<li>프로젝트</li>
 				<li>커뮤니티</li>
-				<li>산학연계</li>
+				<li>오픈공연</li>
 				<li>마이페이지</li>
-				<li>상담센터</li>
+				<li>고객센터</li>
 			</ul>
 		</nav>
 		<nav id="mainMenuContent" onmouseover="displayMenu('mouseover')"
@@ -116,22 +120,15 @@
 				<a href="https://kh-academy.co.kr/company/itSpecialLecture.kh"><li>IT특강</li></a>
 			</ul>
 			<ul>
-				<a href="main.jsp?middleFile=login"><li>로그인</li></a>
-				<a href="main.jsp?middleFile=regForm"><li>회원가입</li></a>
+				<a href="main.jsp?middleFile=login.jsp"><li>로그인</li></a>
+				<a href="main.jsp?middleFile=regForm.jsp"><li>회원가입</li></a>
 				<a href="https://kh-academy.co.kr/login/find.kh"><li>아이디/비밀번호
 						찾기</li></a>
 				<a href="https://kh-academy.co.kr/login/survey.kh"><li>학생설문조사</li></a>
 			</ul>
 			<ul>
-				<a href="https://kh-academy.co.kr/question/online.kh?location=h"><li>온라인
-						상담</li></a>
-				<a href="https://kh-academy.co.kr/question/simple.kh?location=h"><li>국비대상자
-						간편조회</li></a>
-				<a href="https://kh-academy.co.kr/question/visit.kh?location=h"><li>방문상담
-						예약</li></a>
-				<a href="https://kh-academy.co.kr/question/register.kh?location=h"><li>온라인
-						수강신청</li></a>
-				<a href="https://kh-academy.co.kr/question/faq.kh"><li>FAQ</li></a>
+				<a href="main.jsp?middleFile=../board/boardlist.jsp"><li>티켓월드 고객센터</li></a>
+				<a href="#"><li>트립에어 고객센터</li></a>
 			</ul>
 		</nav>
 	</header>

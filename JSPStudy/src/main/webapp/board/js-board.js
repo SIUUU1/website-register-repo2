@@ -10,6 +10,20 @@ function emailCheck() {
 		return true;
 	}
 }
+
+function pwCheck() {
+	const userPw = document.querySelector("#userPw");
+	const userPwInfo = document.querySelector("#userPwInfo");
+	const regExpPw = /^[a-z0-9]{6,20}$/g;
+	if (!userPw.value.match(regExpPw)) {
+		userPwInfo.innerHTML = `영문자, 숫자만 포함하여 최소 6자이상 입력하세요.`;
+		return false;
+	} else {
+		userPwInfo.innerHTML = ``;
+		return true;
+	}
+}
+
 function writeCheck() {
 	if (document.writeForm.writer.value === "") {
 		alert("작성자를 입력해주세요.");
@@ -35,9 +49,23 @@ function writeCheck() {
 		return;
 	}
 	if (emailCheck() === false) {
-		alert("올바르게 입력하세요.");
+		alert("이메일을 올바르게 입력하세요.");
 		document.writeForm.email.focus();
 		return;
 	}
+	if (pwCheck() === false) {
+		alert("패스워드를 올바르게 입력하세요.");
+		document.writeForm.userPw.focus();
+		return;
+	}
 	document.writeForm.submit();
+}
+
+function deleteCheck() {
+	if (document.deleteForm.userPw.value === "") {
+		alert("패스워드를 입력해주세요.");
+		document.deleteForm.userPw.focus();
+		return;
+	}
+	document.deleteForm.submit();
 }

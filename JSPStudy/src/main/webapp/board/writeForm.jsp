@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%
+String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>우리반 게시판</title>
+<title>FAQ</title>
 <link rel="stylesheet"
-	href="writeForm-style.css?ver=<%=(int) (Math.random() * 1000)%>">
-<script src="js-writeForm.js?ver=<%=(int) (Math.random() * 1000)%>"
+	href="<%=contextPath%>/board/writeForm-style.css?ver=<%=(int) (Math.random() * 1000)%>">
+<script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
 	defer></script>
 </head>
 <%
@@ -21,9 +24,9 @@ try {
 	}
 %>
 <body>
-	<h1 id="title">우리반 게시판</h1>
+	<h1 id="title">FAQ</h1>
 	<br>
-	<form method="post" name="writeForm" action="writeProc.jsp">
+	<form method="post" name="writeForm" action="<%=contextPath%>/board/writeProc.jsp">
 		<input type="hidden" name="num" value="<%=num%>"> <input
 			type="hidden" name="ref" value="<%=ref%>"> <input
 			type="hidden" name="step" value="<%=step%>"> <input
@@ -55,10 +58,11 @@ try {
 			</tr>
 			<tr>
 				<th><label for="category">카테고리</label></th>
-				<td class="below"><select name="category" id="category" onchange="this.form.submit()">
-						<option value="프로젝트">프로젝트</option>
-						<option value="취업특강">취업특강</option>
-						<option value="개강OT">개강OT</option>
+				<td class="below"><select name="category" id="category">
+						<option value="회원">회원</option>
+						<option value="티켓예매/발권">티켓예매/발권</option>
+						<option value="배송/반송">배송/반송</option>
+						<option value="취소/환불">취소/환불</option>
 						<option value="기타">기타</option>
 				</select></td>
 			</tr>
@@ -68,14 +72,16 @@ try {
 				</td>
 			</tr>
 			<tr>
-				<td class="below" colspan="2" id="password">패스워드 <input
-					type="password" name="userPw" id="userPw" size="20" maxlength="20">
+				<td class="below" colspan="2" id="password">
+				<span id="userPwInfo" class="redtext"></span>
+				<label for="userPw">패스워드</label>
+				<input type="password" name="userPw" id="userPw" size="20" maxlength="20" onkeyup="pwCheck()">
 				</td>
 			</tr>
 		</table>
 		<div class="wriButton">
 			<button type="button" id="subButton" onclick="writeCheck()">완료</button>
-			<a href="boardlist.jsp"><button type="button">취소</button></a>
+			<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp"><button type="button">취소</button></a>
 		</div>
 	</form>
 	<%

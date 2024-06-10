@@ -4,6 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%
+String contextPath = request.getContextPath();
 //리스트에 보여줄 페이지 라인수(페이지당 10개를 보여주기)
 int pageSize = 10;
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -33,23 +34,24 @@ number = count - (currentPage - 1) * pageSize;
 <head>
 <title>우리게시판</title>
 <link rel="stylesheet"
-	href="boardlist-style.css?ver=<%=(int) (Math.random() * 1000)%>" />
-<script src="./js-boardlist.js?ver=<%=(int) (Math.random() * 1000)%>"
+	href="<%=contextPath%>/board/boardlist-style.css?ver=<%=(int) (Math.random() * 1000)%>" />
+<script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
 	defer></script>
 <script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1>우리반게시판</h1>
+	<h1 id="title">티켓 고객센터</h1>
 	<!-- select box -->
-	<div>
-		<select name="category" id="category">
+	<div class="select-box">
+		<select name="category" id="category" onchange=>
 			<option value="전체">전체</option>
-			<option value="프로젝트">프로젝트</option>
-			<option value="취업특강">기타</option>
-			<option value="개강OT">개강OT</option>
-			<option value="기타">취업특강</option>
+			<option value="회원">회원</option>
+			<option value="티켓예매/발권">티켓예매/발권</option>
+			<option value="배송/반송">배송/반송</option>
+			<option value="취소/환불">취소/환불</option>
+			<option value="기타">기타</option>
 		</select>
-		<a href="writeForm.jsp"><button type="button" >글쓰기</button></a>
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/writeForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
 	</div>
 	<!-- table -->
 	<table>
@@ -83,15 +85,15 @@ number = count - (currentPage - 1) * pageSize;
 				if (article.getDepth() > 0) {
 					wid = 5 * (article.getDepth());
 				%> <img src="images/level.gif" width="<%=wid%>" height="16"> <img
-				src="images/re.gif"> <%
+				src="<%=contextPath%>/board/images/re.gif"> <%
  } else {
- %> <img src="images/level.gif" width="<%=wid%>" height="16"> <%
+ %> <img src="<%=contextPath%>/board/images/level.gif" width="<%=wid%>" height="16"> <%
  }
  %> <a
-				href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
+				href="<%=contextPath%>/member/main.jsp?middleFile=../board/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
 				<%
 				if (article.getReadcount() >= 20) {
-				%> <img src="images/hot.gif" border="0" height="16"> <%
+				%> <img src="<%=contextPath%>/board/images/hot.gif" border="0" height="16"> <%
  }
  %>
 			</td>
@@ -119,7 +121,7 @@ number = count - (currentPage - 1) * pageSize;
 			//페이지 출력 [이전] [번호][번호][번호][번호][번호] [다음]
 			if (startPage > pageBlock) {
 		%>
-		<a href="boardlist.jsp?pageNum=<%=startPage - pageBlock%>"><button
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=startPage - pageBlock%>"><button
 				type="button">
 				<i class="fa-solid fa-chevron-left"></i>
 			</button></a>
@@ -128,13 +130,13 @@ number = count - (currentPage - 1) * pageSize;
 		//페이지 출력 [번호][번호][번호][번호][번호]
 		for (int i = startPage; i <= endPage; i++) {
 		%>
-		<a href="boardlist.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
 		</a>
 		<%
 		}
 		if (endPage < pageCount) {
 		%>
-		<a href="boardlist.jsp?pageNum=<%=startPage + pageBlock%>"><button
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=startPage + pageBlock%>"><button
 				type="button">
 				<i class="fa-solid fa-chevron-right"></i>
 			</button></a>

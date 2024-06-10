@@ -26,7 +26,7 @@ if (check == 1) {
 } else {
 %>
 <script language="JavaScript">
-	alert("비밀번호가 맞지 않습니다.");
+	alert("데이터베이스 오류입니다.");
 	history.go(-1);
 </script>
 <%

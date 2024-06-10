@@ -13,7 +13,7 @@ if (check > 0) {
 %>
 <script>
 	alert("<%=message%>");
-	location.replace("main.jsp?middleFile=memberListForm");
+	location.replace("main.jsp?middleFile=memberListForm.jsp");
 </script>
 <!DOCTYPE html>
 <html>

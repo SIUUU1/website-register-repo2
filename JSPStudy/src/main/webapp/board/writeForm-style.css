@@ -7,8 +7,8 @@ body {
 
 #title {
 	text-align: center;
-	font-size: 25px;
-	margin-bottom: 0;
+	font-size: 30px;
+	margin: 50px auto 0 auto;
 }
 
 form {
@@ -53,7 +53,7 @@ input, select {
 }
 
 select {
-	width: 100px;
+	width: 120px;
 	font-size: 15px;
 	text-align: center;
 }

@@ -6,20 +6,20 @@ String middleFile = request.getParameter("middleFile");
 
 if (loginID != null) {
 	if (loginID.equals("admin")) {
-		topFile = "adminTop";
+		topFile = "adminTop.jsp";
 	} else {
-		topFile = "memberTop";
+		topFile = "memberTop.jsp";
 	}
 } else {
-	topFile = "top";
+	topFile = "top.jsp";
 }
 
 if (middleFile == null) {
-	middleFile = "submain";
+	middleFile = "submain.jsp";
 }
 %>
 
-<jsp:include page='<%=topFile + ".jsp"%>' />
+<jsp:include page='<%=topFile%>' />
 
-<jsp:include page='<%=middleFile + ".jsp"%>' />
+<jsp:include page='<%=middleFile%>' />
 

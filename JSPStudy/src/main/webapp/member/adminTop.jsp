@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>KH정보교육원</title>
+<title>Ticket World</title>
 <link rel="stylesheet" href="./main-style.css?ver=<%=(int)(Math.random()*1000)%>">
 <script src="./js-main.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
 <script src="https://kit.fontawesome.com/8d66cd774b.js"
@@ -14,9 +14,9 @@
 	<header>
 		<!-- right-top -->
 		<nav class="right-top">
-			<a href="./main.jsp"><span>Home</span></a> <a
-				href="main.jsp?middleFile=memberListForm"><span>회원관리</span></a> <a
-				href="logout.jsp"><span>로그아웃</span></a>
+			<a href="./main.jsp"><span>Home</span></a>
+		  <a href="main.jsp?middleFile=memberListForm.jsp"><span>회원관리</span></a> 
+			<a href="logout.jsp"><span>로그아웃</span></a>
 		</nav>
 		<div class="head">
 			<!-- left-top -->
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<h1>
-				<a href="./main.jsp"><span>KH </span>정보교육원</a>
+				<a href="./main.jsp"><span>Ticket World</span></a>
 			</h1>
 			<div>&nbsp;</div>
 		</div>
@@ -42,9 +42,9 @@
 				<li>취업지원센터</li>
 				<li>프로젝트</li>
 				<li>커뮤니티</li>
-				<li>산학연계</li>
-				<li>관리자페이지</li>
-				<li>상담센터</li>
+				<li>오픈공연관리</li>
+				<li>회원관리</li>
+				<li>고객센터관리</li>
 			</ul>
 		</nav>
 		<nav id="mainMenuContent" onmouseover="displayMenu('mouseover')"
@@ -116,19 +116,12 @@
 				<a href="https://kh-academy.co.kr/company/itSpecialLecture.kh"><li>IT특강</li></a>
 			</ul>
 			<ul>
-				<a href="main.jsp?middleFile=memberListForm"><li>회원관리하기</li></a>
+				<a href="main.jsp?middleFile=memberListForm.jsp"><li>회원관리하기</li></a>
 				<a href="logout.jsp"><li>로그아웃</li></a>
 			</ul>
 			<ul>
-				<a href="https://kh-academy.co.kr/question/online.kh?location=h"><li>온라인
-						상담</li></a>
-				<a href="https://kh-academy.co.kr/question/simple.kh?location=h"><li>국비대상자
-						간편조회</li></a>
-				<a href="https://kh-academy.co.kr/question/visit.kh?location=h"><li>방문상담
-						예약</li></a>
-				<a href="https://kh-academy.co.kr/question/register.kh?location=h"><li>온라인
-						수강신청</li></a>
-				<a href="https://kh-academy.co.kr/question/faq.kh"><li>FAQ</li></a>
+				<a href="main.jsp?middleFile=boardlist.jsp"><li>티켓월드 고객센터</li></a>
+				<a href="#"><li>트립에어 고객센터</li></a>
 			</ul>
 		</nav>
 	</header>

@@ -12,25 +12,20 @@ a {
 	color: black;
 }
 
-h1, h3 {
+#title {
 	text-align: center;
-	margin-top: 90px;
-	padding: 0;
-}
-
-h3 {
-	font-size: 17px;
-	margin: 10px 0 30px 0;
+	font-size: 25px;
+	margin: 60px auto;
 }
 
 select {
-	width: 100px;
+	width: 120px;
 	height: 30px;
 	font-size: 15px;
 	text-align: center;
 }
 
-div {
+div.select-box {
 	width: 80%;
 	margin: 0 auto;
 	text-align: right;
@@ -38,9 +33,19 @@ div {
 	justify-content: space-between;
 }
 
+#writeB {
+	background-color: #2A2A4E;
+	border-style: none;
+	border: 1px solid black;
+	width: 100px;
+	height: 30px;
+	border-radius: 20px;
+	color: white;
+}
+
 table {
 	width: 80%;
-	margin: 50px auto;
+	margin: 20px auto 50px auto;
 	text-align: center;
 	border-collapse: collapse;
 	font-size: 13px;
@@ -85,6 +90,12 @@ thead td:nth-child(6) {
 	width: 7%;
 }
 
+footer.newfooter {
+	margin: 0 auto;
+	width: 80%;
+	text-align: center;
+}
+
 button {
 	margin: 0 8px;
 	background-color: white;
@@ -92,10 +103,4 @@ button {
 	border: 1px solid rgb(218, 217, 217);
 	width: 35px;
 	height: 35px;
-}
-
-footer.newfooter {
-	margin: 0 auto;
-	width: 80%;
-	text-align: center;
 }
