@@ -1,5 +1,9 @@
 @charset "UTF-8";
-/* top */
+
+section {
+	height: 700px;
+}
+
 #title {
 	text-align: center;
 	margin: 50px 0;
@@ -56,6 +60,6 @@ button {
 
 #subButton {
 	background-color: rgb(89, 159, 234);
-  border: none;
-  color: white;
+	border: none;
+	color: white;
 }

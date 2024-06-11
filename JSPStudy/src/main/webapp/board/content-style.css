@@ -1,4 +1,7 @@
 @charset "UTF-8";
+section {
+	height: 500px;
+}
 
 body {
 	margin: 0;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%
+
 String loginID = (String) session.getAttribute("loginID");
 String topFile = request.getParameter("topFile");
 String middleFile = request.getParameter("middleFile");

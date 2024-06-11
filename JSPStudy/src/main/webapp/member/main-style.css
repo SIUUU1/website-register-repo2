@@ -1,8 +1,10 @@
 @charset "UTF-8";
+
 div {
 	margin: 0;
 	padding: 0;
 }
+
 p {
 	margin: 0;
 	padding: 0;
@@ -43,11 +45,6 @@ header {
 	z-index: 1;
 }
 
-h1 span {
-	color: rgb(62, 62, 222);
-	font-style: italic;
-	font-weight: bolder;
-}
 /* right-top */
 nav.right-top {
 	width: 100%;
@@ -70,29 +67,60 @@ nav.right-top a:last-child {
 	border: 0;
 }
 
-div.representativeTel a:first-child {
-	font-size: 25px;
+/* left-top */
+#mainIcon {
+	width: 75px;
+	height: 75px;
+	border-radius: 50px;
+}
+div.representativeTel {
+	margin: 20px 20px 20px 0px;
+}
+div.representativeTel a{
+	font-size: 28px;
+	color: rgb(62, 62, 222);
+	font-style: italic;
 	font-weight: 700;
 }
 
-div.representativeTel a:last-child {
-	font-size: 13px;
-}
-/* left-top */
-header>div.head {
+header div.search {
+	margin-left: 0;
+	margin-right: 31%;
+	border: 1px solid rgb(218, 217, 217);
+	border-radius: 30px;
+	width: 400px;
+	height: 50px;
 	display: flex;
-	justify-content: space-around;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header div.search input {
+	border-width: 0;
+	width: 300px;
+	outline: 0;
+	margin-left: 5%;
+	font-size: 15px;
+}
+
+#button-search {
+	margin: 10px 20px 10px 10px;
+	
+}
+
+.fa-magnifying-glass {
+	color: #9a9a9a;
+	font-size: 20px;
 }
 
 div.call {
+	padding-left:40px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
 
-header>div.head>div {
-	width: 33%;
-}
 /* main-menu */
 header>#mainMenuTitle>ul {
 	display: flex;
@@ -189,14 +217,14 @@ div.call #call-icon {
 footer {
 	margin: 0 auto;
 	width: 80%;
-	height: 300px;
+	height: 220px;
 }
 
 footer>div.bottom1 {
 	background-color: #f2f5f9;
 }
 
-footer>div.bottom1>ul, footer>div.bottom2>ul {
+footer>div.bottom1>ul {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -213,24 +241,21 @@ footer>div.bottom1>ul>li:hover {
 	color: red;
 }
 
-footer>div.bottom2>ul>li {
-	border-right: 1px solid black;
-	padding: 0 15px;
-	font-size: 12px;
-	margin: 10px 0;
-}
-
-footer>div.bottom1>ul>li:last-child, footer>div.bottom2>ul>li:last-child
-	{
+footer>div.bottom1>ul>li:last-child {
 	border: 0;
 }
 
-footer>div.bottom1>ul>li:first-child, footer>div.bottom2>ul>li:first-child
-	{
+footer>div.bottom1>ul>li:first-child {
 	margin-left: 0;
-	padding-left: 0;
 }
 
 footer>p {
-	font-size: 11px;
+	margin-top: 20px;
+	font-size: 14px;
+	padding-left: 15px;
+	font-weight: 300px; 
+} 
+footer span {
+	font-weight: 600;
+	font-size: 16px
 }

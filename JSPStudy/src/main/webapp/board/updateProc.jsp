@@ -7,6 +7,7 @@ request.setCharacterEncoding("utf-8");
 <jsp:useBean id="article" class="board.BoardVO" scope="page" />
 <jsp:setProperty property="*" name="article" />
 <%
+String contextPath = request.getContextPath();
 //자바빈즈에서 받지 못한 데이터 값을 getParameter로 받는다.
 String pageNum = request.getParameter("pageNum");
 BoardDAO dbpro = BoardDAO.getInstance();
@@ -14,7 +15,7 @@ int check = dbpro.updateArticle(article);
 //1 수정성공, 0 패스워드 불일치, -1 데이터베이스 오류
 if (check == 1) {
 %>
-<meta http-equiv="Refresh" content="0;url=list.jsp?pageNum=<%=pageNum%>">
+<meta http-equiv="Refresh" content="0;url=<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>">
 <%
 } else if (check == 0) {
 %>

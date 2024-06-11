@@ -51,7 +51,7 @@ number = count - (currentPage - 1) * pageSize;
 			<option value="취소/환불">취소/환불</option>
 			<option value="기타">기타</option>
 		</select>
-		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/writeForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/writeForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
 	</div>
 	<!-- table -->
 	<table>
@@ -90,7 +90,7 @@ number = count - (currentPage - 1) * pageSize;
  %> <img src="<%=contextPath%>/board/images/level.gif" width="<%=wid%>" height="16"> <%
  }
  %> <a
-				href="<%=contextPath%>/member/main.jsp?middleFile=../board/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
+				href="<%=contextPath%>/member/main.jsp?middleFile=/board/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
 				<%
 				if (article.getReadcount() >= 20) {
 				%> <img src="<%=contextPath%>/board/images/hot.gif" border="0" height="16"> <%
@@ -121,7 +121,7 @@ number = count - (currentPage - 1) * pageSize;
 			//페이지 출력 [이전] [번호][번호][번호][번호][번호] [다음]
 			if (startPage > pageBlock) {
 		%>
-		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=startPage - pageBlock%>"><button
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=startPage - pageBlock%>"><button
 				type="button">
 				<i class="fa-solid fa-chevron-left"></i>
 			</button></a>
@@ -130,13 +130,13 @@ number = count - (currentPage - 1) * pageSize;
 		//페이지 출력 [번호][번호][번호][번호][번호]
 		for (int i = startPage; i <= endPage; i++) {
 		%>
-		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=i%>"><button type="button"><%=i%></button>
 		</a>
 		<%
 		}
 		if (endPage < pageCount) {
 		%>
-		<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=startPage + pageBlock%>"><button
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=startPage + pageBlock%>"><button
 				type="button">
 				<i class="fa-solid fa-chevron-right"></i>
 			</button></a>

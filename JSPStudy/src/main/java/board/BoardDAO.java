@@ -229,6 +229,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 		String dbpass = "";
 		int result = -1;// 데이터베이스 오류
+		System.out.println(article.getNum());
 		try {
 			conn = DBPoolUtil.makeConnection();
 			pstmt = conn.prepareStatement("select userPw from board where num = ?");

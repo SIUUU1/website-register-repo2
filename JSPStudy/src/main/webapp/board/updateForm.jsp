@@ -4,10 +4,9 @@
 <%
 String contextPath = request.getContextPath();
 %>
-<!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>Q & A</title>
+<title>FAQ</title>
 <link rel="stylesheet"
 	href="<%=contextPath%>/board/writeForm-style.css?ver=<%=(int) (Math.random() * 1000)%>">
 <script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
@@ -21,10 +20,11 @@ try {
 	BoardVO article = dbpro.getArticle(num);
 %>
 <body>
-	<h1 id="title">Q & A</h1>
+	<h1 id="title">FAQ</h1>
 	<br>
-	<form method="post" name="writeForm"
+	<form method="post" name="updateForm"
 		action="<%=contextPath%>/board/updateProc.jsp?pageNum=<%=pageNum%>">
+		<input type="hidden" name="num" value="<%=num%>">
 		<table>
 			<tr>
 				<th><label for="writer">이름</label></th>
@@ -66,8 +66,8 @@ try {
 			</tr>
 		</table>
 		<div class="wriButton">
-			<button type="button" id="subButton" onclick="writeCheck()">수정</button>
-			<button type="button" onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=pageNum%>'">취소</button>
+			<button type="button" id="subButton" onclick="updateCheck()">수정</button>
+			<button type="button" onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/boardList.jsp?pageNum=<%=pageNum%>'">취소</button>
 		</div>
 	</form>
 	<%

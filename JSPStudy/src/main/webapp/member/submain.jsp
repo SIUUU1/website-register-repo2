@@ -12,10 +12,10 @@
 <article class="slideshow-box">
 	<div class="sildshow">
 		<div class="slidshow_imgs">
-			<a href="#"><img src="./source/computer1.jpg" alt="slide1"></a>
-			<a href="#"><img src="./source/computer2.jpg" alt="slide2"></a>
-			<a href="#"><img src="./source/computer3.jpg" alt="slide3"></a>
-			<a href="#"><img src="./source/computer4.jpg" alt="slide4"></a>
+			<a href="#"><img src="./source/performance12.jpg" alt="slide1"></a>
+			<a href="#"><img src="./source/performance11.jpg" alt="slide2"></a>
+			<a href="#"><img src="./source/performance14.jpg" alt="slide3"></a>
+			<a href="#"><img src="./source/performance13.jpg" alt="slide4"></a>
 		</div>
 		<div class="slidshow_nav">
 			<a href="#" id="prev"><i class="fa-solid fa-angles-left"></i></a> <a

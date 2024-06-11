@@ -2,7 +2,6 @@
 <%
 String contextPath = request.getContextPath();
 %>
-<!DOCTYPE html>
 <html lang="ko">
 <head>
 <title>FAQ</title>
@@ -27,10 +26,10 @@ try {
 	<h1 id="title">FAQ</h1>
 	<br>
 	<form method="post" name="writeForm" action="<%=contextPath%>/board/writeProc.jsp">
-		<input type="hidden" name="num" value="<%=num%>"> <input
-			type="hidden" name="ref" value="<%=ref%>"> <input
-			type="hidden" name="step" value="<%=step%>"> <input
-			type="hidden" name="depth" value="<%=depth%>">
+		<input type="hidden" name="num" value="<%=num%>"> 
+		<input type="hidden" name="ref" value="<%=ref%>"> 
+		<input type="hidden" name="step" value="<%=step%>"> 
+		<input type="hidden" name="depth" value="<%=depth%>">
 		<table>
 			<tr>
 				<th><label for="writer">이름</label></th>
@@ -81,7 +80,7 @@ try {
 		</table>
 		<div class="wriButton">
 			<button type="button" id="subButton" onclick="writeCheck()">완료</button>
-			<a href="<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp"><button type="button">취소</button></a>
+			<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp"><button type="button">취소</button></a>
 		</div>
 	</form>
 	<%

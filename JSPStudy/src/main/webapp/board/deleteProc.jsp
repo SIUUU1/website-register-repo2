@@ -2,6 +2,7 @@
 <%@ page import="board.BoardDAO"%>
 <%@ page import="java.sql.Timestamp"%>
 <%
+String contextPath = request.getContextPath();
 request.setCharacterEncoding("utf-8");
 int num = Integer.parseInt(request.getParameter("num"));
 String pageNum = request.getParameter("pageNum");
@@ -11,7 +12,7 @@ int check = dbpro.deleteArticle(num, userPw);
 //1 삭제완료, 0 비밀번호 틀림, -1 데이터베이스 오류
 if(check==1){
 	%>
-	<meta http-equiv="Refresh" content="0;url=boardlist.jsp?pageNum=<%=pageNum%>">
+	<meta http-equiv="Refresh" content="0;url=<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>">
 	<% 
 }else if(check==0){
 	%>
@@ -29,7 +30,6 @@ if(check==1){
 	<% 
 }
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">

@@ -14,7 +14,6 @@ try {
 	int step = article.getStep();
 	int depth = article.getDepth();
 %>
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>content</title>
@@ -33,14 +32,14 @@ try {
 	</section>
 	<div class="contentB">
 	<button type="button" id="replyB" 
-	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/writeForm.jsp?num=<%=article.getNum()%>&ref=<%=article.getRef()%>&step=<%=article.getStep()%>&depth=<%=article.getDepth()%>'">답변</button>
+	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/writeForm.jsp?num=<%=article.getNum()%>&ref=<%=article.getRef()%>&step=<%=article.getStep()%>&depth=<%=article.getDepth()%>'">답변</button>
 	<div>
 	<button type="button" id="modiB" 
-	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">수정</button>
+	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">수정</button>
 	<button type="button" id="delB" 
-	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">삭제</button>
+	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">삭제</button>
 	<button type="button" id="listB" 
-	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=../board/boardlist.jsp?pageNum=<%=pageNum%>'">목록</button>
+	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>'">목록</button>
 	</div>
 	</div>
 	<%

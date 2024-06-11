@@ -14,7 +14,7 @@
       <tr>
         <td class="title"><label for="userId">아이디</label></td>
         <td class="content">
-          <input class="request" type="text" name="userId" id="userId" size="25" maxlength="20" onkeyup="userIdCheck()" onkeypress="">
+          <input class="request" type="text" name="userId" id="userId" size="25" maxlength="20" onkeyup="userIdCheck()">
           <button type="button" id="buttonId" onclick="idCheck(this.form.userId.value)">ID중복검색</button>
           <span id="userIdInfo"></span><br>
         </td>

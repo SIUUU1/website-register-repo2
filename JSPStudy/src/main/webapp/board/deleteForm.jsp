@@ -8,7 +8,6 @@ String pageNum = request.getParameter("pageNum");
 BoardDAO dbpro = BoardDAO.getInstance();
 BoardVO article = dbpro.getArticle(num);
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <title>게시판 글 삭제</title>
@@ -20,7 +19,7 @@ BoardVO article = dbpro.getArticle(num);
 <div class="delete-box">
 		<div id="back">
 			<!-- top -->
-			<h1 id="title">Q&A 삭제</h1>
+			<h1 id="title">문의내역 삭제</h1>
 			<form action="<%=contextPath%>/board/deleteProc.jsp?pageNum=<%=pageNum%>" method="post" name="deleteForm">
 				<!-- middle-top -->
 				<div class="middle-top">
