@@ -89,7 +89,7 @@ public class AirportDAO {
 		ResultSet rs = null;
 		try {
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("CALL AIRPORTS_PRINT_PROC(?,?,?,?,?)");
+			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?,?)}");
 			cstmt.setString(1, airlineId);
 			cstmt.setString(2, depAirportId);
 			cstmt.setString(3, arrAirportId);
@@ -110,7 +110,6 @@ public class AirportDAO {
 				avo.setPrestige_charge(rs.getInt("prestige_charge"));
 				airportDataList.addElement(avo);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -168,7 +167,7 @@ public class AirportDAO {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			// System.out.println("Response code: " + conn.getResponseCode());
+			//System.out.println("Response code: " + conn.getResponseCode());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -178,7 +177,7 @@ public class AirportDAO {
 		BufferedReader br = null;
 		try {
 			int statusCode = conn.getResponseCode();
-			// System.out.println(statusCode);
+			//System.out.println(statusCode);
 			if (statusCode >= 200 && statusCode <= 300) {
 				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			} else {
@@ -221,6 +220,8 @@ public class AirportDAO {
 				list.addElement(data);
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {

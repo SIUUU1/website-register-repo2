@@ -5,7 +5,7 @@
 <title>select Form</title>
 </head>
 <body>
- <form action="<%= request.getContextPath() %>/tripair/selectAirportProc.jsp">
+ <form action="<%=request.getContextPath()%>/tripair/selectAirportProc.jsp">
 항공권예매하기
     <select name="depAirport_name">
         <option value="NAARKJB">무안</option>

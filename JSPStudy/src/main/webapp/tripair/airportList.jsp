@@ -8,11 +8,10 @@ String depAirport_name = request.getParameter("depAirport_name");
 String arrAirport_name = request.getParameter("arrAirport_name");
 String dep_plandtime = request.getParameter("dep_plandtime");
 String airline_name = request.getParameter("airline_name");
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
+//항공권 정보 리스트 가져오기
 AirportDAO dao = AirportDAO.getInstance();
 Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirport_name, dep_plandtime, airline_name);
-
 %>
 <!DOCTYPE html>
 <html>
@@ -21,6 +20,7 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 </head>
 <body>
 <h1 id="title">항공편 보기</h1>
+<form action="paymentForm.jsp" method="get">
 <table>
 		<thead>
 			<tr>
@@ -33,6 +33,7 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 				<td>도착시간</td>
 				<td>일반석운임</td>
 				<td>비즈니스석운임</td>
+				<td>선택</td>
 			</tr>
 		</thead>
 		<%
@@ -52,10 +53,20 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 			<td><%=airportvo.getAirline_name()%></td>
 			<td><%=airportvo.getDepAirport_name()%></td>
 			<td><%=airportvo.getArrAirport_name()%></td>
-			<td><%=airportvo.getDep_plandtime()%></td>
-			<td><%=airportvo.getArr_plandtime()%></td>
+			<td><%=airportvo.getDep_plandtime().substring(0, 16)%></td>
+			<td><%=airportvo.getArr_plandtime().substring(0, 16)%></td>
 			<td><%=airportvo.getEconomy_charge()%></td>
 			<td><%=airportvo.getPrestige_charge()%></td>
+			<td><input type="checkbox" name="airports_id" value="<%=airportvo.getAirports_id()%>"></td>
 	 </tr>
+	 <%
+		}//end of for
+		}//end of else
+		%>
+		</table>
+		<div id="ticketButton">
+			<input type="submit" value="예매하기">
+		</div>
+		</form>
 </body>
 </html>

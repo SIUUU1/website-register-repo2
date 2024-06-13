@@ -6,6 +6,7 @@
 String depAirport_name = request.getParameter("depAirport_name");
 String arrAirport_name = request.getParameter("arrAirport_name");
 String dep_plandtime = request.getParameter("dep_plandtime");
+dep_plandtime = dep_plandtime.replaceAll("-", "");
 String airline_name = request.getParameter("airline_name");
 
 //오픈 api에서 항공편 정보 불러오기
