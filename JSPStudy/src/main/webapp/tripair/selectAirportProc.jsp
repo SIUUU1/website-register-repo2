@@ -19,7 +19,7 @@ if (!vecAirports.isEmpty()) {
 	result = dao.setAirportRegister(vecAirports);
 %>
 <script language="JavaScript">
-	location.href="<%=request.getContextPath()%>/tripair/airportList.jsp?depAirport_name=<%=depAirport_name%>&arrAirport_name=<%=arrAirport_name%>&dep_plandtime=<%=dep_plandtime%>&airline_name=<%=airline_name%>";
+	location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/airportList.jsp?depAirport_name=<%=depAirport_name%>&arrAirport_name=<%=arrAirport_name%>&dep_plandtime=<%=dep_plandtime%>&airline_name=<%=airline_name%>";
   </script>
 <%
 } 

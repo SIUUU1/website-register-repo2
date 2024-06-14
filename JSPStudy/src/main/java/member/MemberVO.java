@@ -1,24 +1,35 @@
 package member;
 
-public class MemberVO {
-	private String userId;
-	private String userPw;
-	private String userName;
-	private String userNickName;
-	private String userEmail;
-	private String subscriptionPath;
-	private String userTel;
-	private String userPhoneNum;
-	private String userBirthday;
-	private String postCode;
-	private String defaultAddress;
-	private String detailedAddress;
-	private String extraAddress;
-	private String kakaoService;
-	private String emailService;
-	private String snsService;
-	private String disclosureInfo;
+import java.util.Objects;
 
+public class MemberVO {
+	// memberVariable
+	public static final int VIP_ACCUMULPAYMENT = 100_000; // VIP등급최소누적금액
+	private String userId; // 고객 ID
+	private String userPw; // 고객 PW
+	private String userName; // 고객 이름
+	private String userNickName; // 고객 닉네임
+	private String userEmail; // 고객 이메일
+	private String subscriptionPath; // 가입경로
+	private String userTel;// 집전화번호
+	private String userPhoneNum; // 폰번호
+	private String userBirthday; // 고객 생일
+	private String postCode; // 우편번호
+	private String defaultAddress; // 기본 주소
+	private String detailedAddress; // 상세 주소
+	private String extraAddress; // 기타 주소
+	private String kakaoService; // 카카오서비스 수신여부
+	private String emailService;// 이메일 수신여부
+	private String snsService;// sns 수신여부
+	private String disclosureInfo;// 정보 이용 동의
+	private String userGrade; // 고객 등급
+	private int userAccumulatedPayment; // 고객 누적결제금액
+	private int userPoints; // 고객 포인트
+	private double userPointRatio; // 고객 포인트 적립률
+	private double userSaleRatio; // 고객 구매 할인율
+
+	// constructor
+	// memberFunction
 	public String getUserId() {
 		return userId;
 	}
@@ -153,6 +164,71 @@ public class MemberVO {
 
 	public void setDisclosureInfo(String disclosureInfo) {
 		this.disclosureInfo = disclosureInfo;
+	}
+
+	public String getUserGrade() {
+		return userGrade;
+	}
+
+	public void setUserGrade(String userGrade) {
+		this.userGrade = userGrade;
+	}
+
+	public int getUserAccumulatedPayment() {
+		return userAccumulatedPayment;
+	}
+
+	public void setUserAccumulatedPayment(int userAccumulatedPayment) {
+		this.userAccumulatedPayment = userAccumulatedPayment;
+	}
+
+	public int getUserPoints() {
+		return userPoints;
+	}
+
+	public void setUserPoints(int userPoints) {
+		this.userPoints = userPoints;
+	}
+
+	public double getUserPointRatio() {
+		return userPointRatio;
+	}
+
+	public void setUserPointRatio(double userPointRatio) {
+		this.userPointRatio = userPointRatio;
+	}
+
+	public double getUserSaleRatio() {
+		return userSaleRatio;
+	}
+
+	public void setUserSaleRatio(double userSaleRatio) {
+		this.userSaleRatio = userSaleRatio;
+	}
+
+	// 등급업데이트
+	public void updateCustomer_grade() {
+		if (userAccumulatedPayment >= VIP_ACCUMULPAYMENT) {
+			userGrade = "VIP";
+			userPointRatio = 0.05;
+			userSaleRatio = 0.1;
+		}
+	}
+
+	// Overriding
+	@Override
+	public int hashCode() {
+		return Objects.hash(userId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		MemberVO member = null;
+		if (obj instanceof MemberVO) {
+			member = (MemberVO) obj;
+			return userId.equals(member.userId);
+		}
+		return false;
 	}
 
 	@Override

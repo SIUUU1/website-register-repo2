@@ -48,7 +48,7 @@ public class MemberDAO {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean flag = false;
-		String sql = "insert into members values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into members values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = DBPoolUtil.makeConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -69,6 +69,11 @@ public class MemberDAO {
 			pstmt.setInt(15, Integer.parseInt(vo.getEmailService()));
 			pstmt.setInt(16, Integer.parseInt(vo.getSnsService()));
 			pstmt.setInt(17, Integer.parseInt(vo.getDisclosureInfo()));
+			pstmt.setString(18, "BASIC");
+			pstmt.setInt(19, 0);
+			pstmt.setInt(20, 0);
+			pstmt.setDouble(21, 0.03);
+			pstmt.setDouble(22, 0);
 			int value = pstmt.executeUpdate();
 			if (value > 0) {
 				flag = true;
@@ -139,6 +144,12 @@ public class MemberDAO {
 				vo.setEmailService(String.valueOf(rs.getInt("emailService")));
 				vo.setSnsService(String.valueOf(rs.getInt("snsService")));
 				vo.setDisclosureInfo(String.valueOf(rs.getInt("disclosureInfo")));
+				vo.setUserGrade(rs.getString("userGrade"));
+				vo.setUserAccumulatedPayment(rs.getInt("userAccumulatedPayment"));
+				vo.setUserPoints(rs.getInt("userPoints"));
+				vo.setUserPointRatio(rs.getDouble("userPointRatio"));
+				vo.setUserSaleRatio(rs.getDouble("userSaleRatio"));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -178,6 +189,11 @@ public class MemberDAO {
 				vo.setEmailService(String.valueOf(rs.getInt("emailService")));
 				vo.setSnsService(String.valueOf(rs.getInt("snsService")));
 				vo.setDisclosureInfo(String.valueOf(rs.getInt("disclosureInfo")));
+				vo.setUserGrade(rs.getString("userGrade"));
+				vo.setUserAccumulatedPayment(rs.getInt("userAccumulatedPayment"));
+				vo.setUserPoints(rs.getInt("userPoints"));
+				vo.setUserPointRatio(rs.getDouble("userPointRatio"));
+				vo.setUserSaleRatio(rs.getDouble("userSaleRatio"));
 				mevList.addElement(vo);
 			}
 		} catch (SQLException e) {
@@ -216,6 +232,11 @@ public class MemberDAO {
 			pstmt.setInt(15, Integer.parseInt(vo.getSnsService()));
 			pstmt.setInt(16, Integer.parseInt(vo.getDisclosureInfo()));
 			pstmt.setString(17, vo.getUserId());
+			pstmt.setString(18, vo.getUserGrade());
+			pstmt.setInt(19, vo.getUserAccumulatedPayment());
+			pstmt.setInt(20, vo.getUserPoints());
+			pstmt.setDouble(21, vo.getUserPointRatio());
+			pstmt.setDouble(22, vo.getUserSaleRatio());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -225,7 +246,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	// 회원정보 삭제
+	// 회원탈퇴 시 회원 정보 삭제
 	public int deleteMember(String userId, String userPw) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;

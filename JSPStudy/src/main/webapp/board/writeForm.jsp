@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%
-String contextPath = request.getContextPath();
-%>
 <html lang="ko">
 <head>
 <title>FAQ</title>
 <link rel="stylesheet"
-	href="<%=contextPath%>/board/writeForm-style.css?ver=<%=(int) (Math.random() * 1000)%>">
-<script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
+	href="<%=request.getContextPath()%>/board/writeForm-style.css?ver=<%=(int) (Math.random() * 1000)%>">
+<script src="<%=request.getContextPath()%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
 	defer></script>
 </head>
 <%
@@ -25,7 +22,7 @@ try {
 <body>
 	<h1 id="title">FAQ</h1>
 	<br>
-	<form method="post" name="writeForm" action="<%=contextPath%>/board/writeProc.jsp">
+	<form method="post" name="writeForm" action="<%=request.getContextPath()%>/board/writeProc.jsp">
 		<input type="hidden" name="num" value="<%=num%>"> 
 		<input type="hidden" name="ref" value="<%=ref%>"> 
 		<input type="hidden" name="step" value="<%=step%>"> 
@@ -80,7 +77,7 @@ try {
 		</table>
 		<div class="wriButton">
 			<button type="button" id="subButton" onclick="writeCheck()">완료</button>
-			<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp"><button type="button">취소</button></a>
+			<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><button type="button">취소</button></a>
 		</div>
 	</form>
 	<%

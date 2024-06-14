@@ -67,8 +67,8 @@ String contextPath = request.getContextPath();
 				<a href="#"><li>전시/행사</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>항공권예매</li></a>
-				<a href="#"><li>예매항공권확인</li></a>
+				<a href="main.jsp?middleFile=/tripair/selectForm.jsp"><li>항공권예매</li></a>
+				<a href="main.jsp?middleFile=/tripair/identifyForm.jsp"><li>예매항공권확인</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>굿즈샵</li></a>

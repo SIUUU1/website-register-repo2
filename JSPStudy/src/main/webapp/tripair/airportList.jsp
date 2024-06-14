@@ -20,7 +20,7 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 </head>
 <body>
 <h1 id="title">항공편 보기</h1>
-<form action="paymentForm.jsp" method="get">
+<form action="<%=request.getContextPath()%>/tripair/prestigeCheckProc.jsp" method="post">
 <table>
 		<thead>
 			<tr>

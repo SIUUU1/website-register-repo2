@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Vector;
 
 import member.DBPoolUtil;
 import oracle.jdbc.OracleTypes;
@@ -33,7 +34,7 @@ public class PaymentDAO {
 			cstmt.setInt(1, airports_id);
 			cstmt.registerOutParameter(2, Types.INTEGER);
 			cstmt.executeUpdate();
-			value = cstmt.getInt(4);
+			value = cstmt.getInt(2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -43,40 +44,36 @@ public class PaymentDAO {
 	}
 
 	// 결제 정보 저장
-	public void setPaymentRegister(PaymentVO pvo) {
+	public int setPaymentRegister(PaymentVO pvo) {
 		Connection con = null;
 		CallableStatement cstmt = null;
+		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL PAY_INSERT_PROC(?,?,?,?,?,?,?,?,?)}");
+			cstmt = con.prepareCall("{CALL PAY_INSERT_PROC(?,?,?,?,?,?,?)}");
 			cstmt.setInt(1, pvo.getAirports_id());
-			cstmt.setString(2, pvo.getVihicle_id());
-			cstmt.setString(3, pvo.getCustomer_name());
-			cstmt.setString(4, pvo.getCustomer_phone());
-			cstmt.setString(5, pvo.getCustomer_email());
-			cstmt.setInt(6, pvo.getEconomy_count());
-			cstmt.setInt(7, pvo.getPrestige_count());
-			cstmt.setInt(8, pvo.getTotal_price());
-			cstmt.registerOutParameter(9, Types.INTEGER);
+			cstmt.setString(2, pvo.getCustomer_name());
+			cstmt.setString(3, pvo.getCustomer_phone());
+			cstmt.setString(4, pvo.getCustomer_email());
+			cstmt.setInt(5, pvo.getEconomy_count());
+			cstmt.setInt(6, pvo.getPrestige_count());
+			cstmt.registerOutParameter(7, Types.INTEGER);
 			cstmt.executeUpdate();
-			int value = cstmt.getInt(9);
-			if (value == 0) {
-				System.out.println(pvo.getCustomer_name() + " 결제내역 등록 성공");
-			} else {
-				System.out.println(pvo.getCustomer_name() + " 결제내역 등록 실패");
-			}
-
+			value = cstmt.getInt(7);
+			value = (value == 1) ? 1 : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(cstmt, con);
 		}
+		return value;
 	}
 
-	public void getPaymentList(String customer_phone, int airports_id) {
+	public String[] getPaymentList(String customer_phone, int airports_id) {
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
+		String[] paymentArr = null;
 		try {
 			con = DBPoolUtil.makeConnection();
 			cstmt = con.prepareCall("{CALL PAYMENTS_PRINT_PROC1(?,?,?)}");
@@ -85,21 +82,23 @@ public class PaymentDAO {
 			cstmt.registerOutParameter(3, OracleTypes.CURSOR);
 			cstmt.executeQuery();
 			rs = (ResultSet) cstmt.getObject(3);
-			while (rs.next()) {
-				System.out.printf(" %-6s | %s | %-5s |  %-3s  |  %-3s  | %s | %s | %-3d |  %-5d  | %-6s | %d \n",
-						rs.getString("vihicle_id"), String.valueOf(rs.getDate("payment_date")),
+			if (rs.next()) {
+				paymentArr = new String[] { rs.getString("vihicle_id"), String.valueOf(rs.getDate("payment_date")),
 						rs.getString("customer_name"), rs.getString("depairport_name"), rs.getString("arrAirport_name"),
-						rs.getString("dep_plandtime"), rs.getString("arr_plandtime"), rs.getInt("economy_count"),
-						rs.getInt("prestige_count"), rs.getString("airline_name"), rs.getInt("total_price"));
+						rs.getString("dep_plandtime"), rs.getString("arr_plandtime"),
+						String.valueOf(rs.getInt("economy_count")), String.valueOf(rs.getInt("prestige_count")),
+						rs.getString("airline_name"), String.valueOf(rs.getInt("total_price")) };
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(rs, cstmt, con);
 		}
+		return paymentArr;
 	}
 
-	public static void getPaymentList(String customer_name, String customer_phone) {
+	public Vector<String[]> getPaymentList(String customer_name, String customer_phone) {
+		Vector<String[]> paymentDataList = new Vector<String[]>();
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
@@ -112,16 +111,19 @@ public class PaymentDAO {
 			cstmt.executeQuery();
 			rs = (ResultSet) cstmt.getObject(3);
 			while (rs.next()) {
-				System.out.printf(" %-6s | %s | %-5s |  %-3s  |  %-3s  | %s | %s | %-3d |  %-5d  | %-6s | %d \n",
-						rs.getString("vihicle_id"), String.valueOf(rs.getDate("payment_date")),
-						rs.getString("customer_name"), rs.getString("depairport_name"), rs.getString("arrAirport_name"),
-						rs.getString("dep_plandtime"), rs.getString("arr_plandtime"), rs.getInt("economy_count"),
-						rs.getInt("prestige_count"), rs.getString("airline_name"), rs.getInt("total_price"));
+				String[] paymentArr = new String[] {rs.getString("vihicle_id"),
+						String.valueOf(rs.getDate("payment_date")), rs.getString("customer_name"),
+						rs.getString("depairport_name"), rs.getString("arrAirport_name"), rs.getString("dep_plandtime"),
+						rs.getString("arr_plandtime"), String.valueOf(rs.getInt("economy_count")),
+						String.valueOf(rs.getInt("prestige_count")), rs.getString("airline_name"),
+						String.valueOf(rs.getInt("total_price")) };
+				paymentDataList.addElement(paymentArr);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(rs, cstmt, con);
 		}
+		return paymentDataList;
 	}
 }
