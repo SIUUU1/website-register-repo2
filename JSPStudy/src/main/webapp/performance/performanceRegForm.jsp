@@ -41,9 +41,9 @@
 			</tr>
 		</table>
 		<div class="wriButton">
-			<button type="button" id="subButton" onclick="writeCheck()">완료</button>
+			<button type="submit" id="subButton" onclick="writeCheck()">완료</button>
 			<a
-				href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/boardList.jsp"><button
+				href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><button
 					type="button">취소</button></a>
 		</div>
 	</form>
