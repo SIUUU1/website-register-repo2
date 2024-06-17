@@ -6,8 +6,8 @@ String loginID = (String) session.getAttribute("loginID");
 <html lang="ko">
 <head>
 <title>Login Process</title>
-<script src="./js-login.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
-<link rel="stylesheet" href="./login-style.css?ver=<%=(int)(Math.random()*1000)%>">
+<script src="<%=request.getContextPath()%>/member/js-login.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/member/login-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body onload="begin()">
 	<%
@@ -17,7 +17,7 @@ String loginID = (String) session.getAttribute("loginID");
 		<div id="back">
 			<!-- top -->
 			<h1>로그인</h1>
-			<form action="loginProc.jsp" method="post" name="loginForm">
+			<form action="<%=request.getContextPath()%>/member/loginProc.jsp" method="post" name="loginForm">
 				<div class="top">
 					<div>
 						<input type="radio" name="member" id="member1" value="1" checked>
@@ -51,10 +51,10 @@ String loginID = (String) session.getAttribute("loginID");
 				</div>
 				<!-- bottom -->
 				<div class="bottom">
-					<a href="main.jsp?middleFile=regForm"><button type="button">회원가입</button></a>
-					<a href="https://kh-academy.co.kr/login/find.kh"><button
+					<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=regForm.jsp"><button type="button">회원가입</button></a>
+					<a href="#"><button
 							type="button">아이디 찾기</button></a> <a
-						href="https://www.kh-academy.co.kr/login/password.kh"><button
+						href="#"><button
 							type="button">비밀번호 찾기</button></a>
 				</div>
 			</form>

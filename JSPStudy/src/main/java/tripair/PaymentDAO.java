@@ -50,7 +50,7 @@ public class PaymentDAO {
 		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL PAY_INSERT_PROC(?,?,?,?,?,?,?)}");
+			cstmt = con.prepareCall("{CALL PAYMENTS_INSERT_PROC(?,?,?,?,?,?,?)}");
 			cstmt.setInt(1, pvo.getAirports_id());
 			cstmt.setString(2, pvo.getCustomer_name());
 			cstmt.setString(3, pvo.getCustomer_phone());

@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
+import java.util.Vector;
 
 import member.DBPoolUtil;
 import oracle.jdbc.OracleTypes;
@@ -51,8 +51,8 @@ public class CartDAO {
 	}
 
 	// 장바구니목록리스트함수
-	public ArrayList<CartVO> getCartTotalList(String userId) {
-		ArrayList<CartVO> cartList = new ArrayList<CartVO>();
+	public Vector<String[]> getCartTotalList(String userId) {
+		Vector<String[]> cartList = new Vector<String[]>();
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs1 = null;
@@ -66,19 +66,18 @@ public class CartDAO {
 			cstmt.executeQuery();
 			rs1 = (ResultSet) cstmt.getObject(2);
 			rs2 = (ResultSet) cstmt.getObject(3);
-			while (rs1.next() && rs2.next()) {
-				CartVO cart = new CartVO();
-				cart.setUserId(rs1.getString("customer_id"));
-				cart.setPerformance_id(rs1.getInt("performance_id"));
-				cart.setPerformance_name(rs1.getString("performance_name"));
-				cart.setReservation_seats(rs1.getString("reservation_seats"));
-				cart.setTotal_reservation_seats(rs1.getInt("total_reservation_seats"));
-				cart.setTotal_payment_amount(rs1.getInt("total_payment_amount"));
-				cartList.add(cart);
-				System.out.printf(" %-4s  %-10s  %-10s  %-10s  %-4d  %-6d\n", rs1.getInt("performance_id"),
+			rs2.next();
+			while (rs1.next()) {
+				if (rs1.getInt("performance_id") != rs2.getInt("performance_id")) {
+					rs2.next();
+				}
+				String[] cart = new String[] { String.valueOf(rs1.getInt("performance_id")),
 						rs1.getString("performance_name"), String.valueOf(rs2.getDate("performance_day")),
-						rs1.getString("reservation_seats"), rs1.getInt("total_reservation_seats"),
-						rs1.getInt("total_payment_amount"));
+						rs1.getString("reservation_seats"), String.valueOf(rs1.getInt("total_reservation_seats")),
+						String.valueOf(rs1.getInt("total_payment_amount")), String.valueOf(rs1.getInt("cart_id")) };
+				cartList.addElement(cart);
+
+				System.out.println(1);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -109,32 +108,31 @@ public class CartDAO {
 	}
 
 	// 장바구니 비우기 함수
-	public void setCartDelete(String customer_id) {
+	public int setCartDelete(String customer_id) {
 		Connection con = null;
 		CallableStatement cstmt = null;
+		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
 			cstmt = con.prepareCall("{CALL CART_CLEAR_PROC(?,?)}");
 			cstmt.setString(1, customer_id);
 			cstmt.registerOutParameter(2, Types.INTEGER);
 			cstmt.executeUpdate();
-			int value = cstmt.getInt(2);
-			if (value == 0) {
-				System.out.println(customer_id + " 장바구니 비우기 성공");
-			} else {
-				System.out.println(customer_id + " 장바구니 비우기 실패");
-			}
+			value = cstmt.getInt(2);
+			value = value == 1 ? 1 : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(cstmt, con);
 		}
+		return value;
 	}
 
 	// 장바구니 항목 지우기 함수
-	public void setCartDeletItem(String customer_id, int p_id) {
+	public int setCartDeletItem(String customer_id, int p_id) {
 		Connection con = null;
 		CallableStatement cstmt = null;
+		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
 			cstmt = con.prepareCall("{CALL CART_DELETE_PROC(?,?,?)}");
@@ -142,17 +140,14 @@ public class CartDAO {
 			cstmt.setInt(2, p_id);
 			cstmt.registerOutParameter(3, Types.INTEGER);
 			cstmt.executeUpdate();
-			int value = cstmt.getInt(3);
-			if (value == 0) {
-				System.out.println(p_id + "번 공연 예매 삭제 성공");
-			} else {
-				System.out.println(p_id + "번 공연 예매 삭제 성공");
-			}
+			value = cstmt.getInt(3);
+			value = value == 1 ? 1 : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(cstmt, con);
 		}
+		return value;
 	}
 
 }

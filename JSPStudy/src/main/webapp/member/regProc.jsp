@@ -19,7 +19,7 @@ String message = "회원가입을 축하드립니다.";
 if (flag) {
 %>
 alert("<%=message%>");
-location.href="main.jsp?middleFile=login";
+location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=login.jsp";
 <% 
 } else {
 message = "회원가입에 실패하셨습니다.";

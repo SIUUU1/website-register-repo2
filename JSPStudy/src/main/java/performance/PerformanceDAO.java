@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import member.DBPoolUtil;
@@ -201,31 +200,6 @@ public class PerformanceDAO {
 		return value;
 	}
 
-	// 예매 후 공연 정보 수정함수
-	public void setPerformanceUpdateAfterTicketing(PerformanceVO pvo) {
-		Connection con = null;
-		CallableStatement cstmt = null;
-		try {
-			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL PER_UPDATE_TICKEING_PROC(?,?,?,?)}");
-			cstmt.setInt(1, pvo.getPerformance_sold_seats());
-			cstmt.setString(2, pvo.getPerformance_seatsInfo());
-			cstmt.setInt(3, pvo.getPerformance_id());
-			cstmt.registerOutParameter(4, Types.INTEGER);
-			cstmt.executeUpdate();
-			int value = cstmt.getInt(4);
-			if (value == 0) {
-				// System.out.println(pvo.getPerformance_name() + "예매 후 공연정보 수정 성공");
-			} else {
-				// System.out.println(pvo.getPerformance_name() + "예매 후 공연정보 수정 실패");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBPoolUtil.dbRelease(cstmt, con);
-		}
-	}
-
 	// 공연 좌석정보 가져오기
 	public int[][] getPerformanceSeats(int performance_id) {
 		Connection con = null;
@@ -282,9 +256,9 @@ public class PerformanceDAO {
 		}
 		return seat;
 	}
-		
+
 	// 예매 후 공연 정보 수정함수
-	public int seatsInfoUpdate(String[] p_seatArr,int sold_seats, int[][] seat, int performance_id) {
+	public int seatsInfoUpdate(String[] p_seatArr, int sold_seats, int[][] seat, int performance_id) {
 		// 좌석정보수정 반영
 		int x = 0, y = 0;// 좌석 배열 인덱스
 		for (String s : p_seatArr) {
@@ -292,7 +266,7 @@ public class PerformanceDAO {
 			y = Integer.parseInt(s.substring(1)) - 1;
 			seat[x][y] = S_SEAT;
 		}
-		//좌석정보 int[][] -> String으로 변환하기
+		// 좌석정보 int[][] -> String으로 변환하기
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < seat.length; i++) {
 			for (int j = 0; j < seat[i].length; j++) {
@@ -301,7 +275,7 @@ public class PerformanceDAO {
 				}
 			}
 		}
-		//공연 정보 수정
+		// 공연 정보 수정
 		Connection con = null;
 		CallableStatement cstmt = null;
 		int value = -1;

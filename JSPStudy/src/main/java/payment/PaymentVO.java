@@ -1,11 +1,11 @@
-package performance;
+package payment;
 
 import java.util.Objects;
 
 public class PaymentVO {
 	// memberVariable
 	private int payment_id; // 결제내역 ID
-	private String customer_id; // 고객 ID
+	private String userId; // 고객 ID
 	private int performance_id; // 공연 ID
 	private String performance_name; // 공연이름
 	private String reservation_date; // 예매날짜
@@ -21,10 +21,10 @@ public class PaymentVO {
 		super();
 	}
 
-	public PaymentVO(String customer_id, int performance_id, String recipient_name, String recipient_phone,
+	public PaymentVO(String userId, int performance_id, String recipient_name, String recipient_phone,
 			String recipient_address, String reservation_seats, int total_reservation_seats, int total_payment_amount) {
 		super();
-		this.customer_id = customer_id;
+		this.userId = userId;
 		this.performance_id = performance_id;
 		this.recipient_name = recipient_name;
 		this.recipient_phone = recipient_phone;
@@ -34,11 +34,11 @@ public class PaymentVO {
 		this.total_payment_amount = total_payment_amount;
 	}
 
-	public PaymentVO(String customer_id, int performance_id, String performance_name, String recipient_name,
+	public PaymentVO(String userId, int performance_id, String performance_name, String recipient_name,
 			String recipient_phone, String recipient_address, String reservation_seats, int total_reservation_seats,
 			int total_payment_amount) {
 		super();
-		this.customer_id = customer_id;
+		this.userId = userId;
 		this.performance_id = performance_id;
 		this.performance_name = performance_name;
 		this.recipient_name = recipient_name;
@@ -49,12 +49,12 @@ public class PaymentVO {
 		this.total_payment_amount = total_payment_amount;
 	}
 
-	public PaymentVO(int payment_id, String customer_id, int performance_id, String performance_name,
+	public PaymentVO(int payment_id, String userId, int performance_id, String performance_name,
 			String reservation_date, String recipient_name, String recipient_phone, String recipient_address,
 			String reservation_seats, int total_reservation_seats, int total_payment_amount) {
 		super();
 		this.payment_id = payment_id;
-		this.customer_id = customer_id;
+		this.userId = userId;
 		this.performance_id = performance_id;
 		this.performance_name = performance_name;
 		this.reservation_date = reservation_date;
@@ -75,12 +75,12 @@ public class PaymentVO {
 		this.payment_id = payment_id;
 	}
 
-	public String getCustomer_id() {
-		return customer_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setCustomer_id(String customer_id) {
-		this.customer_id = customer_id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getPerformance_id() {
