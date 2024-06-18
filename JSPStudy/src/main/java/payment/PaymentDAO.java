@@ -29,8 +29,8 @@ public class PaymentDAO {
 		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL PAY_INSERT_PROC(?,?,?,?,?,?,?)}");
 			for (String data : cart_id) {
-				cstmt = con.prepareCall("{CALL PAY_INSERT_PROC(?,?,?,?,?,?,?)}");
 				cstmt.setString(1, userId);
 				cstmt.setInt(2, Integer.parseInt(data));
 				cstmt.setString(3, userName);
@@ -68,6 +68,7 @@ public class PaymentDAO {
 				payvo.setPayment_id(rs.getInt("payment_id"));
 				payvo.setUserId(rs.getString("userId"));
 				payvo.setPerformance_id(rs.getInt("performance_id"));
+				payvo.setPerformance_name(rs.getString("performance_name"));
 				payvo.setReservation_date(String.valueOf(rs.getDate("reservation_date")));
 				payvo.setRecipient_name(rs.getString("recipient_name"));
 				payvo.setRecipient_phone(rs.getString("recipient_phone"));
@@ -106,39 +107,39 @@ public class PaymentDAO {
 		return count;
 	}
 
-	// 현재 결제 내역 출력
-	public Vector<PaymentVO> getPayment(String userId) {
-		Vector<PaymentVO> paymentList = new Vector<PaymentVO>();
-		Connection con = null;
-		CallableStatement cstmt = null;
-		ResultSet rs = null;
-		try {
-			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL CPAY_PRINT_PROC(?,?)}");
-			cstmt.setString(1, userId);
-			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
-			cstmt.executeQuery();
-			rs = (ResultSet) cstmt.getObject(2);
-			while (rs.next()) {
-				PaymentVO pvo = new PaymentVO();
-				pvo.setPayment_id(rs.getInt("payment_id"));
-				pvo.setUserId(rs.getString("userId"));
-				pvo.setPerformance_id(rs.getInt("performance_id"));
-				pvo.setPerformance_name(rs.getString("performance_name"));
-				pvo.setReservation_date(String.valueOf(rs.getDate("reservation_date")));
-				pvo.setRecipient_name(rs.getString("recipient_name"));
-				pvo.setRecipient_phone(rs.getString("recipient_phone"));
-				pvo.setRecipient_address(rs.getString("recipient_address"));
-				pvo.setReservation_seats(rs.getString("reservation_seats"));
-				pvo.setTotal_reservation_seats(rs.getInt("total_reservation_seats"));
-				pvo.setTotal_payment_amount(rs.getInt("total_payment_amount"));
-				paymentList.addElement(pvo);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBPoolUtil.dbRelease(rs, cstmt, con);
-		}
-		return paymentList;
-	}
+//	// 현재 결제 내역 출력
+//	public Vector<PaymentVO> getPayment(String userId) {
+//		Vector<PaymentVO> paymentList = new Vector<PaymentVO>();
+//		Connection con = null;
+//		CallableStatement cstmt = null;
+//		ResultSet rs = null;
+//		try {
+//			con = DBPoolUtil.makeConnection();
+//			cstmt = con.prepareCall("{CALL CPAY_PRINT_PROC(?,?)}");
+//			cstmt.setString(1, userId);
+//			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+//			cstmt.executeQuery();
+//			rs = (ResultSet) cstmt.getObject(2);
+//			while (rs.next()) {
+//				PaymentVO pvo = new PaymentVO();
+//				pvo.setPayment_id(rs.getInt("payment_id"));
+//				pvo.setUserId(rs.getString("userId"));
+//				pvo.setPerformance_id(rs.getInt("performance_id"));
+//				pvo.setPerformance_name(rs.getString("performance_name"));
+//				pvo.setReservation_date(String.valueOf(rs.getDate("reservation_date")));
+//				pvo.setRecipient_name(rs.getString("recipient_name"));
+//				pvo.setRecipient_phone(rs.getString("recipient_phone"));
+//				pvo.setRecipient_address(rs.getString("recipient_address"));
+//				pvo.setReservation_seats(rs.getString("reservation_seats"));
+//				pvo.setTotal_reservation_seats(rs.getInt("total_reservation_seats"));
+//				pvo.setTotal_payment_amount(rs.getInt("total_payment_amount"));
+//				paymentList.addElement(pvo);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBPoolUtil.dbRelease(rs, cstmt, con);
+//		}
+//		return paymentList;
+//	}
 }

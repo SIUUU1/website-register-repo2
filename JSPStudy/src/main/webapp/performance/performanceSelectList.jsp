@@ -3,11 +3,12 @@
 <%@ page import="performance.PerformanceDAO" %>
 <%@ page import="java.util.*"%>
 <%
-String performance_genre = request.getParameter("performance_genre");
-//공연 정보 리스트 가져오기
+String search = request.getParameter("search");
+
+//검색 결과 공연리스트 가져오기
 PerformanceDAO dao = PerformanceDAO.getInstance();
-int count = 0;
-count = dao.getPerformance_Count(performance_genre);
+int count=0;
+count=dao.selectPerformance_Count(search);
 %>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@ count = dao.getPerformance_Count(performance_genre);
 			</tr>
 		<%
 		}else{
-			Vector<PerformanceVO> performanceList = dao.getPerformanceTotalList(performance_genre);
+			Vector<PerformanceVO> performanceList=dao.selectPerformanceList(search);
 			for (int i = 0; i < performanceList.size(); i++) {
 		%>
 	<tr onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/seatForm.jsp?performance_id=<%=performanceList.get(i).getPerformance_id()%>'">

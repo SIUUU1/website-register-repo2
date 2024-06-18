@@ -10,8 +10,7 @@ int performance_id = Integer.parseInt(request.getParameter("performance_id"));
 PerformanceDAO pDao = PerformanceDAO.getInstance();
 int[][] seat = pDao.getPerformanceSeats(performance_id);
 //공연좌석정보 수정
-PerformanceDAO pdao = PerformanceDAO.getInstance();
-pdao.seatsInfoUpdate(p_seatArr, p_seatArr.length, seat, performance_id);
+pDao.seatsInfoUpdate(p_seatArr, p_seatArr.length, seat, performance_id);
 //장바구니 정보 등록
 CartDAO cdao = CartDAO.getInstance();
 cdao.setCartRegister(loginID, performance_id, p_seatArr);

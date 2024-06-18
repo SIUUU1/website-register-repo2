@@ -10,15 +10,18 @@ String postCode = request.getParameter("postCode");
 String recipient_address = request.getParameter("defaultAddress") + " " + request.getParameter("extraAddress") + " "
 		+ request.getParameter("detailedAddress");
 
+//결제할 장바구니 항목 가져오기
 String[] cart_id = (String[])session.getAttribute("cart_id");
+//결제정보 등록하기
 PaymentDAO dao = PaymentDAO.getInstance();
 int check = dao.setPaymentRegister(loginID, userName, userPhoneNum, postCode, recipient_address, cart_id);
+session.removeAttribute("cart_id");
 //-1:데이터베이스 오류, 1:결제 성공, 0:결제 실패
 if (check == 1) {
 %>
 <script language="JavaScript">
 		alert("결제 성공");
-		window.location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/payment/paymentList.jsp";
+		window.location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/payment/paymentTotalList.jsp";
 </script>
 <% 
 } else if (check == 0) {

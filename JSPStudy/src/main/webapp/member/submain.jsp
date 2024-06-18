@@ -4,8 +4,7 @@
 <link rel="stylesheet" href="./slideshow/slideshow-style.css?ver=<%=(int)(Math.random()*1000)%>">
 <link rel="stylesheet" href="./submain-style.css?ver=<%=(int)(Math.random()*1000)%>">
 <script src="./slideshow/js-slideshow.js?ver=<%=(int)(Math.random()*1000)%>"></script>
-<script src="https://kit.fontawesome.com/8d66cd774b.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 </head>
 <body>
 <!-- sildshow -->

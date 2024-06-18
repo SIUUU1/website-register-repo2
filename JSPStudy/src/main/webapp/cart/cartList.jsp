@@ -47,7 +47,7 @@ count = dao.getCart_Count(loginID);
 			<td><%=cartList.get(i)[4]%></td>
 			<td><%=cartList.get(i)[5]%></td>
 			<td><input type="checkbox" id="cart_id" name="cart_id" value="<%=cartList.get(i)[6]%>"></td>
-			<td onclick="location.href='<%=request.getContextPath()%>/cart/deleteCartItemPro.jsp?performance_id=<%=cartList.get(i)[0]%>'">
+			<td onclick="location.href='<%=request.getContextPath()%>/cart/deleteCartItemPro.jsp?cart_id=<%=cartList.get(i)[6]%>&performance_id=<%=cartList.get(i)[0]%>'">
 			<i class="fa-solid fa-minus"></i></td>
 	 </tr>
  <%

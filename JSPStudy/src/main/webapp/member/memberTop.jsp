@@ -31,12 +31,12 @@ String loginID = (String) session.getAttribute("loginID");
 					<a href="<%=request.getContextPath()%>/member/main.jsp"><span>Ticket World</span></a><br>
 				</div>
 				<div class="search">
-					<form action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get" name="search">
-	        <input type="text" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
-	        </form>
+					<form action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get">
+	        <input type="text" name="search" id="search" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
 	        <div id="button-search">
-	          <i class="fa-solid fa-magnifying-glass"></i>
+	          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 	        </div>
+	        </form>
         </div>
 			</div>
 		</div>
@@ -45,7 +45,7 @@ String loginID = (String) session.getAttribute("loginID");
 			<ul onmouseover="displayMenu('mouseover')"
 				onmouseout="displayMenu('mouseout')">
 				<li>티켓월드</li>
-				<li>공연예매하기</li>
+				<li>공연예매</li>
 				<li>트립에어</li>
 				<li>MD샵</li>
 				<li>커뮤니티</li>
@@ -83,6 +83,7 @@ String loginID = (String) session.getAttribute("loginID");
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp"><li>내장바구니</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/payment/paymentTotalList.jsp"><li>공연결제내역</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/modifyForm.jsp"><li>내정보수정하기</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/deleteForm.jsp"><li>회원탈퇴</li></a>
 				<a href="<%=request.getContextPath()%>/member/logout.jsp"><li>로그아웃</li></a>

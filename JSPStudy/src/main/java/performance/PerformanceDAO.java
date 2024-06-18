@@ -58,6 +58,76 @@ public class PerformanceDAO {
 		return performanceList;
 	}
 
+	// 장르별 공연목록리스트함수
+	public Vector<PerformanceVO> getPerformanceTotalList(String performance_genre) {
+		Vector<PerformanceVO> performanceList = new Vector<PerformanceVO>();
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL GENRE_SELECT_PROC(?,?)}");
+			cstmt.setString(1, performance_genre);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(2);
+			while (rs.next()) {
+				PerformanceVO pvo = new PerformanceVO();
+				pvo.setPerformance_id(rs.getInt("performance_id"));
+				pvo.setPerformance_name(rs.getString("performance_name"));
+				pvo.setPerformance_genre(rs.getString("performance_genre"));
+				pvo.setPerformance_day(String.valueOf(rs.getDate("performance_day")));
+				pvo.setPerformance_venue(rs.getString("performance_venue"));
+				pvo.setPerformance_limit_age(rs.getInt("performance_limit_age"));
+				pvo.setPerformance_total_seats(rs.getInt("performance_total_seats"));
+				pvo.setPerformance_sold_seats(rs.getInt("performance_sold_seats"));
+				pvo.setPerformance_seatsInfo(rs.getString("performance_seatsInfo"));
+				pvo.setPerformance_ticket_price(rs.getInt("performance_ticket_price"));
+				performanceList.addElement(pvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs, cstmt, con);
+		}
+		return performanceList;
+	}
+
+	// 검색 결과 공연리스트함수
+	public Vector<PerformanceVO> selectPerformanceList(String word) {
+		Vector<PerformanceVO> performanceList = new Vector<PerformanceVO>();
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL SELECT_PERFORM_PROC(?,?)}");
+			cstmt.setString(1, word);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(2);
+			while (rs.next()) {
+				PerformanceVO pvo = new PerformanceVO();
+				pvo.setPerformance_id(rs.getInt("performance_id"));
+				pvo.setPerformance_name(rs.getString("performance_name"));
+				pvo.setPerformance_genre(rs.getString("performance_genre"));
+				pvo.setPerformance_day(String.valueOf(rs.getDate("performance_day")));
+				pvo.setPerformance_venue(rs.getString("performance_venue"));
+				pvo.setPerformance_limit_age(rs.getInt("performance_limit_age"));
+				pvo.setPerformance_total_seats(rs.getInt("performance_total_seats"));
+				pvo.setPerformance_sold_seats(rs.getInt("performance_sold_seats"));
+				pvo.setPerformance_seatsInfo(rs.getString("performance_seatsInfo"));
+				pvo.setPerformance_ticket_price(rs.getInt("performance_ticket_price"));
+				performanceList.addElement(pvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs, cstmt, con);
+		}
+		return performanceList;
+	}
+
 	// 공연정보가져오기
 	public PerformanceVO getPerformance(int performance_id) {
 		PerformanceVO pvo = null;
@@ -103,6 +173,46 @@ public class PerformanceDAO {
 			cstmt.registerOutParameter(1, Types.INTEGER);
 			cstmt.executeUpdate();
 			count = cstmt.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(cstmt, con);
+		}
+		return count;
+	}
+
+	// 장르별 공연 수 출력 함수
+	public int getPerformance_Count(String performance_genre) {
+		Connection con = null;
+		CallableStatement cstmt = null;
+		int count = 0;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL GENRE_COUNT_PROC(?,?)}");
+			cstmt.setString(1, performance_genre);
+			cstmt.registerOutParameter(2, Types.INTEGER);
+			cstmt.executeUpdate();
+			count = cstmt.getInt(2);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(cstmt, con);
+		}
+		return count;
+	}
+
+	// 검색 결과 공연 수 출력 함수
+	public int selectPerformance_Count(String word) {
+		Connection con = null;
+		CallableStatement cstmt = null;
+		int count = 0;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL SELECT_PERFORM_COUNT_PROC(?,?)}");
+			cstmt.setString(1, word);
+			cstmt.registerOutParameter(2, Types.INTEGER);
+			cstmt.executeUpdate();
+			count = cstmt.getInt(2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -296,5 +406,44 @@ public class PerformanceDAO {
 		}
 		return value;
 	}
-
+	
+	// 장바구니 비운 후 공연 정보 수정함수
+	public int seatsInfoUpdate(String[] p_seatArr, int sold_seats, int[][] seat, int performance_id) {
+		// 좌석정보수정 반영
+		int x = 0, y = 0;// 좌석 배열 인덱스
+		for (String s : p_seatArr) {
+			x = s.charAt(0) - 65;
+			y = Integer.parseInt(s.substring(1)) - 1;
+			seat[x][y] = P_SEAT;
+		}
+		// 좌석정보 int[][] -> String으로 변환하기
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < seat.length; i++) {
+			for (int j = 0; j < seat[i].length; j++) {
+				if (seat[i][j] != N_SEAT) {
+					sb.append(String.valueOf(seat[i][j]));
+				}
+			}
+		}
+		// 공연 정보 수정
+		Connection con = null;
+		CallableStatement cstmt = null;
+		int value = -1;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?)}");
+			cstmt.setInt(1, sold_seats);
+			cstmt.setString(2, sb.toString());
+			cstmt.setInt(3, performance_id);
+			cstmt.registerOutParameter(4, Types.INTEGER);
+			cstmt.executeUpdate();
+			value = cstmt.getInt(4);
+			value = value == 1 ? 1 : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(cstmt, con);
+		}
+		return value;
+	}
 }

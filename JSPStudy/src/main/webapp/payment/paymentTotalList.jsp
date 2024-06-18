@@ -6,7 +6,7 @@
 String loginID = (String) session.getAttribute("loginID");
 PaymentDAO dao = PaymentDAO.getInstance();
 //결제 수
-int count=dao.getPayment_Count(loginID);
+int count = dao.getPayment_Count(loginID);
 %>
 <!DOCTYPE html>
 <html>

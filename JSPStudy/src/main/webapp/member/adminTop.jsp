@@ -25,12 +25,12 @@
 					<a href="<%=request.getContextPath()%>/member/main.jsp"><span>Ticket World</span></a><br>
 				</div>
 				<div class="search">
-					<form action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get" name="search">
-	        <input type="text" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
-	        </form>
+					<form action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get">
+	        <input type="text" name="search" id="search" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
 	        <div id="button-search">
-	          <i class="fa-solid fa-magnifying-glass"></i>
+	          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 	        </div>
+	        </form>
         </div>
 			</div>
 		</div>
@@ -56,8 +56,6 @@
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><li>공연정보관리</li></a>
-				<a href="#"><li>회원장바구니정보관리</li></a>
-				<a href="#"><li>회원결제정보관리</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>항공권정보관리</li></a>

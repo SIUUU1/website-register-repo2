@@ -87,6 +87,38 @@ public class CartDAO {
 		return cartList;
 	}
 
+	// 장바구니 항목 가져오기
+	public String[] getCart(int cart_id) {
+		String[] cart = null;
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			cstmt = con.prepareCall("{CALL CART_PRINT_PROC3(?,?,?)}");
+			cstmt.setInt(1, cart_id);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			cstmt.registerOutParameter(3, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			rs1 = (ResultSet) cstmt.getObject(2);
+			rs2 = (ResultSet) cstmt.getObject(3);
+			if (rs1.next() && rs2.next()) {
+				cart = new String[] { String.valueOf(rs1.getInt("performance_id")), rs1.getString("performance_name"),
+						String.valueOf(rs2.getDate("performance_day")), rs1.getString("reservation_seats"),
+						String.valueOf(rs1.getInt("total_reservation_seats")),
+						String.valueOf(rs1.getInt("total_payment_amount")), String.valueOf(rs1.getInt("cart_id")) };
+
+				System.out.println(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs2, rs1, cstmt, con);
+		}
+		return cart;
+	}
+
 	// 장바구니 수 출력 함수
 	public int getCart_Count(String userId) {
 		Connection con = null;

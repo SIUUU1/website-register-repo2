@@ -50,13 +50,13 @@ if(loginID==null){
 						case 0:
 							%>
 							<input type="checkbox" class="p_seat" id="<%=(char)(ch + i)%><%=j+1%>" name="p_seat" value="<%=(char)(ch + i)%><%=j+1%>">
-							<label for="<%=(char)(ch + i)%><%=j+1%>"></label>
+							<label for="<%=(char)(ch + i)%><%=j+1%>"><%=(char)(ch + i)%><%=j+1%></label>
 							<%
 							break;
 						default:
 							%>
 							<input type="checkbox" class="s_seat" id="<%=(char)(ch + i)%><%=j+1%>" onClick="return false">
-							<label for="<%=(char)(ch + i)%><%=j+1%>"></label>
+							<label for="<%=(char)(ch + i)%><%=j+1%>"><%=(char)(ch + i)%><%=j+1%></label>
 							<%
 							break;
 						}

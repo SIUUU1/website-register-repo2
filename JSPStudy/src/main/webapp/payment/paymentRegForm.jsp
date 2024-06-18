@@ -5,8 +5,6 @@
 String loginID = (String) session.getAttribute("loginID");
 MemberDAO mdao = MemberDAO.getInstance();
 MemberVO member = mdao.getMember(loginID);
-String[] cart_id = request.getParameterValues("cart_id");
-session.setAttribute("cart_id", cart_id);
 %>
 <!DOCTYPE html>
 <html>
