@@ -334,7 +334,6 @@ public class PerformanceDAO {
 		} finally {
 			DBPoolUtil.dbRelease(cstmt, con);
 		}
-
 		// 좌석배열만들기
 		int rowNum = performance_total_seats / COLUMN_NUM;
 		int remain = performance_total_seats % COLUMN_NUM;
@@ -346,6 +345,9 @@ public class PerformanceDAO {
 			seat = new int[rowNum + 1][COLUMN_NUM];
 			for (int i = 0; i < seat.length; i++) {
 				if (i == rowNum) {
+					for(int k=0;k<remain;k++) {
+						seat[rowNum][k] = Integer.parseInt(seatArr[(i * COLUMN_NUM) + k]);
+					}
 					for (int j = 0; j < COLUMN_NUM - remain; j++) {
 						seat[rowNum][COLUMN_NUM - 1 - j] = N_SEAT;
 					}
@@ -391,13 +393,14 @@ public class PerformanceDAO {
 		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?)}");
-			cstmt.setInt(1, sold_seats);
-			cstmt.setString(2, sb.toString());
-			cstmt.setInt(3, performance_id);
-			cstmt.registerOutParameter(4, Types.INTEGER);
+			cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?,?)}");
+			cstmt.setInt(1, 1);
+			cstmt.setInt(2, sold_seats);
+			cstmt.setString(3, sb.toString());
+			cstmt.setInt(4, performance_id);
+			cstmt.registerOutParameter(5, Types.INTEGER);
 			cstmt.executeUpdate();
-			value = cstmt.getInt(4);
+			value = cstmt.getInt(5);
 			value = value == 1 ? 1 : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -406,9 +409,11 @@ public class PerformanceDAO {
 		}
 		return value;
 	}
-	
-	// 장바구니 비운 후 공연 정보 수정함수
-	public int seatsInfoUpdate(String[] p_seatArr, int sold_seats, int[][] seat, int performance_id) {
+
+	// 장바구니 항목 제거 후 공연 정보 수정함수
+	public int seatsInfoUpdate(String[] cart) {
+		int[][] seat = getPerformanceSeats(Integer.parseInt(cart[0]));
+		String[] p_seatArr = cart[3].split(" "); // 선택 좌석
 		// 좌석정보수정 반영
 		int x = 0, y = 0;// 좌석 배열 인덱스
 		for (String s : p_seatArr) {
@@ -431,18 +436,64 @@ public class PerformanceDAO {
 		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?)}");
-			cstmt.setInt(1, sold_seats);
-			cstmt.setString(2, sb.toString());
-			cstmt.setInt(3, performance_id);
-			cstmt.registerOutParameter(4, Types.INTEGER);
+			cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?,?)}");
+			cstmt.setInt(1, 0);
+			cstmt.setInt(2, Integer.parseInt(cart[4]));
+			cstmt.setString(3, sb.toString());
+			cstmt.setInt(4, Integer.parseInt(cart[0]));
+			cstmt.registerOutParameter(5, Types.INTEGER);
 			cstmt.executeUpdate();
-			value = cstmt.getInt(4);
+			value = cstmt.getInt(5);
 			value = value == 1 ? 1 : 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(cstmt, con);
+		}
+		return value;
+	}
+
+	// 장바구니 비운 후 공연 정보 수정함수
+	public int seatsInfoUpdate(Vector<String[]> cartList) {
+		Connection con = null;
+		CallableStatement cstmt = null;
+		int value = -1;
+		for (String[] cart : cartList) {
+			int[][] seat = getPerformanceSeats(Integer.parseInt(cart[0]));
+			String[] p_seatArr = cart[3].split(" "); // 선택 좌석
+			// 좌석정보수정 반영
+			int x = 0, y = 0;// 좌석 배열 인덱스
+			for (String s : p_seatArr) {
+				x = s.charAt(0) - 65;
+				y = Integer.parseInt(s.substring(1)) - 1;
+				seat[x][y] = P_SEAT;
+			}
+			// 좌석정보 int[][] -> String으로 변환하기
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < seat.length; i++) {
+				for (int j = 0; j < seat[i].length; j++) {
+					if (seat[i][j] != N_SEAT) {
+						sb.append(String.valueOf(seat[i][j]));
+					}
+				}
+			}
+			// 공연 정보 수정
+			try {
+				con = DBPoolUtil.makeConnection();
+				cstmt = con.prepareCall("{CALL SEATSINFO_UPDATE_PROC(?,?,?,?,?)}");
+				cstmt.setInt(1, 0);
+				cstmt.setInt(2, Integer.parseInt(cart[4]));
+				cstmt.setString(3, sb.toString());
+				cstmt.setInt(4, Integer.parseInt(cart[0]));
+				cstmt.registerOutParameter(5, Types.INTEGER);
+				cstmt.executeUpdate();
+				value = cstmt.getInt(5);
+				value = value == 1 ? 1 : 0;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBPoolUtil.dbRelease(cstmt, con);
+			}
 		}
 		return value;
 	}

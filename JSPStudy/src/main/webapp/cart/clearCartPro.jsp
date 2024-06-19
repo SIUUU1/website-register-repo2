@@ -1,10 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="performance.PerformanceDAO"%>
 <%@ page import="cart.CartDAO" %>
 <%@ page import="java.util.*"%>
 <%
 String loginID = (String) session.getAttribute("loginID");
-CartDAO dao = CartDAO.getInstance();
-int check=dao.setCartDelete(loginID);
+
+//장바구니 정보 가져오기
+PerformanceDAO pDao = PerformanceDAO.getInstance();
+CartDAO cDao = CartDAO.getInstance();
+Vector<String[]> cartList = cDao.getCartTotalList(loginID);
+//공연 좌석 선택해제, 판매 좌석 정보수정
+int result=pDao.seatsInfoUpdate(cartList);
+//장바구니 비우기
+int check=cDao.setCartDelete(loginID);
 //-1:데이터베이스 오류, 1:장바구니 비우기 성공, 0:장바구니 비우기 실패
 if (check == 1) {
 %>

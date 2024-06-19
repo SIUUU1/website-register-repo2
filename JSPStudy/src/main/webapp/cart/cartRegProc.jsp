@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="performance.PerformanceDAO"%>
+<%@ page import="performance.PerformanceVO" %>
 <%@ page import="cart.CartDAO"%>
 <%@ page import="java.util.*"%>
 <%

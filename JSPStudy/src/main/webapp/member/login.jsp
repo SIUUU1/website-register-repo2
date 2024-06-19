@@ -51,10 +51,10 @@ String loginID = (String) session.getAttribute("loginID");
 				</div>
 				<!-- bottom -->
 				<div class="bottom">
-					<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=regForm.jsp"><button type="button">회원가입</button></a>
-					<a href="#"><button
+					<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/regForm.jsp"><button type="button">회원가입</button></a>
+					<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/identifyForm.jsp?type=1"><button
 							type="button">아이디 찾기</button></a> <a
-						href="#"><button
+						href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/identifyForm.jsp?type=0"><button
 							type="button">비밀번호 찾기</button></a>
 				</div>
 			</form>

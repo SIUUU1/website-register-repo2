@@ -7,16 +7,16 @@ String loginID = (String) session.getAttribute("loginID");
 int cart_id = Integer.parseInt(request.getParameter("cart_id"));
 int performance_id = Integer.parseInt(request.getParameter("performance_id"));
 
-//공연 정보 가져오기
+//장바구니 정보 가져오기
 PerformanceDAO pDao = PerformanceDAO.getInstance();
-int[][] seat = pDao.getPerformanceSeats(performance_id);
-CartDAO dao = CartDAO.getInstance();
+CartDAO cDao = CartDAO.getInstance();
+String[] cart = cDao.getCart(cart_id);
 
 //공연 좌석 선택해제, 판매 좌석 정보수정
-
-
-//장바구니 삭제
-int check=dao.setCartDeletItem(loginID, performance_id);
+int result = pDao.seatsInfoUpdate(cart);
+if(result==1) { //공연 정보 수정 성공
+//장바구니 항목 삭제
+int check=cDao.setCartDeletItem(loginID, cart_id);
 //-1:데이터베이스 오류, 1:장바구니 항목 삭제 성공, 0:장바구니 항목 삭제 실패
 if (check == 1) {
 %>
@@ -36,7 +36,15 @@ if (check == 1) {
 		history.go(-1);
 	</script>
 	<%
-}
+}//end of if (check == 1)
+}else{
+	%>
+	<script language="JavaScript">
+		alert("공연 수정 실패");
+		history.go(-1);
+	</script>
+	<%
+}//end of if(result==1)
 %>
 <html>
 <head>

@@ -20,6 +20,7 @@ if(loginID==null){
 		//좌석정보 가져오기
 		PerformanceDAO pDao = PerformanceDAO.getInstance();
 		seat = pDao.getPerformanceSeats(performance_id);
+		
 		if(seat==null){
 			%>
 			<script language="JavaScript">
@@ -53,7 +54,7 @@ if(loginID==null){
 							<label for="<%=(char)(ch + i)%><%=j+1%>"><%=(char)(ch + i)%><%=j+1%></label>
 							<%
 							break;
-						default:
+						case 1: case 9:
 							%>
 							<input type="checkbox" class="s_seat" id="<%=(char)(ch + i)%><%=j+1%>" onClick="return false">
 							<label for="<%=(char)(ch + i)%><%=j+1%>"><%=(char)(ch + i)%><%=j+1%></label>
