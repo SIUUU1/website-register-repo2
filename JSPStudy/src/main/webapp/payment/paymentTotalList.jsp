@@ -7,8 +7,15 @@ String loginID = (String) session.getAttribute("loginID");
 PaymentDAO dao = PaymentDAO.getInstance();
 //결제 수
 int count = dao.getPayment_Count(loginID);
+if(loginID==null){
+	%>
+	<script language="JavaScript">
+	alert("로그인이 필요한 페이지입니다.");
+	window.location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/login.jsp";
+	</script>
+	<%
+}else{
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <title>결제내역</title>
@@ -71,3 +78,6 @@ int count = dao.getPayment_Count(loginID);
 	</div>
 </body>
 </html>
+<%
+}//end of if(loginID==null)
+%>

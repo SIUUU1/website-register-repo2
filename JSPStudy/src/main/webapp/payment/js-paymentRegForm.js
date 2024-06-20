@@ -69,3 +69,12 @@ function inputCheck() {
 	}
 	document.paymentForm.submit();
 }
+
+function getUserInfo(userName,userPhoneNum,postCode,defaultAddress,detailedAddress,extraAddress){
+	document.paymentForm.userName.value=userName;
+	document.paymentForm.userPhoneNum.value=userPhoneNum;
+	document.paymentForm.postCode.value=postCode;
+	document.paymentForm.defaultAddress.value=defaultAddress;
+	document.paymentForm.detailedAddress.value=detailedAddress;
+	document.paymentForm.extraAddress.value=extraAddress;
+}

@@ -29,7 +29,7 @@
 	</div>
 </article>
 <!-- slideshow-bottom -->
-<article class="slideshow-bottom">
+<!-- <article class="slideshow-bottom">
 	<div>
 		<a href=""><img src="./source/icon1.PNG"><br> <span>온라인
 				상담</span></a>
@@ -55,7 +55,7 @@
 			<a href="https://kh-academy.co.kr/question/online.kh?location=h"><span>전국대표문의전화(연중무휴)</span></a>
 		</div>
 	</div>
-</article>
+</article> -->
 <article class="article2">
 <h2>교육과정</h2>
 <p class="subtitle">KH정보교육원만의 독보적인 커리큘럼을 만나보세요.</p>

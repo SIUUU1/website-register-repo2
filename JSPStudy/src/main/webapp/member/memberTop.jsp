@@ -19,7 +19,7 @@ String loginID = (String) session.getAttribute("loginID");
 		<!-- right-top -->
 		<nav class="right-top">
 			<a href="<%=request.getContextPath()%>/member/main.jsp"><span>Home</span></a> 
-			<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><span>Board</span></a> 
+			<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp"><span>CART</span></a> 
 			<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/modifyForm.jsp"><span><%=loginID%> 님 환영합니다.</span></a>
 			<a href="<%=request.getContextPath()%>/member/logout.jsp"><span>로그아웃</span></a>
 		</nav>

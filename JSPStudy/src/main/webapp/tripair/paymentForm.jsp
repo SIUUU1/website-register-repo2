@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="tripair.PaymentDAO"%>
 <%
+
 String airports_id = request.getParameter("airports_id");
 //비즈니스석 존재 확인
 //-1:데이터베이스오류 0:비즈니스석 없음 양수:비즈니스석 있음
@@ -11,6 +12,7 @@ PaymentDAO dao = PaymentDAO.getInstance();
 <html>
 <head>
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/paymentForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 	<div class="delete-box">
@@ -20,32 +22,25 @@ PaymentDAO dao = PaymentDAO.getInstance();
 			<form
 				action="<%=request.getContextPath()%>/tripair/paymentRegProc.jsp"
 				method="post" name="paymentForm">
-				<input type="hidden" name="airports_id" id="airports_id"
-					value="<%=airports_id%>">
+				<input type="hidden" name="airports_id" id="airports_id" value="<%=airports_id%>">
 				<!-- middle-top -->
 				<div class="middle-top">
 					<%
 					if (check != 0) {
 					%>
-					<input type="number" name="prestige_count" id="prestige_count"
-						placeholder="예매할 비즈니스석 인원수" min="1" max="20"><br> <input
-						type="number" name="economy_count" id="economy_count"
-						placeholder="예매할 일반석 인원수" min="1" max="20"><br>
+					<input type="number" name="prestige_count" id="prestige_count"	placeholder="비즈니스석" min="1" max="20" class="count"> 
+					<input type="number" name="economy_count" id="economy_count"	placeholder="일반석" min="1" max="20" class="count">
 					<%
 					} else {
 					%>
-					<input type="hidden" name="prestige_count" id="prestige_count"
-						value="0"> <input type="number" name="economy_count"
-						id="economy_count" placeholder="예매할 일반석 인원수" min="1" max="20"><br>
+					<input type="hidden" name="prestige_count" id="prestige_count" value="0"> 
+					<input type="number" name="economy_count"	id="economy_count" placeholder="예매할 일반석 인원수" min="1" max="20"><br>
 					<%
 					}
 					%>
-					<input type="text" name="customer_name" id="customer_name"
-						size="20" maxlength="10" placeholder="이름"><br> <input
-						type="tel" name="customer_phone" id="customer_phone" size="20"
-						maxlength="13" placeholder="010-0000-0000"><br> <input
-						type="email" name="customer_email" id="customer_email" size="20"
-						maxlength="40" placeholder="이메일">
+					<input type="text" name="customer_name" id="customer_name" size="20" maxlength="10" placeholder="이름"><br> 
+					<input type="tel" name="customer_phone" id="customer_phone" size="20" maxlength="13" placeholder="010-0000-0000"><br> 
+					<input type="email" name="customer_email" id="customer_email" size="20"	maxlength="40" placeholder="이메일">
 				</div>
 				<!-- bottom -->
 				<div class="bottom">

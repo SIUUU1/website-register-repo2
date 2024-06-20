@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.HashMap;
 import java.util.Vector;
 
 import member.DBPoolUtil;
@@ -64,12 +65,45 @@ public class CartDAO {
 			cstmt.executeQuery();
 			rs1 = (ResultSet) cstmt.getObject(2);
 			while (rs1.next()) {
-				
+				// HashMap<String, String> cart = new HashMap<String, String>();
+
 				String[] cart = new String[] { String.valueOf(rs1.getInt("performance_id")),
 						rs1.getString("performance_name"), String.valueOf(rs1.getDate("performance_day")),
 						rs1.getString("reservation_seats"), String.valueOf(rs1.getInt("total_reservation_seats")),
 						String.valueOf(rs1.getInt("total_payment_amount")), String.valueOf(rs1.getInt("cart_id")) };
 				cartList.addElement(cart);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs1, cstmt, con);
+		}
+		return cartList;
+	}
+
+	// 장바구니 선택한 항목리스트함수
+	public Vector<String[]> getCartTotalList(String[] cart_id) {
+		Vector<String[]> cartList = new Vector<String[]>();
+		Connection con = null;
+		CallableStatement cstmt = null;
+		ResultSet rs1 = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			for (String data : cart_id) {
+				cstmt = con.prepareCall("{CALL CARTLIST_SELECT_PROC(?,?)}");
+				cstmt.setInt(1, Integer.parseInt(data));
+				cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+				cstmt.executeQuery();
+				rs1 = (ResultSet) cstmt.getObject(2);
+				
+				if (rs1.next()) {
+					String[] cart = new String[] { String.valueOf(rs1.getInt("performance_id")),
+							rs1.getString("performance_name"), String.valueOf(rs1.getDate("performance_day")),
+							rs1.getString("reservation_seats"), String.valueOf(rs1.getInt("total_reservation_seats")),
+							String.valueOf(rs1.getInt("total_payment_amount")), String.valueOf(rs1.getInt("cart_id")) };
+					cartList.addElement(cart);
+				}
 
 			}
 		} catch (SQLException e) {
@@ -94,7 +128,7 @@ public class CartDAO {
 			cstmt.executeQuery();
 			rs1 = (ResultSet) cstmt.getObject(2);
 			if (rs1.next()) {
-				
+
 				cart = new String[] { String.valueOf(rs1.getInt("performance_id")), rs1.getString("performance_name"),
 						String.valueOf(rs1.getDate("performance_day")), rs1.getString("reservation_seats"),
 						String.valueOf(rs1.getInt("total_reservation_seats")),

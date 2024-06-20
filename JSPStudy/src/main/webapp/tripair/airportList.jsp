@@ -7,20 +7,22 @@
 String depAirport_name = request.getParameter("depAirport_name");
 String arrAirport_name = request.getParameter("arrAirport_name");
 String dep_plandtime = request.getParameter("dep_plandtime");
-String airline_name = request.getParameter("airline_name");
+String arr_plandtime = request.getParameter("arr_plandtime");
 
 //항공권 정보 리스트 가져오기
 AirportDAO dao = AirportDAO.getInstance();
-Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirport_name, dep_plandtime, airline_name);
+Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirport_name, dep_plandtime, arr_plandtime);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <title>항공편</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/slideshow/slideshow-style.css?ver=<%=(int)(Math.random()*1000)%>">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/airportList-style.css?ver=<%=(int)(Math.random()*1000)%>">
+<script src="<%=request.getContextPath()%>/tripair/slideshow/js-slideshow.js?ver=<%=(int)(Math.random()*1000)%>"></script>
+<script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 id="title">항공편 보기</h1>
-<form action="<%=request.getContextPath()%>/tripair/prestigeCheckProc.jsp" method="post">
 <table>
 		<thead>
 			<tr>
@@ -33,7 +35,6 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 				<td>도착시간</td>
 				<td>일반석운임</td>
 				<td>비즈니스석운임</td>
-				<td>선택</td>
 			</tr>
 		</thead>
 		<%
@@ -47,7 +48,7 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 			for (int i = 0; i < airportDataList.size(); i++) {
 				AirportVO airportvo = airportDataList.elementAt(i);
 		%>
-		<tr>
+		<tr onclick="location.href='<%=request.getContextPath()%>/tripair/prestigeCheckProc.jsp?airports_id=<%=airportvo.getAirports_id()%>'">
 			<td><%=airportvo.getAirports_id()%></td>
 			<td><%=airportvo.getVihicle_id()%></td>
 			<td><%=airportvo.getAirline_name()%></td>
@@ -57,16 +58,11 @@ Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirpo
 			<td><%=airportvo.getArr_plandtime().substring(0, 16)%></td>
 			<td><%=airportvo.getEconomy_charge()%></td>
 			<td><%=airportvo.getPrestige_charge()%></td>
-			<td><input type="checkbox" name="airports_id" value="<%=airportvo.getAirports_id()%>"></td>
 	 </tr>
 	 <%
 		}//end of for
 		}//end of else
 		%>
 		</table>
-		<div id="ticketButton">
-			<input type="submit" value="예매하기">
-		</div>
-		</form>
 </body>
 </html>

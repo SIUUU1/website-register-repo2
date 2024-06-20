@@ -8,8 +8,15 @@ String loginID = (String) session.getAttribute("loginID");
 CartDAO dao = CartDAO.getInstance();
 int count = 0;
 count = dao.getCart_Count(loginID);
+if(loginID==null){
+	%>
+	<script language="JavaScript">
+	alert("로그인이 필요한 페이지입니다.");
+	window.location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/login.jsp";
+	</script>
+	<%
+}else{
 %>
-<!DOCTYPE html>
 <html>
 <head>
 <title>내 장바구니</title>
@@ -64,3 +71,6 @@ count = dao.getCart_Count(loginID);
 		</form>
 </body>
 </html>
+<%
+}//end of if(loginID==null)
+%>

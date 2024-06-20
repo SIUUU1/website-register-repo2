@@ -82,21 +82,21 @@ public class AirportDAO {
 
 	// 항공권 목록 가져오기
 	public Vector<AirportVO> getAirportList(String depAirportId, String arrAirportId, String depPlandTime,
-			String airlineId) {
+			String arrPlandtime) {
 		Vector<AirportVO> airportDataList = new Vector<>();
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		try {
+			//출발
 			con = DBPoolUtil.makeConnection();
-			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?,?)}");
-			cstmt.setString(1, airlineId);
-			cstmt.setString(2, depAirportId);
-			cstmt.setString(3, arrAirportId);
-			cstmt.setString(4, depPlandTime);
-			cstmt.registerOutParameter(5, OracleTypes.CURSOR);
+			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?)}");
+			cstmt.setString(1, depAirportId);
+			cstmt.setString(2, arrAirportId);
+			cstmt.setString(3, depPlandTime);
+			cstmt.registerOutParameter(4, OracleTypes.CURSOR);
 			cstmt.executeQuery();
-			rs = (ResultSet) cstmt.getObject(5);
+			rs = (ResultSet) cstmt.getObject(4);
 			while (rs.next()) {
 				AirportVO avo = new AirportVO();
 				avo.setAirports_id(rs.getInt("airports_id"));
@@ -110,6 +110,28 @@ public class AirportDAO {
 				avo.setPrestige_charge(rs.getInt("prestige_charge"));
 				airportDataList.addElement(avo);
 			}
+			//도착
+			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?)}");
+			cstmt.setString(2, depAirportId);
+			cstmt.setString(1, arrAirportId);
+			cstmt.setString(3, arrPlandtime);
+			cstmt.registerOutParameter(4, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(4);
+			while (rs.next()) {
+				AirportVO avo = new AirportVO();
+				avo.setAirports_id(rs.getInt("airports_id"));
+				avo.setVihicle_id(rs.getString("vihicle_id"));
+				avo.setAirline_name(rs.getString("airline_name"));
+				avo.setDepAirport_name(rs.getString("depAirport_name"));
+				avo.setArrAirport_name(rs.getString("arrAirport_name"));
+				avo.setDep_plandtime(rs.getString("dep_plandtime"));
+				avo.setArr_plandtime(rs.getString("arr_plandtime"));
+				avo.setEconomy_charge(rs.getInt("economy_charge"));
+				avo.setPrestige_charge(rs.getInt("prestige_charge"));
+				airportDataList.addElement(avo);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -119,8 +141,7 @@ public class AirportDAO {
 	}
 
 	// 항공권 검색하기
-	public Vector<AirportVO> selectAirport(String depAirportId, String arrAirportId, String depPlandTime,
-			String airlineId) {
+	public Vector<AirportVO> selectAirport(String depAirportId, String arrAirportId, String depPlandTime) {
 		Vector<AirportVO> list = new Vector<AirportVO>();
 		// properties 가져오기
 		String filePath = "/Users/ansiu/website-register-repo2/JSPStudy/src/main/java/member/db.properties";
@@ -141,11 +162,8 @@ public class AirportDAO {
 		// 1.요청 url 생성
 		StringBuilder urlBuilder = new StringBuilder(requestURL); /* URL */
 		try {
-			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + serviceKey);
-			urlBuilder.append(
-					"&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /* 페이지번호 */
-			urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
-					+ URLEncoder.encode("10", "UTF-8")); /* 한 페이지 결과 수 */
+			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
+					+ serviceKey);
 			urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 					+ URLEncoder.encode("xml", "UTF-8")); /* 데이터 타입(xml, json) */
 			urlBuilder.append("&" + URLEncoder.encode("depAirportId", "UTF-8") + "="
@@ -154,8 +172,6 @@ public class AirportDAO {
 					+ URLEncoder.encode(arrAirportId, "UTF-8")); /* 도착공항ID */
 			urlBuilder.append("&" + URLEncoder.encode("depPlandTime", "UTF-8") + "="
 					+ URLEncoder.encode(depPlandTime, "UTF-8")); /* 출발일(YYYYMMDD) */
-			urlBuilder.append("&" + URLEncoder.encode("airlineId", "UTF-8") + "="
-					+ URLEncoder.encode(airlineId, "UTF-8")); /* 항공사ID */
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

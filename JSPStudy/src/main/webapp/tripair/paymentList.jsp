@@ -13,6 +13,7 @@ Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_ph
 <html>
 <head>
 <title>항공권예매내역</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/paymentList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 	<h1 id="title">항공권 예매내역</h1>
