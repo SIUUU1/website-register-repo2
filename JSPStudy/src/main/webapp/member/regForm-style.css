@@ -46,7 +46,7 @@ td > span {
   font-size: 8px;
   color: red;
 }
-input {
+table input {
   border: 1px solid lightgray;
   margin: 3px;
   height: 20px;

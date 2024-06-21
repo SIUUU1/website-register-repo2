@@ -81,14 +81,12 @@ public class AirportDAO {
 	}
 
 	// 항공권 목록 가져오기
-	public Vector<AirportVO> getAirportList(String depAirportId, String arrAirportId, String depPlandTime,
-			String arrPlandtime) {
+	public Vector<AirportVO> getAirportList(String depAirportId, String arrAirportId, String depPlandTime) {
 		Vector<AirportVO> airportDataList = new Vector<>();
 		Connection con = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		try {
-			//출발
 			con = DBPoolUtil.makeConnection();
 			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?)}");
 			cstmt.setString(1, depAirportId);
@@ -110,28 +108,6 @@ public class AirportDAO {
 				avo.setPrestige_charge(rs.getInt("prestige_charge"));
 				airportDataList.addElement(avo);
 			}
-			//도착
-			cstmt = con.prepareCall("{CALL AIRPORTS_PRINT_PROC(?,?,?,?)}");
-			cstmt.setString(2, depAirportId);
-			cstmt.setString(1, arrAirportId);
-			cstmt.setString(3, arrPlandtime);
-			cstmt.registerOutParameter(4, OracleTypes.CURSOR);
-			cstmt.executeQuery();
-			rs = (ResultSet) cstmt.getObject(4);
-			while (rs.next()) {
-				AirportVO avo = new AirportVO();
-				avo.setAirports_id(rs.getInt("airports_id"));
-				avo.setVihicle_id(rs.getString("vihicle_id"));
-				avo.setAirline_name(rs.getString("airline_name"));
-				avo.setDepAirport_name(rs.getString("depAirport_name"));
-				avo.setArrAirport_name(rs.getString("arrAirport_name"));
-				avo.setDep_plandtime(rs.getString("dep_plandtime"));
-				avo.setArr_plandtime(rs.getString("arr_plandtime"));
-				avo.setEconomy_charge(rs.getInt("economy_charge"));
-				avo.setPrestige_charge(rs.getInt("prestige_charge"));
-				airportDataList.addElement(avo);
-			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -23,10 +23,10 @@ Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_ph
 				<td>항공편명</td>
 				<td>결제일</td>
 				<td>이름</td>
-				<td>전화번호</td>
 				<td>출발공항</td>
 				<td>도착공항</td>
 				<td>출발시간</td>
+				<td>도착시간</td>
 				<td>일반석</td>
 				<td>비즈니스석</td>
 				<td>항공사명</td>
@@ -57,8 +57,7 @@ Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_ph
 		%>
 	</table>
 	<div id="ticketButton">
-		<input type="button" value="메인페이지"
-			onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">
+	<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">메인페이지</button>
 	</div>
 </body>
 </html>

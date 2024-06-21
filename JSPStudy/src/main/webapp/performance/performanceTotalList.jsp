@@ -13,6 +13,7 @@ count = dao.getPerformance_Count(performance_genre);
 <html>
 <head>
 <title>공연리스트</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/performance/performanceTotalList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 <h1 id="title">공연리스트</h1>

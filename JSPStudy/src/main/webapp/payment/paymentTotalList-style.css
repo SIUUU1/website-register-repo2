@@ -1,14 +1,8 @@
 @charset "UTF-8";
 
-#title {
-	text-align: center;
-	font-size: 25px;
-	margin: 60px auto;
-}
-
 table {
 	width: 80%;
-	margin: 20px auto 50px auto;
+	margin: 50px auto 50px auto;
 	text-align: center;
 	border-collapse: collapse;
 	font-size: 13px;
@@ -30,56 +24,43 @@ td {
 }
 
 thead td:first-child {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(2) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(3) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(4) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(5) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(6) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(7) {
-	width: 9%;
+	width: 12.5%;
 }
 
 thead td:nth-child(8) {
-	width: 9%;
-}
-
-thead td:nth-child(9) {
-	width: 9%;
-}
-
-thead td:nth-child(10) {
-	width: 9%;
-}
-
-thead td:nth-child(11) {
-	width: 9%;
+	width: 12.5%;
 }
 
 #ticketButton {
 	margin: 0 auto;
-	width: 80%;
 	text-align: center;
 }
 
-button {
+#mainB{
 	background-color: #2A2A4E;
 	border-style: none;
 	border: 1px solid black;

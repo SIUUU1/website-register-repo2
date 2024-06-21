@@ -44,23 +44,25 @@ public class PaymentDAO {
 	}
 
 	// 결제 정보 저장
-	public int setPaymentRegister(PaymentVO pvo) {
+	public int setPaymentRegister(Vector<PaymentVO> payments) {
 		Connection con = null;
 		CallableStatement cstmt = null;
 		int value = -1;
 		try {
 			con = DBPoolUtil.makeConnection();
 			cstmt = con.prepareCall("{CALL PAYMENTS_INSERT_PROC(?,?,?,?,?,?,?)}");
-			cstmt.setInt(1, pvo.getAirports_id());
-			cstmt.setString(2, pvo.getCustomer_name());
-			cstmt.setString(3, pvo.getCustomer_phone());
-			cstmt.setString(4, pvo.getCustomer_email());
-			cstmt.setInt(5, pvo.getEconomy_count());
-			cstmt.setInt(6, pvo.getPrestige_count());
-			cstmt.registerOutParameter(7, Types.INTEGER);
-			cstmt.executeUpdate();
-			value = cstmt.getInt(7);
-			value = (value == 1) ? 1 : 0;
+			for(PaymentVO pvo :payments) {
+				cstmt.setInt(1, pvo.getAirports_id());
+				cstmt.setString(2, pvo.getCustomer_name());
+				cstmt.setString(3, pvo.getCustomer_phone());
+				cstmt.setString(4, pvo.getCustomer_email());
+				cstmt.setInt(5, pvo.getEconomy_count());
+				cstmt.setInt(6, pvo.getPrestige_count());
+				cstmt.registerOutParameter(7, Types.INTEGER);
+				cstmt.executeUpdate();
+				value = cstmt.getInt(7);
+				value = (value == 1) ? 1 : 0;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

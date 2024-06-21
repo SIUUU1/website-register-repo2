@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+n<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html lang="ko">
 <head>
   <title>회원가입</title>

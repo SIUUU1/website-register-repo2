@@ -1,8 +1,9 @@
 @charset "UTF-8";
 
-section{
-	height: 800px;
+section {
+	height: 600px;
 }
+
 #title {
 	margin: 40px, 0;
 	text-align: center;
@@ -12,25 +13,54 @@ section{
 }
 
 article.tripAirSelect {
-	width: 1100px;
-	height: 300px;
+	width: 100%;
+	height: 410px;
 	margin: 0 auto;
+	padding: 100px 0;
+	background: url(../tripair/source/trip01.jpg) no-repeat center;
+	background-size: cover;
 }
 
 #selectForm {
-	width: 100%;
-	height: 100px;
+	width: 90%;
+	height: 150px;
 	margin: 0 auto;
+	align-content: center;
+	background-color: white;
+	border-radius: 10px;
 	text-align: center;
 }
+/*topselectbox*/
+#topSelectBox {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	font-size: 15px;
+	text-align: left;
+}
 
-/*selectbox*/
-form .airSelectBox {
+#topSelectBox .topSelectBox {
+	border: none;
+	font-size: 15px;
+	outline: none;
+}
+
+#count {
+	border: none;
+	outline: none;
+	width: 35px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+/*bottomselectbox*/
+form .bottomSelect {
 	width: 300px;
 	height: 60px;
 	border: 1px solid rgb(218, 217, 217);
 	border-radius: 10px;
 	font-size: 15px;
+	outline: none;
 }
 
 #timeBox {
@@ -42,10 +72,11 @@ form .airSelectBox {
 	margin: 0px 10px;
 }
 
-#dep_plandtime,#arr_plandtime {
+#dep_plandtime, #arr_plandtime {
 	width: 130px;
 	height: 60px;
 	border: none;
+	outline: none;
 }
 
 #searchBB {
@@ -66,4 +97,13 @@ form .airSelectBox {
 
 .fa-magnifying-glass {
 	color: white;
+}
+
+.fa-plane-departure, .fa-person, .fa-cart-shopping {
+	font-size: 20px;
+}
+
+.fa-person {
+	margin-left: 20px;
+	font-size: 25px;
 }

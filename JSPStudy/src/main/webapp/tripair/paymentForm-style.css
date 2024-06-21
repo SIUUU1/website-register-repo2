@@ -1,64 +1,55 @@
-@charset "UTF-8";
-/* top */
 #title {
-	text-align: center;
-	margin: 30px 0;
+  text-align: center;
+  font-size: 25px;
+  margin: 50px auto 0 auto;
+}
+form {
+  width: 80%;
+  padding: 10px;
+  margin: 0 auto;
+}
+h4 {
+  font-size: small;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  border-right: 0;
+}
+td.title {
+  width: 20%;
+  padding-left: 5px;
+  background-color: rgb(192, 219, 248);
+  text-align: center;
+  font-size: 12px;
+  font-weight: bolder;
+}
+td.content {
+  width: 80%;
+  padding: 3px 3px 5px 3px;
 }
 
-div.delete-box {
-	height: 669px;
-	padding: 30px 0;
+table input {
+  border: 1px solid lightgray;
+  margin: 3px;
+  height: 20px;
+  border-radius: 2px;
+  background-color: #f4f4f4;
+  outline: 0;
 }
-
-#back {
-	background-color: white;
-	opacity: 0.96;
-	width: 550px;
-	height: 360px;
-	margin: 70px auto;
-	padding: 30px 0;
-	border-radius: 50px;
-	border: 1px solid rgb(218, 217, 217);
+div.payButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
-
-/* middle-top */
-div.middle-top {
-	margin: 0 auto;
-	text-align: center;
-}
-
-div.middle-top input {
-	margin: 5px 0;
-	height: 45px;
-	width: 290px;
-	border-radius: 5px;
-	border: 1px solid rgb(218, 217, 217);
-	outline: 0;
-}
-div.middle-top .count {
-	width: 140px;
-}
-
-div.bottom {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 10px auto;
-	width: 400px;
-}
-
-/* button */
-button {
-	background-color: #f4f4f4;
-	border: 1px solid lightgray;
-	border-radius: 5px;
-	margin: 3px 10px;
-	width: 100px;
-	height: 25px;
-}
-
 #subButton {
-	background-color: rgb(89, 159, 234);
+  background-color: rgb(89, 159, 234);
+  border-radius: 5px;
+  margin-right: 10px;
   border: none;
   color: white;
 }

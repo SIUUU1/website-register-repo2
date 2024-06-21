@@ -14,6 +14,7 @@ if (paymentArr != null) {
 <html>
 <head>
 <title>current Payment</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/paymentList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 	<h1 id="title">결제 내역</h1>
@@ -23,10 +24,10 @@ if (paymentArr != null) {
 				<td>항공편명</td>
 				<td>결제일</td>
 				<td>이름</td>
-				<td>전화번호</td>
 				<td>출발공항</td>
 				<td>도착공항</td>
 				<td>출발시간</td>
+				<td>도착시간</td>
 				<td>일반석</td>
 				<td>비즈니스석</td>
 				<td>항공사명</td>
@@ -45,8 +46,7 @@ if (paymentArr != null) {
 		</tr>
 	</table>
 	<div id="ticketButton">
-		<input type="button" value="메인페이지"
-			onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">
+	<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">메인페이지</button>
 	</div>
 </body>
 </html>

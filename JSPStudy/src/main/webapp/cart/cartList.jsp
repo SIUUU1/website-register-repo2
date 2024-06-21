@@ -20,6 +20,7 @@ if(loginID==null){
 <html>
 <head>
 <title>내 장바구니</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/cart/cartList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 <h1 id="title">내 장바구니</h1>
@@ -32,8 +33,6 @@ if(loginID==null){
 				<td>예매좌석</td>
 				<td>총 예매수</td>
 				<td>총 티켓가격</td>
-				<td></td>
-				<td></td>
 			</tr>
 		</thead>
 		<%
@@ -63,10 +62,8 @@ if(loginID==null){
 		%>
 		</table>
 		<div id="ticketButton">
-			<button type="button" onclick="location.href='<%=request.getContextPath()%>/cart/clearCartPro.jsp'">전체항목삭제</button>
-		</div>
-		<div id="ticketButton">
-			<button type="submit">결제하기</button>
+			<button type="button" id="clearB" onclick="location.href='<%=request.getContextPath()%>/cart/clearCartPro.jsp'">전체항목삭제</button>
+			<button type="submit" id="payB">결제하기</button>
 		</div>
 		</form>
 </body>

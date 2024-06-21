@@ -19,13 +19,14 @@ if(loginID==null){
 <html>
 <head>
 <title>결제내역</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/payment/paymentTotalList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
 	<h1 id="title">결제 내역</h1>
 	<table>
 		<thead>
 			<tr>
-				<td>결제내역</td>
+				<td>결제날짜</td>
 				<td>고객명</td>
 				<td>연락처</td>
 				<td>배송지</td>
@@ -72,9 +73,7 @@ if(loginID==null){
 		%>
 	</table>
 	<div id="ticketButton">
-		<input type="button"
-			onclick="location.href='<%=request.getContextPath()%>/performance/performanceTotalList.jsp'"
-			value="메인페이지">
+	<button id="mainB" onclick="location.href='<%=request.getContextPath()%>/performance/performanceTotalList.jsp'">메인페이지</button>
 	</div>
 </body>
 </html>
