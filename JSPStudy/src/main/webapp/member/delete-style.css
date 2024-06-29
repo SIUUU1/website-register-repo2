@@ -2,7 +2,7 @@
 /* top */
 #title {
 	text-align: center;
-	margin: 50px 0;
+	margin: 50px 0 30px 0;
 }
 
 div.delete-box {
@@ -19,6 +19,10 @@ div.delete-box {
 	padding: 50px 0;
 	border-radius: 50px;
 	border: 1px solid rgb(218, 217, 217);
+}
+#back p {
+	margin: 20px auto;
+	text-align: center;
 }
 
 /* middle-top */

@@ -14,6 +14,7 @@ String loginID = (String) session.getAttribute("loginID");
 		<div id="back">
 			<!-- top -->
 			<h1 id="title">회원 탈퇴</h1>
+			<p>정말로 티켓월드 회원 탈퇴하시겠습니까?</p>
 			<form action="deleteProc.jsp" method="post" name="deleteForm">
 				<!-- middle-top -->
 				<div class="middle-top">

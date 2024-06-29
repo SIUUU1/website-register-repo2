@@ -26,7 +26,7 @@
 					<a href="<%=request.getContextPath()%>/member/main.jsp"><span>Ticket World</span></a><br>
 				</div>
 				<div class="search">
-					<form action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get">
+					<form id="search_form" action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get">
 	        <input type="text" name="search" id="search" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
 	        <div id="button-search">
 	          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -44,7 +44,7 @@
 				<li>트립에어</li>
 				<li>MD샵</li>
 				<li>커뮤니티</li>
-				<li>오픈공지</li>
+				<li>장바구니</li>
 				<li>마이페이지</li>
 				<li>고객센터</li>
 			</ul>
@@ -71,10 +71,11 @@
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><li>공연관람후기</li></a>
-				<a href="#"><li>항공사별이용후기</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>오픈공연공지</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp"><li>장바구니</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/payment/paymentTotalList.jsp"><li>공연결제내역</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/currentPayment.jsp "><li>항공권결제내역</li></a>
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/login.jsp"><li>로그인</li></a>

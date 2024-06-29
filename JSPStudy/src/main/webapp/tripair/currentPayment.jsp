@@ -3,12 +3,12 @@
 <%@ page import="tripair.PaymentDAO"%>
 <%@ page import="java.util.*"%>
 <%
+String loginID = (String) session.getAttribute("loginID");
+
 //현재 결제 내역 가져오기
-String customer_phone = request.getParameter("customer_phone");
-int airports_id = Integer.parseInt(request.getParameter("airports_id"));
 PaymentDAO dao = PaymentDAO.getInstance();
-String[] paymentArr = dao.getPaymentList(customer_phone, airports_id);
-if (paymentArr != null) {
+Vector<String[]> paymentvec = dao.getPaymentList(loginID);
+if (paymentvec != null) {
 %>
 <!DOCTYPE html>
 <html>
@@ -34,16 +34,23 @@ if (paymentArr != null) {
 				<td>총결제금액</td>
 			</tr>
 		</thead>
-		<tr>
 			<%
-			for (int i = 0; i < paymentArr.length; i++) {
-			%>
-			<td><%=paymentArr[i]%></td>
-			<%
-			} //end of for
+			for (int i = 0; i < paymentvec.size(); i++) {
+				String[] payment=paymentvec.get(i);
+				%>
+				<tr>
+				<%
+				for(int j=0;j<payment.length;j++){
+					%>
+					<td><%=payment[j]%></td>
+					<%
+				}
+				%>
+				</tr>
+				<%
+			} //end of for (int i = 0; i < paymentvec.size(); i++)
 			} //end of if
 			%>
-		</tr>
 	</table>
 	<div id="ticketButton">
 	<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">메인페이지</button>

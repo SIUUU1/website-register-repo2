@@ -4,7 +4,7 @@
   margin: 50px auto 0 auto;
 }
 form {
-  width: 80%;
+  width: 60%;
   padding: 10px;
   margin: 0 auto;
 }
@@ -14,6 +14,10 @@ h4 {
 table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 15px;
+}
+table span {
+	font-size: 16px;
 }
 td {
   border-top: 1px solid lightgray;
@@ -21,7 +25,7 @@ td {
   border-right: 0;
 }
 td.title {
-  width: 20%;
+  width: 200px;
   padding-left: 5px;
   background-color: rgb(192, 219, 248);
   text-align: center;
@@ -29,17 +33,22 @@ td.title {
   font-weight: bolder;
 }
 td.content {
-  width: 80%;
   padding: 3px 3px 5px 3px;
 }
-
+#prestige_count, #economy_count {
+	border:none;
+	text-align:right;
+	width:40px;
+}
 table input {
   border: 1px solid lightgray;
   margin: 3px;
   height: 20px;
   border-radius: 2px;
-  background-color: #f4f4f4;
+  background-color: white;
   outline: 0;
+  width:300px;
+  border:none;
 }
 div.payButton {
   display: flex;

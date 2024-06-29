@@ -38,14 +38,14 @@
 		<nav id="mainMenuTitle">
 			<ul onmouseover="displayMenu('mouseover')"
 				onmouseout="displayMenu('mouseout')">
-				<li>메인페이지관리</li>
-				<li>티켓월드관리</li>
-				<li>트립에어관리</li>
-				<li>MD샵관리</li>
-				<li>커뮤니티관리</li>
-				<li>오픈공연관리</li>
-				<li>회원관리</li>
-				<li>고객센터관리</li>
+				<li>메인페이지</li>
+				<li>공연</li>
+				<li>트립에어</li>
+				<li>MD샵</li>
+				<li>커뮤니티</li>
+				<li>오픈공연</li>
+				<li>회원</li>
+				<li>고객센터</li>
 			</ul>
 		</nav>
 		<nav id="mainMenuContent" onmouseover="displayMenu('mouseover')"
@@ -59,24 +59,23 @@
 			</ul>
 			<ul>
 				<a href="#"><li>항공권정보관리</li></a>
-				<a href="#"><li>항공권예매정보관리</li></a>
+				<a href="#"><li>항공권결제관리</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>굿즈샵관리</li></a>
+				<a href="#"><li>MD샵관리</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>공연관람후기관리</li></a>
-				<a href="#"><li>항공사이용후기관리</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>오픈공연공지관리</li></a>
+				<a href="#"><li>공연결제내역관리</li></a>
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/memberListForm.jsp"><li>회원관리하기</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>티켓월드 고객센터</li></a>
-				<a href="#"><li>트립에어 고객센터</li></a>
+				<a href="#"><li>티켓월드고객센터관리</li></a>
+				<a href="#"><li>트립에어고객센터관리</li></a>
 			</ul>
 		</nav>
 	</header>

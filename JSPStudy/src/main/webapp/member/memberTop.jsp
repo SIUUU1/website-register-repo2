@@ -49,7 +49,7 @@ String loginID = (String) session.getAttribute("loginID");
 				<li>트립에어</li>
 				<li>MD샵</li>
 				<li>커뮤니티</li>
-				<li>오픈공지</li>
+				<li>장바구니</li>
 				<li>마이페이지</li>
 				<li>고객센터</li>
 			</ul>
@@ -76,14 +76,14 @@ String loginID = (String) session.getAttribute("loginID");
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><li>공연관람후기</li></a>
-				<a href="#"><li>항공사별이용후기</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>오픈공연공지</li></a>
-			</ul>
-			<ul>
-				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp"><li>내장바구니</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp"><li>장바구니</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/payment/paymentTotalList.jsp"><li>공연결제내역</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/currentPayment.jsp "><li>항공권결제내역</li></a>
+			</ul>
+			<ul>
+				
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/modifyForm.jsp"><li>내정보수정하기</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/member/deleteForm.jsp"><li>회원탈퇴</li></a>
 				<a href="<%=request.getContextPath()%>/member/logout.jsp"><li>로그아웃</li></a>

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class PaymentVO {
 	private int payments_id; // 결제ID
+	private String userId; // 고객 ID
 	private int airports_id; // 항공권ID
 	private String vihicle_id; // 항공편ID
 	private String payment_date; // 결제일
@@ -52,6 +53,14 @@ public class PaymentVO {
 
 	public void setPayments_id(int payments_id) {
 		this.payments_id = payments_id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getAirports_id() {
@@ -145,10 +154,10 @@ public class PaymentVO {
 
 	@Override
 	public String toString() {
-		return "PaymentVO [payments_id=" + payments_id + ", airports_id=" + airports_id + ", vihicle_id=" + vihicle_id
-				+ ", payment_date=" + payment_date + ", customer_name=" + customer_name + ", customer_phone="
-				+ customer_phone + ", customer_email=" + customer_email + ", economy_count=" + economy_count
-				+ ", prestige_count=" + prestige_count + ", total_price=" + total_price + "]";
+		return "PaymentVO [payments_id=" + payments_id + ", userId=" + userId + ", airports_id=" + airports_id
+				+ ", vihicle_id=" + vihicle_id + ", payment_date=" + payment_date + ", customer_name=" + customer_name
+				+ ", customer_phone=" + customer_phone + ", customer_email=" + customer_email + ", economy_count="
+				+ economy_count + ", prestige_count=" + prestige_count + ", total_price=" + total_price + "]";
 	}
 
 }

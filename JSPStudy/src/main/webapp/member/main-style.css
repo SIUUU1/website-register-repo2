@@ -90,7 +90,6 @@ header div.search {
 	border-radius: 30px;
 	width: 400px;
 	height: 50px;
-	
 }
 
 header div.search form {
@@ -100,6 +99,7 @@ header div.search form {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding: 0;
 }
 
 header div.search input {

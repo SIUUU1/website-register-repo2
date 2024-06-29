@@ -39,24 +39,24 @@ if(loginID==null){
        		 <option value=1 selected>일반석</option>
        		 <option value=2 selected>비즈니스석</option>
     			</select>
-					비즈니스석<input type="number" name="prestige_count" id="prestige_count" class="count" value="<%=count%>" readonly> 
-					일반석<input type="number" name="economy_count" id="economy_count" class="count" value="<%=count%>" readonly>
+					비즈니스석<input type="number" name="prestige_count" id="prestige_count" class="count" value="<%=count%>" readonly> 석
+					일반석<input type="number" name="economy_count" id="economy_count" class="count" value="<%=count%>" readonly> 석
 					</td>
 					<%
 					} else {
 					%>
 					<tr>
-					<td class="title">좌석</td>
-					 <td class="content">
+					<td class="content" colspan="2">
 					<input type="hidden" name="prestige_count" id="prestige_count" value="0"> 
-					일반석<input type="number" name="economy_count"	id="economy_count" class="count" value="<%=count%>" readonly><br>
+					일반석<input type="number" name="economy_count"	id="economy_count" class="count" value="<%=count%>" readonly> 석<br>
 					</td>
 					<%
 					}
-					for(int i=0;i<count;i++){
-						int num=0;
+					int num=1;
+					for(int i=0;i<count;i++,num++){
+						
 						%>
-						<tr><td class="content" cols="2"><span>탑승자 <%=++num %> 정보</span><br></td></tr>
+						<tr><td class="content" cols="2"><span>탑승자 <%=num %> 정보</span><br></td></tr>
 						<tr>
         		<td class="title"><label for="customer_name">이름</label></td>
         		<td class="content">

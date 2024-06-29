@@ -232,11 +232,6 @@ public class MemberDAO {
 			pstmt.setInt(15, Integer.parseInt(vo.getSnsService()));
 			pstmt.setInt(16, Integer.parseInt(vo.getDisclosureInfo()));
 			pstmt.setString(17, vo.getUserId());
-			pstmt.setString(18, vo.getUserGrade());
-			pstmt.setInt(19, vo.getUserAccumulatedPayment());
-			pstmt.setInt(20, vo.getUserPoints());
-			pstmt.setDouble(21, vo.getUserPointRatio());
-			pstmt.setDouble(22, vo.getUserSaleRatio());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

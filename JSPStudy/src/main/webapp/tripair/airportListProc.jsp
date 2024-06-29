@@ -8,7 +8,7 @@ String arrAirport_name = request.getParameter("arrAirport_name");
 String dep_plandtime = request.getParameter("dep_plandtime");
 String airline_name = request.getParameter("airline_name");
 AirportDAO dao = AirportDAO.getInstance();
-Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirport_name, dep_plandtime, airline_name);
+Vector<AirportVO> airportDataList = dao.getAirportList(depAirport_name, arrAirport_name, dep_plandtime);
 %>
 <!DOCTYPE html>
 <html>
