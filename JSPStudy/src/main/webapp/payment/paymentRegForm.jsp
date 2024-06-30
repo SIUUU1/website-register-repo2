@@ -99,7 +99,6 @@ if(loginID == null){
        <label for="usingPoints">사용할 포인트</label></td>
        <td id="address">
        <input type="number" name="usingPoints" id="usingPoints">
-       <input type="number" name="" id="" value=>
       </td>
       </tr>
     </table>

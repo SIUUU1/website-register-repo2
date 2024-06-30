@@ -45,6 +45,5 @@ if (check == 1) {
 <title>Insert title here</title>
 </head>
 <body>
-
 </body>
 </html>

@@ -24,7 +24,7 @@ if(loginID==null){
 </head>
 <body>
 <h1 id="title">내 장바구니</h1>
-<form action="<%=request.getContextPath()%>/payment/paymentListProc.jsp" method="post">
+<form action="<%=request.getContextPath()%>/cart/carListProc.jsp" method="post">
 <table>
 		<thead>
 			<tr>
@@ -33,6 +33,7 @@ if(loginID==null){
 				<td>예매좌석</td>
 				<td>총 예매수</td>
 				<td>총 티켓가격</td>
+				<td colspan="2"></td>
 			</tr>
 		</thead>
 		<%
