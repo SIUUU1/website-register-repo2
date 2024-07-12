@@ -1,12 +1,27 @@
 @charset "UTF-8";
 
+#title {
+	text-align: center;
+	font-size: 25px;
+	margin: 60px auto 0 auto;
+}
+
+table {
+	margin: 20px auto;
+}
+
+td, tr {
+	padding: 10px;
+}
+
 input {
 	display: none;
+	text-align: center;
 }
 /* 체크박스 만들기 */
 input.p_seat+label {
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	border: 2px solid #000;
 	background: skyblue;
 	display: inline-block;
@@ -16,9 +31,10 @@ input.p_seat+label {
 	user-select: none;
 	margin: 5px;
 }
+
 input.s_seat+label, input.n_seat+label {
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	margin: 5px;
 	border: 2px solid #000;
 	background: white;
@@ -29,6 +45,21 @@ input.s_seat+label, input.n_seat+label {
 	user-select: none;
 }
 /* 체크되었을 때 */
-input:checked + label {  
-    background: blue;
+input:checked+label {
+	background: blue;
+}
+
+#ticketButton {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#subButton {
+	background-color: #2A2A4E;
+	border-style: none;
+	border: 1px solid black;
+	width: 100px;
+	height: 30px;
+	border-radius: 20px;
+	color: white;
 }

@@ -32,7 +32,7 @@ count=dao.getPerformance_Count();
 		if(count==0){
 			%>
 			<tr>
-				<td align="center" colspan="6">등록된 공연 정보가 없습니다.</td>
+				<td align="center" colspan="7">등록된 공연 정보가 없습니다.</td>
 			</tr>
 		<%
 		}else{
@@ -55,7 +55,7 @@ count=dao.getPerformance_Count();
 		%>
 		</table>
 		<div id="ticketButton">
-			<button type="button" onclick="location.href='<%=request.getContextPath()%>/performance/performanceRegForm.jsp'">공연등록</button>
+			<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceRegForm.jsp'">공연등록</button>
 		</div>
 </body>
 </html>

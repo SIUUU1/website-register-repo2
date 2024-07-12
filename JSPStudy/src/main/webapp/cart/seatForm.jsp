@@ -69,7 +69,7 @@ if(loginID==null){
 				}//end of if(seat==null)
 			%>
 		</table>
-			<div class="wriButton">
+			<div id="ticketButton">
 			<button type="submit" id="subButton" onclick="writeCheck()">예매하기</button>
 			</div>
 	</form>

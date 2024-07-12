@@ -44,7 +44,17 @@ function searchPostCode() {
 		}
 	}).open();
 }
-
+//포인트 사용시 점검
+function onUsingPoint(point){
+	const paymentAmount = document.paymentForm.paymentAmount.value;
+	const usingPoints = document.paymentForm.usingPoints.value;
+	const saleAmount = document.paymentForm.saleAmount.value;
+	if(paymentAmount-usingPoints-saleAmount < point){
+		aler('사용할 수 없는 포인트입니다.');
+		return;
+	}
+	document.paymentForm.paymentAmount.value = paymentAmount-usingPoints-saleAmount;
+}
 //결제시 모든 내용 점검하여 이상없는지 확인한다.
 function inputCheck() {
 	if (document.paymentForm.userName.value === "") {

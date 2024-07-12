@@ -19,6 +19,18 @@ String postCode = member.getPostCode();
 String defaultAddress = member.getDefaultAddress();
 String detailedAddress = member.getDetailedAddress();
 String extraAddress = member.getExtraAddress();
+Double userSaleRatio = member.getUserSaleRatio();
+Double userPointRatio = member.getUserPointRatio();
+
+
+if(cart_id == null){
+	%>
+	<script language="JavaScript">
+	alert("결제상품을 선택하세요.");
+	history.go(-1);
+	</script>
+	<%
+}
 if(loginID == null){
 	%>
 	<script language="JavaScript">
@@ -31,13 +43,14 @@ if(loginID == null){
 <html>
 <head>
 <title>payment register form</title>
- <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="<%=request.getContextPath()%>/payment/js-paymentRegForm.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="<%=request.getContextPath()%>/payment/js-paymentRegForm.js?ver=<%=(int)(Math.random()*1000)%>" defer></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/payment/paymentRegForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
- <h1 id="title">결제창</h1>
+ <h1 id="title">주문결제</h1>
  <!-- 선택한 장바구니 리스트 -->
- <h2>결제 항목</h2>
+ <h2>주문상품</h2>
  <table>
 		<thead>
 			<tr>
@@ -45,13 +58,13 @@ if(loginID == null){
 				<td>공연일</td>
 				<td>예매좌석</td>
 				<td>총 예매수</td>
-				<td>총 티켓가격</td>
-				<td></td>
-				<td></td>
+				<td>티켓가격</td>
 			</tr>
 		</thead>
 		<%
+		int paymentAmount = 0;
 		for (int i = 0; i < cartList.size(); i++) {
+			paymentAmount+= Integer.parseInt(cartList.get(i)[5]);
 		%>
 		<tr>
 			<td><%=cartList.get(i)[1]%></td>
@@ -62,6 +75,8 @@ if(loginID == null){
 	 </tr>
  <%
 		}//end of for
+		int saleAmount = (int) Math.floor(paymentAmount*userSaleRatio);
+		int userPoints = (int)Math.ceil( paymentAmount*userPointRatio);
 		%>
 </table>
  <button type="button" onclick="getUserInfo('<%=userName%>','<%=userPhoneNum%>','<%=postCode%>','<%=defaultAddress%>','<%=detailedAddress%>','<%=extraAddress%>')">본인정보가져오기</button>
@@ -93,12 +108,23 @@ if(loginID == null){
         </td>
       </tr>
       <tr>
-      <td>총 포인트 : <%=member.getUserPoints()%>점</td>
-      
-       <td class="title">
-       <label for="usingPoints">사용할 포인트</label></td>
-       <td id="address">
-       <input type="number" name="usingPoints" id="usingPoints">
+      <td class="title">총 포인트<%=member.getUserPoints()%>점</td>
+       <td >
+       <label for="usingPoints">사용할 포인트</label>
+       <input type="number" name="usingPoints" id="usingPoints" value="0" max="<%=member.getUserPoints()%>" onchange="onUsingPoint(<%=member.getUserPoints()%>)"> 점
+      </td>
+      </tr>
+      <tr>
+      <td class="title">고객등급할인</td>
+      <td >
+       <input type="number" name="saleAmount" id="saleAmount" value="<%=saleAmount%>"> 원
+      </td>
+      </tr>
+      <tr>
+      <td class="title">총 결제금액</td>
+      <td >
+       <input type="number" name="paymentAmount" id="paymentAmount" value="<%=paymentAmount%>"> 원
+       <input type="hidden" name="userPoints" id="userPoints" value="<%=userPoints%>">
       </td>
       </tr>
     </table>

@@ -1,6 +1,3 @@
-/**
- * 
- */
 //콜백함수(body onlod call back func)
 function call_js(){
   //UI 객체 참조변수 선언

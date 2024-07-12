@@ -38,10 +38,8 @@
 		<nav id="mainMenuTitle">
 			<ul onmouseover="displayMenu('mouseover')"
 				onmouseout="displayMenu('mouseout')">
-				<li>메인페이지</li>
 				<li>공연</li>
 				<li>트립에어</li>
-				<li>MD샵</li>
 				<li>커뮤니티</li>
 				<li>오픈공연</li>
 				<li>회원</li>
@@ -50,19 +48,12 @@
 		</nav>
 		<nav id="mainMenuContent" onmouseover="displayMenu('mouseover')"
 			onmouseout="displayMenu('mouseout')">
-		<ul>
-				<a href="#"><li>About	Ticket World</li></a>
-				<a href="#"><li>Ticket World-Overview</li></a>
-			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><li>공연정보관리</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>항공권정보관리</li></a>
 				<a href="#"><li>항공권결제관리</li></a>
-			</ul>
-			<ul>
-				<a href="#"><li>MD샵관리</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>공연관람후기관리</li></a>

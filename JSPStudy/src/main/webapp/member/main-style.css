@@ -142,7 +142,7 @@ header>#mainMenuTitle>ul {
 }
 
 header>#mainMenuTitle>ul>li {
-	width: 12.5%;
+	width: 16%;
 	border-right: 1px solid rgb(218, 217, 217);
 	padding: 0 20px;
 	margin: 15px 0;
@@ -160,10 +160,11 @@ header>#mainMenuTitle>ul>li:last-child {
 /* mainMenuContent */
 header>#mainMenuContent {
 	display: none;
+	width: 100%;
 }
 
 header>#mainMenuContent>ul {
-	width: 12.5%;
+	width: 16.67%;
 	text-align: center;
 	font-size: 12px;
 	background-color: rgba(255, 255, 255, 0.8);

@@ -40,7 +40,7 @@ if(loginID==null){
 		if(count==0){
 			%>
 			<tr>
-				<td align="center" colspan="5">장바구니가 비어있습니다.</td>
+				<td align="center" colspan="7">장바구니가 비어있습니다.</td>
 			</tr>
 		<%
 		}else{

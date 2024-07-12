@@ -39,10 +39,8 @@
 		<nav id="mainMenuTitle">
 			<ul onmouseover="displayMenu('mouseover')"
 				onmouseout="displayMenu('mouseout')">
-				<li>티켓월드</li>
 				<li>공연예매</li>
 				<li>트립에어</li>
-				<li>MD샵</li>
 				<li>커뮤니티</li>
 				<li>장바구니</li>
 				<li>마이페이지</li>
@@ -51,10 +49,6 @@
 		</nav>
 		<nav id="mainMenuContent" onmouseover="displayMenu('mouseover')"
 			onmouseout="displayMenu('mouseout')">
-			<ul>
-				<a href="#"><li>About	Ticket World</li></a>
-				<a href="#"><li>Ticket World-Overview</li></a>
-			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=뮤지컬"><li>뮤지컬</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=콘서트"><li>콘서트</li></a>
@@ -65,9 +59,6 @@
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp"><li>항공권예매</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/identifyForm.jsp"><li>예매항공권확인</li></a>
-			</ul>
-			<ul>
-				<a href="#"><li>굿즈샵</li></a>
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><li>공연관람후기</li></a>

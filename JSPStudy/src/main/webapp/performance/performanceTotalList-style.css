@@ -55,3 +55,18 @@ thead td:nth-child(6) {
 thead td:nth-child(7) {
 	width: 14%;
 }
+
+#ticketButton {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#ticketButton button  {
+	background-color: #2A2A4E;
+	border-style: none;
+	border: 1px solid black;
+	width: 100px;
+	height: 30px;
+	border-radius: 20px;
+	color: white;
+}

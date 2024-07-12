@@ -7,6 +7,14 @@
 String loginID = (String) session.getAttribute("loginID");
 String[] p_seatArr = request.getParameterValues("p_seat");
 int performance_id = Integer.parseInt(request.getParameter("performance_id"));
+if(p_seatArr==null){
+	%>
+	<script>
+	alert('좌석을 선택하세요.');
+	history.go(-1);
+	</script>
+	<%
+}else {
 //좌석정보 가져오기
 PerformanceDAO pDao = PerformanceDAO.getInstance();
 int[][] seat = pDao.getPerformanceSeats(performance_id);
@@ -20,6 +28,9 @@ cdao.setCartRegister(loginID, performance_id, p_seatArr);
 	alert("장바구니 등록 성공");
 	window.location.href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp";
 </script>
+<%
+}
+%>
 <html>
 <head>
 <title>cart register procedure</title>
