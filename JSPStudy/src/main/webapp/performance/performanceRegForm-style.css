@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#title {
+	font-size: 25px;
+	text-align: center;
+	margin: 80px 0 40px 0;
+}
+
+table {
+	width: 50%;
+	margin: 50px auto 50px auto;
+	text-align: center;
+	border-collapse: collapse;
+	font-size: 13px;
+	border: 1px solid #eeeeee;
+}
+
+tr, td {
+	padding: 10px;
+	border: 1px solid #eeeeee;
+}
+
+table input {
+	width: 100%;
+	border: none;
+	height: 20px;
+	text-align:right;
+}
+
+#ticketButton {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#subButton, #clearB {
+	background-color: #2A2A4E;
+	border-style: none;
+	border: 1px solid black;
+	width: 100px;
+	height: 30px;
+	border-radius: 20px;
+	color: white;
+}
+
+#clearB {
+	background-color: white;
+	color: black;
+}

@@ -52,10 +52,11 @@
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><li>공연정보관리</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>항공권정보관리</li></a>
-				<a href="#"><li>항공권결제관리</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/airportTotalList.jsp"><li>항공정보관리</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/paymentTotalList.jsp"><li>항공권결제관리</li></a>
 			</ul>
 			<ul>
+				<a href="#"><li>게시판관리</li></a>
 				<a href="#"><li>공연관람후기관리</li></a>
 			</ul>
 			<ul>

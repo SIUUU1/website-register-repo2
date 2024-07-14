@@ -16,17 +16,10 @@ String loginID = (String) session.getAttribute("loginID");
 	<div class="login-box">
 		<div id="back">
 			<!-- top -->
-			<h1>로그인</h1>
+			<h1 id="title">로그인</h1>
 			<form action="<%=request.getContextPath()%>/member/loginProc.jsp" method="post" name="loginForm">
 				<div class="top">
-					<div>
-						<input type="radio" name="member" id="member1" value="1" checked>
-						<label for="member1">회원</label>
-					</div>
-					<div>
-						<input type="radio" name="member" id="nonMember" value="2">
-						<label for="nonMember">비회원(주문조회)</label>
-					</div>
+				&nbsp;
 				</div>
 				<!-- middle-top -->
 				<div class="middle-top">
@@ -40,14 +33,7 @@ String loginID = (String) session.getAttribute("loginID");
 				</div>
 				<!-- middle-bottom -->
 				<div class="middle-bottom">
-					<div>
-						<input type="checkbox" name="saveId" id="saveId" value="1">
-						<label for="saveId">아이디저장</label>
-					</div>
-					<div>
-						<a href="#">OTP 로그인</a>
-						<button type="button" id="question-button">?</button>
-					</div>
+				&nbsp;
 				</div>
 				<!-- bottom -->
 				<div class="bottom">

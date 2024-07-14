@@ -3,25 +3,25 @@
 <%@ page import="tripair.PaymentDAO"%>
 <%@ page import="java.util.*"%>
 <%
-String customer_name = request.getParameter("customer_name");
-String customer_phone = request.getParameter("customer_phone");
 //결제 내역 가져오기
 PaymentDAO dao = PaymentDAO.getInstance();
-Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_phone);
+Vector<String[]> paymentTotalList =dao.getPaymentList();
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>항공권예매내역</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/tripair/paymentList-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
-	<h1 id="title">항공권 예매내역</h1>
-	<table>
+<h1 id="title">항공권 결제 리스트</h1>
+<table>
 		<thead>
 			<tr>
 				<td>항공편명</td>
 				<td>결제일</td>
+				<td>아이디</td>				
 				<td>이름</td>
 				<td>출발공항</td>
 				<td>도착공항</td>
@@ -34,19 +34,19 @@ Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_ph
 			</tr>
 		</thead>
 		<%
-		if (paymentDataList.isEmpty()) {
+		if (paymentTotalList.isEmpty()) {
 		%>
 		<tr>
-			<td colspan="11">결제내역이 없습니다.</td>
+			<td colspan="12">결제내역이 없습니다.</td>
 		</tr>
 		<%
 		} else {
-		for (int i = 0; i < paymentDataList.size(); i++) {
+		for (int i = 0; i < paymentTotalList.size(); i++) {
 		%><tr>
 			<%
-			for (int j = 0; j < paymentDataList.get(i).length; j++) {
+			for (int j = 0; j < paymentTotalList.get(i).length; j++) {
 			%>
-			<td><%=paymentDataList.get(i)[j]%></td>
+			<td><%=paymentTotalList.get(i)[j]%></td>
 			<%
 			} //end of for
 			%>
@@ -56,8 +56,5 @@ Vector<String[]> paymentDataList = dao.getPaymentList(customer_name, customer_ph
 		} //end of if
 		%>
 	</table>
-	<div id="ticketButton">
-	<button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp'">메인페이지</button>
-	</div>
 </body>
 </html>

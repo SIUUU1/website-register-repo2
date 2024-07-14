@@ -16,7 +16,7 @@
  		<select name="tripType" class="topSelectBox">
         <option value=1 selected>편도</option>
     </select>
-    <i class="fa-solid fa-person"></i>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-user"></i>
     <label for="count">인원수</label>
     <input type="number" id="count" name="count" value="1" min="1">
     <i class="fa-solid fa-cart-shopping"></i>
@@ -67,7 +67,7 @@
     <i class="fa-solid fa-minus"></i>
     <input type="date" name="arr_plandtime" id="arr_plandtime">
     </div>
-    <button type="submit" id="searchBB" onclick="check()"><i class="fa-solid fa-magnifying-glass"></i>검색</button>
+    <button type="submit" id="searchBB" onclick="check()"><i class="fa-solid fa-magnifying-glass"></i> 검색</button>
     </div>
  </form>
  </article>

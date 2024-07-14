@@ -34,7 +34,7 @@ count = dao.getPerformance_Count(performance_genre);
 		if(count==0){
 			%>
 			<tr>
-				<td align="center" colspan="6">등록된 공연 정보가 없습니다.</td>
+				<td align="center" colspan="7">등록된 공연 정보가 없습니다.</td>
 			</tr>
 		<%
 		}else{

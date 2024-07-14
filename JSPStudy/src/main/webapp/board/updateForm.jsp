@@ -35,7 +35,7 @@ try {
 				<th><label for="email">이메일</label></th>
 				<td class="below"><input type="email" name="email" id="email"
 					size="40" maxlength="40" onkeyup="emailCheck()"
-					value="<%=article.getEmail()%>"> <span id="emailInfo"
+						value="<%=article.getEmail()%>"> <span id="emailInfo"
 					class="redtext"></span><br></td>
 			</tr>
 			<tr>

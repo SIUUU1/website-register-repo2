@@ -7,7 +7,7 @@
 }
 
 table {
-	width: 80%;
+	width: 90%;
 	margin: 20px auto 50px auto;
 	text-align: center;
 	border-collapse: collapse;
@@ -62,14 +62,18 @@ thead td:nth-child(8) {
 }
 
 thead td:nth-child(9) {
-	width: 9%;
+	width: 5%;
 }
 
 thead td:nth-child(10) {
-	width: 9%;
+	width: 7%;
 }
 
 thead td:nth-child(11) {
+	width: 8%;
+}
+
+thead td:nth-child(12) {
 	width: 9%;
 }
 

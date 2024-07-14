@@ -23,7 +23,7 @@ input.p_seat+label {
 	width: 30px;
 	height: 30px;
 	border: 2px solid #000;
-	background: skyblue;
+	background: #a878e2;
 	display: inline-block;
 	cursor: pointer;
 	vertical-align: middle;
@@ -37,7 +37,7 @@ input.s_seat+label, input.n_seat+label {
 	height: 30px;
 	margin: 5px;
 	border: 2px solid #000;
-	background: white;
+	background: lightgray;
 	display: inline-block;
 	cursor: pointer;
 	vertical-align: middle;
@@ -46,7 +46,7 @@ input.s_seat+label, input.n_seat+label {
 }
 /* 체크되었을 때 */
 input:checked+label {
-	background: blue;
+	background: #1768ff;
 }
 
 #ticketButton {

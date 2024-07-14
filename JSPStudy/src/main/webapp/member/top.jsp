@@ -27,7 +27,7 @@
 				</div>
 				<div class="search">
 					<form id="search_form" action="<%=request.getContextPath()%>/performance/performSearchPro.jsp" method="get">
-	        <input type="text" name="search" id="search" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요" />
+	        <input type="text" name="search" id="search" size="40" maxlength="40" placeholder="원하는 공연을 찾아보세요." />
 	        <div id="button-search">
 	          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 	        </div>
@@ -54,13 +54,13 @@
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=콘서트"><li>콘서트</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=연극"><li>연극</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=클래식/무용"><li>클래식/무용</li></a>
-				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceTotalList.jsp?performance_genre=전시/행사"><li>전시/행사</li></a>
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/selectForm.jsp"><li>항공권예매</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/tripair/identifyForm.jsp"><li>예매항공권확인</li></a>
 			</ul>
 			<ul>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><li>게시판</li></a>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp"><li>공연관람후기</li></a>
 			</ul>
 			<ul>

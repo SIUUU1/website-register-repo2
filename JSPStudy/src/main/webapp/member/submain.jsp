@@ -28,34 +28,6 @@
 		</div>
 	</div>
 </article>
-<!-- slideshow-bottom -->
-<!-- <article class="slideshow-bottom">
-	<div>
-		<a href=""><img src="./source/icon1.PNG"><br> <span>온라인
-				상담</span></a>
-	</div>
-	<div>
-		<a href=""><img src="./source/icon2.PNG"><br> <span>국비대상자조회</span></a>
-	</div>
-	<div>
-		<a href=""><img src="./source/icon3.PNG"><br> <span>방문상담
-				예약</span></a>
-	</div>
-	<div>
-		<a href=""><img src="./source/icon4.PNG"><br> <span>카카오
-				상담</span></a>
-	</div>
-	<div class="call">
-		<div id="call-icon">
-			<a href="https://kh-academy.co.kr/question/online.kh?location=h"><img
-				src="./source/rightquick07.png"></a>
-		</div>
-		<div class="representativeTel">
-			<a href="https://kh-academy.co.kr/question/online.kh?location=h"><span>1544-9970</span></a><br>
-			<a href="https://kh-academy.co.kr/question/online.kh?location=h"><span>전국대표문의전화(연중무휴)</span></a>
-		</div>
-	</div>
-</article> -->
 <article class="article2">
 <h2>교육과정</h2>
 <p class="subtitle">KH정보교육원만의 독보적인 커리큘럼을 만나보세요.</p>

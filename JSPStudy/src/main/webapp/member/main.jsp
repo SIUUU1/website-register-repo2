@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 <%
-
 String loginID = (String) session.getAttribute("loginID");
 String topFile = request.getParameter("topFile");
 String middleFile = request.getParameter("middleFile");
