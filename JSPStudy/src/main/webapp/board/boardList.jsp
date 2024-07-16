@@ -32,7 +32,7 @@ number = count - (currentPage - 1) * pageSize;
 <!DOCTYPE html>
 <html>
 <head>
-<title>우리게시판</title>
+<title>Board</title>
 <link rel="stylesheet"
 	href="<%=contextPath%>/board/boardlist-style.css?ver=<%=(int) (Math.random() * 1000)%>" />
 <script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>"
@@ -40,17 +40,8 @@ number = count - (currentPage - 1) * pageSize;
 <script src="https://kit.fontawesome.com/8d66cd774b.js"	crossorigin="anonymous"></script>
 </head>
 <body>
-	<h1 id="title">티켓 고객센터</h1>
-	<!-- select box -->
+	<h1 id="title">게시판</h1>
 	<div class="select-box">
-		<select name="category" id="category" onchange=>
-			<option value="전체">전체</option>
-			<option value="회원">회원</option>
-			<option value="티켓예매/발권">티켓예매/발권</option>
-			<option value="배송/반송">배송/반송</option>
-			<option value="취소/환불">취소/환불</option>
-			<option value="기타">기타</option>
-		</select>
 		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/writeForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
 	</div>
 	<!-- table -->
@@ -58,7 +49,6 @@ number = count - (currentPage - 1) * pageSize;
 		<thead>
 			<tr>
 				<td>번호</td>
-				<td>분류</td>
 				<td>제목</td>
 				<td>작성자</td>
 				<td>작성일</td>
@@ -69,7 +59,7 @@ number = count - (currentPage - 1) * pageSize;
 		if(count == 0){
 			%>
 				<tr>
-					<td align="center" colspan="6">게시판에 저장된 글이 없습니다.</td>
+					<td align="center" colspan="5">게시판에 저장된 글이 없습니다.</td>
 				</tr>
 			<%
 		}else{
@@ -78,7 +68,6 @@ number = count - (currentPage - 1) * pageSize;
 		%>
 		<tr>
 			<td><%=number--%></td>
-			<td><%=article.getCategory()%></td>
 			<td>
 				<%
 				int wid = 0;

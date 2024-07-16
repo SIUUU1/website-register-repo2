@@ -6,8 +6,7 @@ public class BoardVO {
 	private int num; // 번호
 	private String writer; // 작성자
 	private String email; // 이메일
-	private String userPw; // 작성자 아이디
-	private String category; // 카테고리
+	private String userPw; // 작성자 비밀번호
 	private String subject; // 제목
 	private Timestamp regdate; // 작성일
 	private int readcount; // 조회수
@@ -47,14 +46,6 @@ public class BoardVO {
 
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public String getSubject() {
@@ -119,13 +110,6 @@ public class BoardVO {
 
 	public void setIp(String ip) {
 		this.ip = ip;
-	}
-
-	@Override
-	public String toString() {
-		return "BoardVO [num=" + num + ", writer=" + writer + ", email=" + email + ", userPw=" + userPw + ", category="
-				+ category + ", subject=" + subject + ", regdate=" + regdate + ", readcount=" + readcount + ", ref="
-				+ ref + ", step=" + step + ", depth=" + depth + ", content=" + content + ", ip=" + ip + "]";
 	}
 
 }

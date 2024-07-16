@@ -288,4 +288,56 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	// 본인인증으로 아이디 찾기
+	public String identifyMember(String userName, String userPhoneNum, String userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dataUserId = null;
+		String sql1 = "select userId from members where userName=? and userPhoneNum=?";
+		String sql2 = "select userId from members where userId=? and userPhoneNum=?";
+		try {
+			conn = DBPoolUtil.makeConnection();
+			if (userName == null) {// 비밀번호 재설정을 위한 인증
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, userId);
+				pstmt.setString(2, userPhoneNum);
+			} else {// 아이디 찾기 위한 인증
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setString(1, userName);
+				pstmt.setString(2, userPhoneNum);
+			}
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dataUserId = rs.getString("userId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs, pstmt, conn);
+		}
+		return dataUserId;
+	}
+
+ 	// 비밀번호 재설정하기
+	public int resetPassword(String userpw, String userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "update members set userpw =? where userid=?";
+		int value = -1;
+		try {
+			conn = DBPoolUtil.makeConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userpw);
+			pstmt.setString(2, userId);
+			value = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(pstmt, conn);
+		}
+		return value;
+	}
 }

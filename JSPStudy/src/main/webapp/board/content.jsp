@@ -22,14 +22,13 @@ try {
 <script src="<%=contextPath%>/board/js-board.js?ver=<%=(int) (Math.random() * 1000)%>" defer></script>
 </head>
 <body>
-	<h1 id="title">Q & A</h1>
+	<h1 id="title">게시판</h1>
 	<section id="mainSection">
 		<div id="subject">
 			<div><%=article.getSubject()%></div>
-			<div><%=article.getWriter()%>	|	<%=article.getRegdate()%></div>
+			<div><%=article.getWriter()%>&nbsp;	|&nbsp;	<%=sdf.format(article.getRegdate())%></div>
 		</div>
 		<p id="boardContent"><%=article.getContent()%></p>
-	</section>
 	<div class="contentB">
 	<button type="button" id="replyB" 
 	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/writeForm.jsp?num=<%=article.getNum()%>&ref=<%=article.getRef()%>&step=<%=article.getStep()%>&depth=<%=article.getDepth()%>'">답변</button>
@@ -42,6 +41,7 @@ try {
 	onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>'">목록</button>
 	</div>
 	</div>
+	</section>
 	<%
 	} catch (Exception e) {
 	e.printStackTrace();

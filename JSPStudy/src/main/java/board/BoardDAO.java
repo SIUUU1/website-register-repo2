@@ -59,20 +59,19 @@ public class BoardDAO {
 				depth = 0;
 			}
 			// 글 저장
-			String sql = "insert into board(num, writer, email, userpw, category, subject,"
-					+ " regdate, ref, step, depth, content, ip) values(board_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into board(num, writer, email, userpw, subject,"
+					+ " regdate, ref, step, depth, content, ip) values(board_seq.nextval,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, article.getWriter());
 			pstmt.setString(2, article.getEmail());
 			pstmt.setString(3, article.getUserPw());
-			pstmt.setString(4, article.getCategory());
-			pstmt.setString(5, article.getSubject());
-			pstmt.setTimestamp(6, article.getRegdate());
-			pstmt.setInt(7, ref);
-			pstmt.setInt(8, step);
-			pstmt.setInt(9, depth);
-			pstmt.setString(10, article.getContent());
-			pstmt.setString(11, article.getIp());
+			pstmt.setString(4, article.getSubject());
+			pstmt.setTimestamp(5, article.getRegdate());
+			pstmt.setInt(6, ref);
+			pstmt.setInt(7, step);
+			pstmt.setInt(8, depth);
+			pstmt.setString(9, article.getContent());
+			pstmt.setString(10, article.getIp());
 			int count = pstmt.executeUpdate();
 			if (count > 0)
 				flag = true;
@@ -116,7 +115,7 @@ public class BoardDAO {
 			// 이런 순으로 rownum이 임의로 만들어, 페이지정렬할 수 있다.
 			// 7페이지 == 61 ~ 70 == (page-1)*10+1 ~ page*10
 			conn = DBPoolUtil.makeConnection();
-			String sql = " select * from (select rownum rnum, num, writer, email, subject, userPw, category,"
+			String sql = " select * from (select rownum rnum, num, writer, email, subject, userPw, "
 					+ " regdate, readcount, ref, step, depth, content, ip from (select * from board"
 					+ " order by ref desc, step asc)) where rnum>=? and rnum<=?";
 			pstmt = conn.prepareStatement(sql);
@@ -131,7 +130,6 @@ public class BoardDAO {
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
 				article.setUserPw(rs.getString("userpw"));
-				article.setCategory(rs.getString("category"));
 				article.setRegdate(rs.getTimestamp("regdate"));
 				article.setReadcount(rs.getInt("readcount"));
 				article.setRef(rs.getInt("ref"));
@@ -169,7 +167,6 @@ public class BoardDAO {
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
-				article.setCategory(rs.getString("category"));
 				article.setUserPw(rs.getString("userPw"));
 				article.setRegdate(rs.getTimestamp("regdate"));
 				article.setReadcount(rs.getInt("readcount"));
@@ -204,7 +201,6 @@ public class BoardDAO {
 				article.setWriter(rs.getString("writer"));
 				article.setEmail(rs.getString("email"));
 				article.setSubject(rs.getString("subject"));
-				article.setCategory(rs.getString("category"));
 				article.setUserPw(rs.getString("userPw"));
 				article.setRegdate(rs.getTimestamp("regdate"));
 				article.setReadcount(rs.getInt("readcount"));
@@ -240,13 +236,12 @@ public class BoardDAO {
 				// 비밀번호 비교
 				if (dbpass.equals(article.getUserPw())) {
 					pstmt = conn.prepareStatement(
-							"update board set writer=?,email=?,subject=?,content=?,category=? where num=?");
+							"update board set writer=?,email=?,subject=?,content=? where num=?");
 					pstmt.setString(1, article.getWriter());
 					pstmt.setString(2, article.getEmail());
 					pstmt.setString(3, article.getSubject());
 					pstmt.setString(4, article.getContent());
-					pstmt.setString(5, article.getCategory());
-					pstmt.setInt(6, article.getNum());
+					pstmt.setInt(5, article.getNum());
 					pstmt.executeUpdate();
 					result = 1; // 수정성공
 				} else {

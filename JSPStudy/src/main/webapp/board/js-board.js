@@ -14,9 +14,9 @@ function emailCheck() {
 function pwCheck() {
 	const userPw = document.querySelector("#userPw");
 	const userPwInfo = document.querySelector("#userPwInfo");
-	const regExpPw = /^[a-z0-9]{6,20}$/g;
+	const regExpPw = /^[a-z0-9]{4,20}$/g;
 	if (!userPw.value.match(regExpPw)) {
-		userPwInfo.innerHTML = `영문자, 숫자만 포함하여 최소 6자이상 입력하세요.`;
+		userPwInfo.innerHTML = `영문자, 숫자만 포함하여 최소 4자이상 입력하세요.`;
 		return false;
 	} else {
 		userPwInfo.innerHTML = ``;
@@ -60,6 +60,7 @@ function writeCheck() {
 	}
 	document.writeForm.submit();
 }
+
 function updateCheck() {
 	if (document.updateForm.writer.value === "") {
 		alert("작성자를 입력해주세요.");

@@ -15,7 +15,7 @@ a {
 #title {
 	text-align: center;
 	font-size: 25px;
-	margin: 60px auto;
+	margin: 80px auto 30px auto;
 }
 
 select {
@@ -29,8 +29,6 @@ div.select-box {
 	width: 80%;
 	margin: 0 auto;
 	text-align: right;
-	display: flex;
-	justify-content: space-between;
 }
 
 #writeB {
@@ -67,28 +65,25 @@ td {
 }
 
 thead td:first-child {
-	width: 7%;
-}
-
-thead td:nth-child(2) {
-	width: 11%;
-}
-
-thead td:nth-child(3) {
-	width: 50%;
-}
-
-thead td:nth-child(4) {
 	width: 10%;
 }
 
-thead td:nth-child(5) {
+thead td:nth-child(2) {
+	width: 50%;
+}
+
+thead td:nth-child(3) {
 	width: 15%;
 }
 
-thead td:nth-child(6) {
-	width: 7%;
+thead td:nth-child(4) {
+	width: 15%;
 }
+
+thead td:nth-child(5) {
+	width: 10%;
+}
+
 
 footer.newfooter {
 	margin: 0 auto;

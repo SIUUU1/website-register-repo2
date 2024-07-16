@@ -27,41 +27,32 @@ try {
 		<input type="hidden" name="num" value="<%=num%>">
 		<table>
 			<tr>
-				<th><label for="writer">이름</label></th>
-				<td class="below"><input type="text" name="writer" id="writer"
-					size="40" maxlength="40" readonly value="<%=article.getWriter()%>"></td>
-			</tr>
-			<tr>
-				<th><label for="email">이메일</label></th>
-				<td class="below"><input type="email" name="email" id="email"
-					size="40" maxlength="40" onkeyup="emailCheck()"
-						value="<%=article.getEmail()%>"> <span id="emailInfo"
-					class="redtext"></span><br></td>
-			</tr>
-			<tr>
-				<th><label for="subject">제목</label></th>
-				<td class="below"><input type="text" size="50" maxlength="50"
-					name="subject" value="<%=article.getSubject()%>"/></td>
-			</tr>
-			<tr>
-				<th><label for="category">카테고리</label></th>
-				<td class="below"><select name="category" id="category">
-						<option value="회원">회원</option>
-						<option value="티켓예매/발권">티켓예매/발권</option>
-						<option value="배송/반송">배송/반송</option>
-						<option value="취소/환불">취소/환불</option>
-						<option value="기타">기타</option>
-				</select></td>
-			</tr>
-			<tr>
-				<td class="below" colspan="2"><textarea name="content"
-						rows="20" cols="50" id="content"><%=article.getContent()%></textarea>
+				<th><label for="writer">작성자</label></th>
+				<td class="below">
+				<input type="text" size="50" maxlength="12" name="writer" id="writer" readonly value="<%=article.getWriter()%>"/>
 				</td>
 			</tr>
 			<tr>
-				<td class="below" colspan="2" id="password">
+				<th><label for="email">이메일</label></th>
+				<td class="below">
+				<input type="email" name="email" id="email"size="40" maxlength="40" onkeyup="emailCheck()" value="<%=article.getEmail()%>"> 
+				<span id="emailInfo" class="redtext"></span></td>
+			</tr>
+			<tr>
+				<th><label for="subject">제목</label></th>
+				<td class="below">
+				<input type="text" size="50" maxlength="50" name="subject" value="<%=article.getSubject()%>"/></td>
+			</tr>
+			<tr>
+				<td class="below" colspan="2">
+				<textarea name="content" rows="20" cols="50" id="content"><%=article.getContent()%></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" id="password">
+				<span id="userPwInfo" class="redtext"></span>
 				<label for="userPw">패스워드</label>
-				<input type="password" name="userPw" id="userPw" size="20" maxlength="20">
+				<input type="password" name="userPw" id="userPw" size="20" maxlength="20" onkeyup="pwCheck()">
 				</td>
 			</tr>
 		</table>

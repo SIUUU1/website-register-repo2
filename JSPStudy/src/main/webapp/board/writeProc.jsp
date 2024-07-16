@@ -13,7 +13,7 @@ dao.insertArticle(article);
 <meta http-equiv="Refresh" content="0;url=<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardList.jsp">
 <html>
 <head>
-<title>Insert title here</title>
+<title>Board Write Pro</title>
 </head>
 <body>
 </body>

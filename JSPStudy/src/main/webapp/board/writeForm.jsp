@@ -32,13 +32,14 @@ try {
 			<tr>
 				<th><label for="writer">작성자</label></th>
 				<td class="below">
-				<input type="text" size="50" maxlength="50" name="writer" id="writer"/>
+				<input type="text" size="50" maxlength="12" name="writer" id="writer"/>
 				</td>
 			</tr>
 			<tr>
 				<th><label for="email">이메일</label></th>
 				<td class="below">
-				<input type="text" size="50" maxlength="50" name="email" id="email"/>
+				<input type="email" name="email" id="email"size="40" maxlength="40" onkeyup="emailCheck()"> 
+				<span id="emailInfo" class="redtext"></span>
 				</td>
 			</tr>
 			<tr>
@@ -55,11 +56,16 @@ try {
 			</tr>
 			
 			<tr>
-				<td class="below" colspan="2"><textarea name="content"
-						rows="20" cols="50" id="content" placeholder="내용을 입력하세요"></textarea>
+				<td class="below" colspan="2">
+				<textarea name="content" rows="20" cols="50" id="content"></textarea>
 				</td>
 			</tr>
-			
+			<tr>
+			<td colspan="2" id="password">
+			<span id="userPwInfo" class="redtext"></span>
+			<label for="userPw">패스워드 </label><input type="password" id="userPw" name="userPw" size="30" maxlength="20" onkeyup="pwCheck()"/>
+			</td>
+			</tr>
 		</table>
 		<div class="wriButton">
 			<button type="button" id="subButton" onclick="writeCheck()">완료</button>

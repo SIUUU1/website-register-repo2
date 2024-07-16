@@ -1,15 +1,20 @@
 @charset "UTF-8";
-
-@charset "UTF-8";
-
-section {
-	height: 700px;
-}
-
 #title {
 	text-align: center;
-	margin: 50px 0;
+	margin: 40px auto 20px auto;
 	font-size: 27px;
+}
+
+p {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 20px;
+	
+}
+p span {
+	color:rgb(89, 159, 234);
+	font-weight: 600;
 }
 
 div.identify-box {
@@ -65,4 +70,3 @@ button {
 	background-color: rgb(89, 159, 234);
 	border: none;
 	color: white;
-}

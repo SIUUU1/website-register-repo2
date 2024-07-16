@@ -13,6 +13,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -80,7 +81,38 @@ public class AirportDAO {
 		return result;
 	}
 
-	// 항공권 목록 가져오기
+	// 항공권 전체 목록 가져오기
+	public Vector<AirportVO> getAirportTotalList() {
+		Vector<AirportVO> airportDataList = new Vector<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			pstmt = con.prepareStatement("select * from airports");
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				AirportVO avo = new AirportVO();
+				avo.setAirports_id(rs.getInt("airports_id"));
+				avo.setVihicle_id(rs.getString("vihicle_id"));
+				avo.setAirline_name(rs.getString("airline_name"));
+				avo.setDepAirport_name(rs.getString("depAirport_name"));
+				avo.setArrAirport_name(rs.getString("arrAirport_name"));
+				avo.setDep_plandtime(rs.getString("dep_plandtime"));
+				avo.setArr_plandtime(rs.getString("arr_plandtime"));
+				avo.setEconomy_charge(rs.getInt("economy_charge"));
+				avo.setPrestige_charge(rs.getInt("prestige_charge"));
+				airportDataList.addElement(avo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(rs, pstmt, con);
+		}
+		return airportDataList;
+	}
+
+	// 선택 항목에 따른 항공권 목록 가져오기
 	public Vector<AirportVO> getAirportList(String depAirportId, String arrAirportId, String depPlandTime) {
 		Vector<AirportVO> airportDataList = new Vector<>();
 		Connection con = null;
@@ -116,6 +148,25 @@ public class AirportDAO {
 		return airportDataList;
 	}
 
+	// 항공권 삭제하기
+	public int deleteAirport(int airports_id) {
+		int value = -1;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = DBPoolUtil.makeConnection();
+			pstmt = con.prepareStatement("delete from airports where airports_id=?");
+			pstmt.setInt(1, airports_id);
+			value = pstmt.executeUpdate();
+			value = value == 1 ? 1 : 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(pstmt, con);
+		}
+		return value;
+	}
+
 	// 항공권 검색하기
 	public Vector<AirportVO> selectAirport(String depAirportId, String arrAirportId, String depPlandTime) {
 		Vector<AirportVO> list = new Vector<AirportVO>();
@@ -138,8 +189,7 @@ public class AirportDAO {
 		// 1.요청 url 생성
 		StringBuilder urlBuilder = new StringBuilder(requestURL); /* URL */
 		try {
-			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
-					+ serviceKey);
+			urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + serviceKey);
 			urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "="
 					+ URLEncoder.encode("xml", "UTF-8")); /* 데이터 타입(xml, json) */
 			urlBuilder.append("&" + URLEncoder.encode("depAirportId", "UTF-8") + "="
@@ -159,7 +209,7 @@ public class AirportDAO {
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			//System.out.println("Response code: " + conn.getResponseCode());
+			// System.out.println("Response code: " + conn.getResponseCode());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -169,7 +219,7 @@ public class AirportDAO {
 		BufferedReader br = null;
 		try {
 			int statusCode = conn.getResponseCode();
-			//System.out.println(statusCode);
+			// System.out.println(statusCode);
 			if (statusCode >= 200 && statusCode <= 300) {
 				br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			} else {

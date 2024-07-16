@@ -1,7 +1,3 @@
-/**
- * 
- */
-//body onload할 때 
 //body onload 아이디에 focus.스크롤을 위치시킨다.
 function init() {
 	let userId = document.querySelector("#userId");
