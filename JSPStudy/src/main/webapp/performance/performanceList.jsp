@@ -40,7 +40,7 @@ count=dao.getPerformance_Count();
 			for (int i = 0; i < performanceList.size(); i++) {
 				performanceList.get(i);
 		%>
-	<tr onclick="location.href='<%=request.getContextPath()%>/performance/performUpdateForm.jsp?performance_id=<%=performanceList.get(i).getPerformance_id()%>'">
+	<tr onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performUpdateForm.jsp?performance_id=<%=performanceList.get(i).getPerformance_id()%>'">
 			<td><%=performanceList.get(i).getPerformance_name()%></td>
 			<td><%=performanceList.get(i).getPerformance_genre()%></td>
 			<td><%=performanceList.get(i).getPerformance_day()%></td>

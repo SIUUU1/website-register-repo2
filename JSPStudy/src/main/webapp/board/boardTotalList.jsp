@@ -42,7 +42,7 @@ number = count - (currentPage - 1) * pageSize;
 <body>
 	<h1 id="title">게시판</h1>
 	<div class="select-box">
-		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/writeForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
+		<a href="<%=contextPath%>/member/main.jsp?middleFile=/board/adminWriteForm.jsp"><button type="button" id="writeB">글쓰기</button></a>
 	</div>
 	<!-- table -->
 	<table>
@@ -53,13 +53,14 @@ number = count - (currentPage - 1) * pageSize;
 				<td>작성자</td>
 				<td>작성일</td>
 				<td>조회</td>
+				<td> </td>
 			</tr>
 		</thead>
 		<%
 		if(count == 0){
 			%>
 				<tr>
-					<td align="center" colspan="5">게시판에 저장된 글이 없습니다.</td>
+					<td align="center" colspan="6">게시판에 저장된 글이 없습니다.</td>
 				</tr>
 			<%
 		}else{
@@ -79,7 +80,7 @@ number = count - (currentPage - 1) * pageSize;
 				 %> <img src="<%=contextPath%>/board/images/level.gif" width="<%=wid%>" height="16"> <%
 				 }
  				%> <a
-				href="<%=contextPath%>/member/main.jsp?middleFile=/board/content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
+				href="<%=contextPath%>/member/main.jsp?middleFile=/board/adminContent.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>"><%=article.getSubject()%></a>
 				<%
 				if (article.getReadcount() >= 20) {
 				%> <img src="<%=contextPath%>/board/images/hot.gif" border="0" height="16"> <%
@@ -89,6 +90,8 @@ number = count - (currentPage - 1) * pageSize;
 			<td><a href="mailto:<%=article.getEmail()%>"> <%=article.getWriter()%></a></td>
 			<td><%=sdf.format(article.getRegdate())%></td>
 			<td><%=article.getReadcount()%></td>
+			<td onclick="document.location.href='<%=contextPath%>/member/main.jsp?middleFile=/board/adminDeletePro.jsp?num=<%=article.getNum()%>&pageNum=<%=pageNum%>'">
+			<i class="fa-regular fa-square-minus"></i></td>
 		</tr>
 		<%
 		}//end of for

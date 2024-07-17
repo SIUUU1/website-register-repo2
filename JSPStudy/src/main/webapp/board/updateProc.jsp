@@ -12,10 +12,36 @@ String contextPath = request.getContextPath();
 String pageNum = request.getParameter("pageNum");
 BoardDAO dbpro = BoardDAO.getInstance();
 int check = dbpro.updateArticle(article);
+
+String type = request.getParameter("type");
+if (type != null) {
+	//1 수정성공, 0 패스워드 불일치, -1 데이터베이스 오류
+	if (check == 1) {
+%>
+<meta http-equiv="Refresh"
+	content="0;url=<%=contextPath%>/member/main.jsp?middleFile=/board/boardTotalList.jsp?pageNum=<%=pageNum%>">
+<%
+} else if (check == 0) {
+%>
+<script language="JavaScript">
+	alert("게시글 수정 실패하였습니다.");
+	history.go(-1);
+</script>
+<%
+} else {
+%>
+<script language="JavaScript">
+	alert("데이터베이스 오류입니다.");
+	history.go(-1);
+</script>
+<%
+}
+} else {
 //1 수정성공, 0 패스워드 불일치, -1 데이터베이스 오류
 if (check == 1) {
 %>
-<meta http-equiv="Refresh" content="0;url=<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>">
+<meta http-equiv="Refresh"
+	content="0;url=<%=contextPath%>/member/main.jsp?middleFile=/board/boardList.jsp?pageNum=<%=pageNum%>">
 <%
 } else if (check == 0) {
 %>
@@ -31,5 +57,6 @@ if (check == 1) {
 	history.go(-1);
 </script>
 <%
+}
 }
 %>

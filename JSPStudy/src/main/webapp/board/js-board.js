@@ -61,6 +61,34 @@ function writeCheck() {
 	document.writeForm.submit();
 }
 
+function adminWriteCheck() {
+	if (document.writeForm.writer.value === "") {
+		alert("작성자를 입력해주세요.");
+		document.writeForm.writer.focus();
+		return;
+	} if (document.writeForm.email.value === "") {
+		alert("이메일을 입력해주세요.");
+		document.writeForm.email.focus();
+		return;
+	} if (document.writeForm.subject.value === "") {
+		alert("제목을 입력해주세요.");
+		document.writeForm.subject.focus();
+		return;
+	}
+	if (document.writeForm.content.value === "") {
+		alert("내용을 입력해주세요.");
+		document.writeForm.content.focus();
+		return;
+	}
+	if (document.writeForm.userPw.value === "") {
+		alert("패스워드를 입력해주세요.");
+		document.writeForm.userPw.focus();
+		return;
+	}
+	document.writeForm.submit();
+}
+
+
 function updateCheck() {
 	if (document.updateForm.writer.value === "") {
 		alert("작성자를 입력해주세요.");

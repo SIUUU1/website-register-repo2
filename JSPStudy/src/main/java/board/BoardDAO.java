@@ -235,8 +235,7 @@ public class BoardDAO {
 				dbpass = rs.getString("userpw");
 				// 비밀번호 비교
 				if (dbpass.equals(article.getUserPw())) {
-					pstmt = conn.prepareStatement(
-							"update board set writer=?,email=?,subject=?,content=? where num=?");
+					pstmt = conn.prepareStatement("update board set writer=?,email=?,subject=?,content=? where num=?");
 					pstmt.setString(1, article.getWriter());
 					pstmt.setString(2, article.getEmail());
 					pstmt.setString(3, article.getSubject());
@@ -282,6 +281,24 @@ public class BoardDAO {
 			e.printStackTrace();
 		} finally {
 			DBPoolUtil.dbRelease(rs, pstmt, conn);
+		}
+		return result;
+	}
+
+	// 글 삭제하기(원글을 삭제할 때 답변글 모두를 삭제해야 한다.)
+	public int deleteArticle(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = -1;
+		try {
+			conn = DBPoolUtil.makeConnection();
+			pstmt = conn.prepareStatement("delete from board where num=?");
+			pstmt.setInt(1, num);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBPoolUtil.dbRelease(pstmt, conn);
 		}
 		return result;
 	}
