@@ -67,7 +67,6 @@
 			</ul>
 			<ul>
 				<a href="#"><li>티켓월드고객센터관리</li></a>
-				<a href="#"><li>트립에어고객센터관리</li></a>
 			</ul>
 		</nav>
 	</header>

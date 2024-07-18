@@ -61,7 +61,6 @@ if (check == 1) {
 <%
 }
 %>
-
 <html>
 <head>
 <title>payment register procedure</title>

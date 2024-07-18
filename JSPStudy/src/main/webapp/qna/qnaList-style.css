@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#mainsection {
+	height: 500px;
+}
+
+#qnaList {
+	margin: 60px auto;
+	padding: 10px 50px;
+}
+
+#qnaList #title {
+	font-size: 30px;
+	text-align: center;
+}
+
+#qnaList #qnaNo {
+	margin: 30px auto;
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	text-align: center;
+	gap: 20px;
+}
+
+#qnaNo .fa-comment-dots {
+	font-size: 60px;
+	color: rgb(218, 217, 217);
+}
+
+#qnaNo span {
+	font-size: 20px;
+	font-weight: 700;
+}
+#qnaNo button {
+	width: 80%;
+	height: 35px;
+	background-color: white;
+	border-radius: 20px;
+	border: 1px solid rgb(218, 217, 217);
+}

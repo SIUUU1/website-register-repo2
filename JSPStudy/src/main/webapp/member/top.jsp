@@ -74,11 +74,10 @@
 				<a href="#"><li>아이디/비밀번호	찾기</li></a>
 			</ul>
 			<ul>
-				<a href="#"><li>티켓월드 고객센터</li></a>
-				<a href="#"><li>트립에어 고객센터</li></a>
+				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/qna/qnaMain.jsp"><li>티켓월드 고객센터</li></a>
 			</ul>
 		</nav>
 	</header>
 	<!-- middle -->
-	<section>
+	<section id="mainsection">
 		<article class="middle">

@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+#mainsection {
+	height: 800px;
+}
+
+#qnaForm {
+	margin: 80px auto;
+	padding: 10px 50px;
+	width: 80%;
+}
+
+#qnaForm #title {
+	font-size: 30px;
+}
+
+#qnaForm p {
+	font-size: 20px;
+	font-weight: 600;
+	margin-top: 50px;
+}
+
+#qnaForm input, #qnaForm select {
+	border: 1px solid rgb(218, 217, 217);
+	border-radius: 20px;
+	width: 100%;
+	height: 55px;
+	margin: 10px auto;
+	padding: 0 15px;
+	font-size: 15px;
+}
+
+#qnaForm textarea {
+	border: 1px solid rgb(218, 217, 217);
+	border-radius: 20px;
+	width: 100%;
+	height: 300px;
+	margin: 0 auto;
+	padding: 15px;
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+
+#qnaForm #writeBDiv {
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+}
+
+#qnaForm #writeBDiv button {
+	width: 100%;
+	height: 55px;
+	color: gray;
+	font-weight: 700;
+	font-size: 20px;
+	background-color: #eeeeee;
+	border-radius: 18px;
+	border: none;
+}
+
+#qnaForm #editBdiv {
+	margin: 0 auto;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+#qnaForm #editBdiv button {
+	width: 100px;
+	height: 30px;
+	border: 1px solid rgb(218, 217, 217);
+	background-color: white;
+	border-radius: 18px;
+	margin: 0 20px;
+}

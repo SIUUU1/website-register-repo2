@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+#mainsection {
+	height: 800px;
+}
+
+#qnaMain {
+	margin: 60px auto;
+	padding: 10px 50px;
+}
+
+#title {
+	font-size: 30px;
+	text-align: center;
+}
+
+#qnaSearch {
+	border: 1px solid rgb(218, 217, 217);
+	border-radius: 30px;
+	width: 80%;
+	height: 50px;
+	align-items: center;
+	margin: 20px auto;
+}
+
+#qnaSearch form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 20px;
+}
+
+#qnaSearch input {
+	border: none;
+	font-size: 18px;
+	outline: none;
+}
+
+#qnaMain p {
+	font-size: 25px;
+	font-weight: 600;
+	margin-top: 50px;
+}
+
+#qnaMainB button {
+	width: 100px;
+	height: 30px;
+	border: 1px solid rgb(218, 217, 217);
+	background-color: white;
+	border-radius: 20px;
+	margin: 20px 5px;
+}
+
+#qnaMain .help {
+	border: 1px solid rgb(218, 217, 217);
+	background-color: white;
+	border-radius: 20px;
+	margin: 15px 0;
+	width: 80%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+}
+
+#qnaMain .help div {
+	display: flex;
+	flex-direction: column;
+	padding: 0 20px;
+	line-height: 180%;
+	cursor: pointer;
+}
+
+#qnaMain .help span {
+	font-weight: 700;
+	font-size: 17px;
+}
+
+#qnaMain .fa-regular {
+	font-size: 18px;
+}
