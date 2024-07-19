@@ -57,4 +57,5 @@ count = dao.getPerformance_Count(performance_genre);
 		</table>
 		</form>
 </body>
+<%@ include file="/member/bottom.jsp" %>
 </html>

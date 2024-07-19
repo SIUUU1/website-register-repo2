@@ -1,8 +1,79 @@
 @charset "UTF-8";
-table {
+
+#paymentRegForm {
+	margin: 0 auto;
+	text-align: center;
+	width: 80%;
+}
+
+#paymentRegForm table {
 	border: 1px solid black;
 	border-collapse: collapse;
+	margin: 0 auto 20px auto;
+	width: 100%;
 }
-tr, td {
-	border: 1px solid black;
+
+#paymentRegForm table button {
+	width: 100px;
+	height: 30px;
+	border-radius: 18px;
+	border: 1px solid rgb(218, 217, 217);
+	background-color: white;
+}
+
+#paymentRegForm tr, #paymentRegForm td {
+	border-radius: 10px;
+	border: 1px solid rgb(218, 217, 217);
+	padding: 10px 20px;
+}
+
+#paymentRegForm #payCart {
+	text-align: center;
+}
+
+#paymentRegForm table input {
+	text-align: right;
+	margin-bottom: 3px;
+	height: 35px;
+	width: 250px;
+	outline: none;
+	border-radius: 10px;
+	border: 1px solid rgb(218, 217, 217);
+	padding: 0 15px;
+}
+
+#paymentRegForm #getInfoB {
+	text-align: right;
+	width: 100%
+}
+
+#paymentRegForm #getInfoB button {
+	width: 120px;
+	height: 30px;
+	border-radius: 18px;
+	margin-bottom: 3px;
+	border: 1px solid rgb(218, 217, 217);
+	background-color: #2A2A4E;
+	color: white;
+}
+
+#paymentRegForm #regButton {
+	margin: 0 auto;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+#paymentRegForm #regButton button {
+	width: 100px;
+	height: 30px;
+	border-radius: 18px;
+	margin: 0 20px;
+	border: 1px solid rgb(218, 217, 217);
+	background-color: white;
+}
+
+#paymentRegForm #regButton #subButton {
+	background-color: #2A2A4E;
+	color: white;
 }

@@ -12,9 +12,10 @@ PerformanceVO pvo = dao.getPerformance(performance_id);
 <html>
 <head>
 <title>performance Update Form</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/performance/performanceRegForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
-<h1 id="title">공연 등록</h1>
+<h1 id="title">공연 정보 수정</h1>
 	<br>
 	<form method="post" name="performUpdateForm"
 		action="<%=request.getContextPath()%>/performance/performUpdateProc.jsp">
@@ -49,13 +50,11 @@ PerformanceVO pvo = dao.getPerformance(performance_id);
 				<td class="below"><input type="number" name="performance_ticket_price" id="performance_ticket_price" size="40" maxlength="40" value="<%=pvo.getPerformance_ticket_price()%>"></td>
 			</tr>
 		</table>
-		<div class="wriButton">
+		<div id="ticketButton">
 			<button type="submit" id="subButton" onclick="writeCheck()">수정</button>
 			<button type="button" id="subButton" onclick="location.href='<%=request.getContextPath()%>/performance/performDeleteProc.jsp?performance_id=<%=performance_id%>'">삭제</button>
-			
 			<a
-				href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><button
-					type="button">취소</button></a>
+				href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/performance/performanceList.jsp"><button type="button" id="cancleB">취소</button></a>
 		</div>
 	</form>
 </body>

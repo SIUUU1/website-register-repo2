@@ -32,7 +32,7 @@ table input {
 	text-align: center;
 }
 
-#subButton, #clearB {
+#subButton, #clearB , #cancleB{
 	background-color: #2A2A4E;
 	border-style: none;
 	border: 1px solid black;
@@ -42,7 +42,7 @@ table input {
 	color: white;
 }
 
-#clearB {
+#clearB, #cancleB {
 	background-color: white;
 	color: black;
 }

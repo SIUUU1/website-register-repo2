@@ -57,7 +57,6 @@
 			</ul>
 			<ul>
 				<a href="<%=request.getContextPath()%>/member/main.jsp?middleFile=/board/boardTotalList.jsp"><li>게시판관리</li></a>
-				<a href="#"><li>공연관람후기관리</li></a>
 			</ul>
 			<ul>
 				<a href="#"><li>공연결제내역관리</li></a>

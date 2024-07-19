@@ -29,7 +29,7 @@ td {
 }
 
 thead td:first-child {
-	width: 14%;
+	width: 20%;
 }
 
 thead td:nth-child(2) {
@@ -45,7 +45,7 @@ thead td:nth-child(4) {
 }
 
 thead td:nth-child(5) {
-	width: 14%;
+	width: 8%;
 }
 
 thead td:nth-child(6) {

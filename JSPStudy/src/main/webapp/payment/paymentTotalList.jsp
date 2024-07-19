@@ -23,7 +23,10 @@ if(loginID==null){
 </head>
 <body>
 	<h1 id="title">결제 내역</h1>
-	<table>
+		<%
+		if(count==0){
+			%>
+		<table>
 		<thead>
 			<tr>
 				<td>결제날짜</td>
@@ -31,16 +34,14 @@ if(loginID==null){
 				<td>연락처</td>
 				<td>배송지</td>
 				<td>공연명</td>
+				<!-- <td>공연일</td> -->
 				<td>예매좌석</td>
 				<td>총예매수</td>
 				<td>총 티켓가격</td>
 			</tr>
 		</thead>
-		<%
-		if(count==0){
-			%>
 			<tr>
-			<td colspan="8">결제 내역이 없습니다.</td>
+			<td colspan="9">결제 내역이 없습니다.</td>
 		</tr>
 			<% 
 		}else {
@@ -52,12 +53,27 @@ if(loginID==null){
 			PaymentVO payment = paymentTotalList.elementAt(i);
 			totalPayment += payment.getTotal_payment_amount();
 		%>
+		<table>
+		<thead>
+			<tr>
+				<td>결제날짜</td>
+				<td>고객명</td>
+				<td>연락처</td>
+				<td>배송지</td>
+				<td>공연명</td>
+				<!-- <td>공연일</td> -->
+				<td>예매좌석</td>
+				<td>총예매수</td>
+				<td>총 티켓가격</td>
+			</tr>
+		</thead>
 		<tr>
 			<td><%=payment.getReservation_date()%></td>
 			<td><%=payment.getRecipient_name()%></td>
 			<td><%=payment.getRecipient_phone()%></td>
 			<td><%=payment.getRecipient_address()%></td>
 			<td><%=payment.getPerformance_name()%></td>
+			<!-- <td>공연일</td> -->
 			<td><%=payment.getReservation_seats()%></td>
 			<td><%=payment.getTotal_reservation_seats()%></td>
 			<td><%=payment.getTotal_payment_amount()%></td>
@@ -65,16 +81,13 @@ if(loginID==null){
 		<%
 		} //end of for
 		%>
-		<tr>
+		<%-- <tr>
 			<td colspan="8">총 결제금액 : <%=totalPayment%></td>
-		</tr>
+		</tr> --%>
 		<%
 		}
 		%>
 	</table>
-	<div id="ticketButton">
-	<button id="mainB" onclick="location.href='<%=request.getContextPath()%>/performance/performanceTotalList.jsp'">메인페이지</button>
-	</div>
 </body>
 </html>
 <%

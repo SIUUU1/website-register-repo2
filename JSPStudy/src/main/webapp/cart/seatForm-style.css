@@ -30,6 +30,9 @@ input.p_seat+label {
 	border-radius: 10px;
 	user-select: none;
 	margin: 5px;
+	text-align: center;
+	color: white;
+	font-weight: 600;
 }
 
 input.s_seat+label, input.n_seat+label {
@@ -43,6 +46,8 @@ input.s_seat+label, input.n_seat+label {
 	vertical-align: middle;
 	border-radius: 10px;
 	user-select: none;
+	text-align: center;
+	font-weight: 700;
 }
 /* 체크되었을 때 */
 input:checked+label {

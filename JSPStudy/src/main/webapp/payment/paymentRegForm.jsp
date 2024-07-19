@@ -48,10 +48,10 @@ if(loginID == null){
 <link rel="stylesheet" href="<%=request.getContextPath()%>/payment/paymentRegForm-style.css?ver=<%=(int)(Math.random()*1000)%>">
 </head>
 <body>
- <h1 id="title">주문결제</h1>
+<div id="paymentRegForm">
+ <h1 id="title">결제창</h1>
  <!-- 선택한 장바구니 리스트 -->
- <h2>주문상품</h2>
- <table>
+ <table id="payCart">
 		<thead>
 			<tr>
 				<td>공연명</td>
@@ -79,7 +79,9 @@ if(loginID == null){
 		int userPoints = (int)Math.ceil( paymentAmount*userPointRatio);
 		%>
 </table>
+<div id="getInfoB">
  <button type="button" onclick="getUserInfo('<%=userName%>','<%=userPhoneNum%>','<%=postCode%>','<%=defaultAddress%>','<%=detailedAddress%>','<%=extraAddress%>')">본인정보가져오기</button>
+</div>
   <form action="<%=request.getContextPath()%>/payment/paymentRegProc.jsp" method="post" name="paymentForm">
    <table>
       <tr>
@@ -108,18 +110,18 @@ if(loginID == null){
         </td>
       </tr>
       <tr>
-      <td class="title">총 포인트<%=member.getUserPoints()%>점</td>
+      <%-- <td class="title">총 포인트<%=member.getUserPoints()%>점</td>
        <td >
        <label for="usingPoints">사용할 포인트</label>
        <input type="number" name="usingPoints" id="usingPoints" value="0" max="<%=member.getUserPoints()%>" onchange="onUsingPoint(<%=member.getUserPoints()%>)"> 점
       </td>
-      </tr>
-      <tr>
+      </tr> --%>
+      <%-- <tr>
       <td class="title">고객등급할인</td>
-      <td >
+      <td>
        <input type="number" name="saleAmount" id="saleAmount" value="<%=saleAmount%>"> 원
       </td>
-      </tr>
+      </tr> --%>
       <tr>
       <td class="title">총 결제금액</td>
       <td >
@@ -128,11 +130,12 @@ if(loginID == null){
       </td>
       </tr>
     </table>
-      <div class="regButton">
-      <button type="submit" id="subButton" onclick="inputCheck()">결제하기</button>
+      <div id="regButton">
       <button type="button" onclick="location.href='<%=request.getContextPath()%>/member/main.jsp?middleFile=/cart/cartList.jsp'">취소</button>
+      <button type="submit" id="subButton" onclick="inputCheck()">결제하기</button>
     </div>
   </form>
+  </div>
 </body>
 </html>
 <% 
